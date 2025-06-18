@@ -17,7 +17,7 @@ public class PruebaLanzamiento : MonoBehaviour, IInteractable
         if (rb != null)
         {
             rb.AddForce(Vector3.up * fuerzaDisparo, ForceMode.Impulse);
-            rb.AddForce(Vector3.left * fuerzaDisparo, ForceMode.Impulse);
+            //rb.AddForce(Vector3.left * fuerzaDisparo, ForceMode.Impulse);
         }
     }
 }

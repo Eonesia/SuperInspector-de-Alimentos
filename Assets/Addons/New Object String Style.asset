@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eab9c32cb8cfdb4da81d09969a24b26, type: 3}
+  m_Name: New Object String Style
+  m_EditorClassIdentifier: 
+  styles:
+  - nombre: Player
+    font: {fileID: 0}
+    fontColor: {r: 0.1064436, g: 0.5488212, b: 0.9811321, a: 0}
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    fontStyle: 0
+    alignment: 0
+    Icon: {fileID: 0}
+    size: 0
+  - nombre: Bloquing
+    font: {fileID: 0}
+    fontColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 0}
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    fontStyle: 0
+    alignment: 0
+    Icon: {fileID: 0}
+    size: 0
+  - nombre: Canvas
+    font: {fileID: 0}
+    fontColor: {r: 0.4625756, g: 0.990566, b: 0.53844625, a: 0}
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    fontStyle: 0
+    alignment: 0
+    Icon: {fileID: 0}
+    size: 0
