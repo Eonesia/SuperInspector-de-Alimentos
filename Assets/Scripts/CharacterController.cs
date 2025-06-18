@@ -7,7 +7,7 @@ public class FirstPersonController : MonoBehaviour
     [Header("Movimiento")]
     public float velocidadCaminar = 5f;
     public float velocidadCorrer = 10f;
-    public float fuerzaSalto = 5f;
+    public float fuerzaSalto = 3f;
     public float gravedad = -9.81f;
 
     [Header("Rotación de cámara")]
