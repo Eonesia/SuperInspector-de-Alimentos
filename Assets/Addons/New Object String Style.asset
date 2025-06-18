@@ -37,3 +37,35 @@ MonoBehaviour:
     alignment: 0
     Icon: {fileID: 0}
     size: 0
+  - nombre: "Im\xE1genes"
+    font: {fileID: 0}
+    fontColor: {r: 0.9215687, g: 0.3921569, b: 0.36862746, a: 1}
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    fontStyle: 0
+    alignment: 0
+    Icon: {fileID: 0}
+    size: 0
+  - nombre: Scripts
+    font: {fileID: 0}
+    fontColor: {r: 0.1523582, g: 0.4811321, b: 0.102127105, a: 1}
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    fontStyle: 0
+    alignment: 0
+    Icon: {fileID: 0}
+    size: 0
+  - nombre: Musica y sonido
+    font: {fileID: 0}
+    fontColor: {r: 1, g: 0.85742396, b: 0.15566039, a: 1}
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    fontStyle: 0
+    alignment: 0
+    Icon: {fileID: 0}
+    size: 0
+  - nombre: Musica y sonido
+    font: {fileID: 0}
+    fontColor: {r: 1, g: 0.85742396, b: 0.15566039, a: 1}
+    backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    fontStyle: 0
+    alignment: 0
+    Icon: {fileID: 0}
+    size: 0
