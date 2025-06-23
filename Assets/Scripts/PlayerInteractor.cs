@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteractor : MonoBehaviour
 {
+    public InventoryObject inventory;
+
     [Header("Input")]
     public InputActionReference interactInput;
 
@@ -46,5 +48,10 @@ public class PlayerInteractor : MonoBehaviour
     {
         Gizmos.color = rayColor;
         Gizmos.DrawRay(transform.position, transform.forward * rayDistance);
+    }
+
+    private void OnApplicationQuit()
+    {
+        inventory.Container.Clear();
     }
 }
