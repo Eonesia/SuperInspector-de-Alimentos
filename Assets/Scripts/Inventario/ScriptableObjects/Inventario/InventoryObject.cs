@@ -13,7 +13,7 @@ public class InventoryObject : ScriptableObject
         {
             if (Container[i].item == _item)
             {
-                Container[i].amount = _amount;
+                Container[i].AddAmount(_amount);
                 hasItem = true;
                 break;
             }
