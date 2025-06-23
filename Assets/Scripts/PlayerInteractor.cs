@@ -50,8 +50,5 @@ public class PlayerInteractor : MonoBehaviour
         Gizmos.DrawRay(transform.position, transform.forward * rayDistance);
     }
 
-    private void OnApplicationQuit()
-    {
-        inventory.Container.Clear();
-    }
+   
 }
