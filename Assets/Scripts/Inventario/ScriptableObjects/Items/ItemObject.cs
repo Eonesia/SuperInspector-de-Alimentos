@@ -11,7 +11,7 @@ public abstract class ItemObject : ScriptableObject
 }
 public enum ItemType
 {
-    Comida,
-    AlimentoEnMano,
-    Vacio
+    ComidaMercado,
+    AlimentoObjetivo,
+    AlimentoEnMano
 }

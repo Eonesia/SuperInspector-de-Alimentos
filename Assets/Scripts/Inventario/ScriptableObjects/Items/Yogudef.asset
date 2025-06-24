@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96ab257b8117a074bb18914e2379e884, type: 3}
-  m_Name: Vacio
+  m_Name: Yogudef
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 1
-  description: Mano vacia
+  description: "Jam\xF3n serrano marca superblanca"
