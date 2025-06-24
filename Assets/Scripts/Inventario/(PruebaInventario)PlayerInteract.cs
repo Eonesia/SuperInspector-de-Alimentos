@@ -26,6 +26,12 @@ public class PlayerInteract : MonoBehaviour
                 var item = hit.collider.GetComponent<Item>();
                 if (item)
                 {
+                    if (objetosRecogidos.Count >= 5)
+                    {
+                        Debug.Log("No puedes llevar más de 5 objetos.");
+                        return;
+                    }
+
                     inventory.AddItem(item.item, 1);
                     Transform nuevoObjeto = item.transform;
 
@@ -52,21 +58,10 @@ public class PlayerInteract : MonoBehaviour
             StartCoroutine(CambiarObjetoConDelay(scroll));
         }
 
-        // Lanzar objeto activo con clic derecho
+        // Lanzar objeto activo con clic derecho (con delay para activar el siguiente)
         if (Input.GetMouseButtonDown(1) && objetoActivoIndex >= 0)
         {
-            Transform objeto = objetosRecogidos[objetoActivoIndex];
-            Rigidbody rb = objeto.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                objeto.SetParent(null);
-                rb.isKinematic = false;
-                rb.AddForce(Camera.main.transform.forward * fuerzaLanzamiento, ForceMode.Impulse);
-            }
-
-            objetosRecogidos.RemoveAt(objetoActivoIndex);
-            objetoActivoIndex = objetosRecogidos.Count > 0 ? 0 : -1;
-            ActualizarObjetoActivo();
+            StartCoroutine(LanzarObjetoConDelay());
         }
     }
 
@@ -84,13 +79,41 @@ public class PlayerInteract : MonoBehaviour
         puedeCambiar = true;
     }
 
+    IEnumerator LanzarObjetoConDelay()
+    {
+        Transform objeto = objetosRecogidos[objetoActivoIndex];
+        Rigidbody rb = objeto.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            objeto.SetParent(null);
+            rb.isKinematic = false;
+            rb.AddForce(Camera.main.transform.forward * fuerzaLanzamiento, ForceMode.Impulse);
+        }
+
+        objetosRecogidos.RemoveAt(objetoActivoIndex);
+        objetoActivoIndex = objetosRecogidos.Count > 0 ? 0 : -1;
+
+        yield return new WaitForSeconds(0.2f); // Delay antes de activar el siguiente objeto
+
+        ActualizarObjetoActivo();
+    }
+
     void ActualizarObjetoActivo()
     {
         for (int i = 0; i < objetosRecogidos.Count; i++)
         {
+            bool esActivo = (i == objetoActivoIndex);
+
+            // Activar/desactivar renderers
             foreach (var renderer in objetosRecogidos[i].GetComponentsInChildren<MeshRenderer>())
             {
-                renderer.enabled = (i == objetoActivoIndex);
+                renderer.enabled = esActivo;
+            }
+
+            // Activar/desactivar colliders
+            foreach (var collider in objetosRecogidos[i].GetComponentsInChildren<Collider>())
+            {
+                collider.enabled = esActivo;
             }
         }
     }
@@ -100,6 +123,9 @@ public class PlayerInteract : MonoBehaviour
         inventory.Container.Clear();
     }
 }
+
+
+
 
 
 
