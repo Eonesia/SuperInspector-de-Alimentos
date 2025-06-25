@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,17 +9,43 @@ public class PlayerInteract : MonoBehaviour
     public Transform Mano;
     public float fuerzaLanzamiento = 10f;
     public float tiempoEntreCambios = 0.3f;
+    public InputActionAsset inputActions;
 
     private List<Transform> objetosRecogidos = new List<Transform>();
     private int objetoActivoIndex = -1;
     private bool puedeCambiar = true;
 
+    private InputAction interactuarAction;
+    private InputAction lanzarAction;
+    private InputAction cambiarObjetoAction;
+
+    void Awake()
+    {
+        var mapa = inputActions.FindActionMap("Jugador");
+        interactuarAction = mapa.FindAction("Interactuar");
+        lanzarAction = mapa.FindAction("Lanzar");
+        cambiarObjetoAction = mapa.FindAction("CambiarObjeto");
+    }
+
+    void OnEnable()
+    {
+        interactuarAction.Enable();
+        lanzarAction.Enable();
+        cambiarObjetoAction.Enable();
+    }
+
+    void OnDisable()
+    {
+        interactuarAction.Disable();
+        lanzarAction.Disable();
+        cambiarObjetoAction.Disable();
+    }
+
     void Update()
     {
-        // Recoger objeto con clic izquierdo
-        if (Input.GetMouseButtonDown(0))
+        if (interactuarAction.WasPressedThisFrame())
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit))
@@ -51,15 +78,13 @@ public class PlayerInteract : MonoBehaviour
             }
         }
 
-        // Cambiar objeto con rueda del ratón (con delay)
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        float scroll = cambiarObjetoAction.ReadValue<Vector2>().y;
         if (puedeCambiar && scroll != 0 && objetosRecogidos.Count > 0)
         {
             StartCoroutine(CambiarObjetoConDelay(scroll));
         }
 
-        // Lanzar objeto activo con clic derecho (con delay para activar el siguiente)
-        if (Input.GetMouseButtonDown(1) && objetoActivoIndex >= 0)
+        if (lanzarAction.WasPressedThisFrame() && objetoActivoIndex >= 0)
         {
             StartCoroutine(LanzarObjetoConDelay());
         }
@@ -93,8 +118,7 @@ public class PlayerInteract : MonoBehaviour
         objetosRecogidos.RemoveAt(objetoActivoIndex);
         objetoActivoIndex = objetosRecogidos.Count > 0 ? 0 : -1;
 
-        yield return new WaitForSeconds(0.2f); // Delay antes de activar el siguiente objeto
-
+        yield return new WaitForSeconds(0.2f);
         ActualizarObjetoActivo();
     }
 
@@ -104,17 +128,11 @@ public class PlayerInteract : MonoBehaviour
         {
             bool esActivo = (i == objetoActivoIndex);
 
-            // Activar/desactivar renderers
             foreach (var renderer in objetosRecogidos[i].GetComponentsInChildren<MeshRenderer>())
-            {
                 renderer.enabled = esActivo;
-            }
 
-            // Activar/desactivar colliders
             foreach (var collider in objetosRecogidos[i].GetComponentsInChildren<Collider>())
-            {
                 collider.enabled = esActivo;
-            }
         }
     }
 
@@ -123,6 +141,7 @@ public class PlayerInteract : MonoBehaviour
         inventory.Container.Clear();
     }
 }
+
 
 
 

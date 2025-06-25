@@ -3168,6 +3168,7 @@ MonoBehaviour:
   Mano: {fileID: 1203404656}
   fuerzaLanzamiento: 20
   tiempoEntreCambios: 0.3
+  inputActions: {fileID: -944628639613478452, guid: ace1b9fe789dcaf4481f510786221567, type: 3}
 --- !u!1 &810309268
 GameObject:
   m_ObjectHideFlags: 0
