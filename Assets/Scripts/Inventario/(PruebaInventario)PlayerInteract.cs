@@ -50,6 +50,7 @@ public class PlayerInteract : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
+                // Intentar recoger un objeto
                 var item = hit.collider.GetComponent<Item>();
                 if (item)
                 {
@@ -74,6 +75,15 @@ public class PlayerInteract : MonoBehaviour
                     objetoActivoIndex = objetosRecogidos.Count - 1;
 
                     ActualizarObjetoActivo();
+                }
+                else
+                {
+                    // Si no es un objeto recogible, ver si es un trigger de escena
+                    var trigger = hit.collider.GetComponent<SceneChangeTrigger>();
+                    if (trigger)
+                    {
+                        trigger.Interact();
+                    }
                 }
             }
         }
@@ -141,6 +151,7 @@ public class PlayerInteract : MonoBehaviour
         inventory.Container.Clear();
     }
 }
+
 
 
 
