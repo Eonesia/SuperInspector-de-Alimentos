@@ -39,16 +39,16 @@ public class MenuAjustes : MonoBehaviour
 
     public void CambiarSensibilidad(float valor)
     {
-        PlayerPrefs.SetFloat("Sensibilidad", valor);
-
-        if (jugador == null)
-            BuscarJugador();
-
         if (jugador != null)
         {
             jugador.sensibilidadRaton = valor;
+
+            // Opcional: también puedes ajustar sensibilidadMando si quieres
             jugador.sensibilidadMando = valor * 150f;
         }
+
+        // Guardar en PlayerPrefs
+        PlayerPrefs.SetFloat("Sensibilidad", valor);
     }
 
 }
