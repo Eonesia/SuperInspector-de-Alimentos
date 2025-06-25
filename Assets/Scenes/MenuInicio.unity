@@ -628,7 +628,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VOLUMEN DE JUEGO
+  m_text: SENSIBILIDAD
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
   m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
@@ -1077,13 +1077,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 2032643877}
   m_HandleRect: {fileID: 840501591}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1582093251}
+        m_TargetAssemblyTypeName: MenuAjustes, Assembly-CSharp
+        m_MethodName: CambiarVolumen
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1078002767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,7 +1436,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1093201450}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1689962869}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1424993784}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1093201450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1887,10 +1923,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1194392774}
-        m_TargetAssemblyTypeName: MenuInicio, Assembly-CSharp
-        m_MethodName: Salir
-        m_Mode: 1
+      - m_Target: {fileID: 1424993784}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1898,6 +1934,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1689962869}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1352878088
 MonoBehaviour:
@@ -2042,7 +2090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SENSIBILIDAD
+  m_text: VOLUMEN DE JUEGO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
   m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
@@ -2209,6 +2257,7 @@ GameObject:
   - component: {fileID: 1582093247}
   - component: {fileID: 1582093246}
   - component: {fileID: 1582093250}
+  - component: {fileID: 1582093251}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2312,6 +2361,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd1751e8b187494f994c44d68d12bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1582093251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582093245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1737310f6bf7dd245afcc593773f9ece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: c5f8109afbae19c4fbf8edbcdf97672b, type: 2}
+  volumenSlider: {fileID: 982954392}
+  sensibilidadSlider: {fileID: 2004894234}
+  jugador: {fileID: 0}
 --- !u!1 &1584755767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,7 +2530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1689962870
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2688,7 +2753,7 @@ GameObject:
   - component: {fileID: 2004894233}
   - component: {fileID: 2004894234}
   m_Layer: 5
-  m_Name: Volumen
+  m_Name: Sensibilidad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
