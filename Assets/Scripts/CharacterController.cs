@@ -21,7 +21,9 @@ public class FirstPersonController : MonoBehaviour
     public InputActionReference jumpAction;
     public InputActionReference runAction;
     public InputActionReference lookAction; // <-- Joystick derecho
+    public InputActionReference pauseAction;
 
+    public MenuPausa menuPausa;
     private CharacterController controlador;
     private Vector2 inputMovimiento;
     private Vector2 inputLook;
@@ -47,6 +49,9 @@ public class FirstPersonController : MonoBehaviour
 
         lookAction.action.performed += ctx => inputLook = ctx.ReadValue<Vector2>();
         lookAction.action.canceled += ctx => inputLook = Vector2.zero;
+
+        pauseAction.action.Enable();
+        pauseAction.action.performed += ctx => menuPausa.AlternarPausa();
     }
 
     private void OnDisable()
@@ -55,6 +60,7 @@ public class FirstPersonController : MonoBehaviour
         jumpAction.action.Disable();
         runAction.action.Disable();
         lookAction.action.Disable();
+        pauseAction.action.Disable();
     }
 
     void Start()

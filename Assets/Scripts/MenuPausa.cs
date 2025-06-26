@@ -2,25 +2,16 @@ using UnityEngine;
 
 public class MenuPausa : MonoBehaviour
 {
+    public GameObject objetoMenuPausa;
+    public bool pausa = false;
 
-    public GameObject ObjetoMenuPausa;
-    public bool Pausa = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void AlternarPausa()
     {
-        
-    }
+        pausa = !pausa;
+        objetoMenuPausa.SetActive(pausa);
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(Pausa == false)
-            {
-                ObjetoMenuPausa.SetActive(true);
-                Pausa = true;
-            }
-        }
+        Time.timeScale = pausa ? 0f : 1f;
+        Cursor.lockState = pausa ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = pausa;
     }
 }
