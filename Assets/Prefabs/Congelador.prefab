@@ -315,6 +315,7 @@ Transform:
   - {fileID: 8455123338841210040}
   - {fileID: 1952051739197938875}
   - {fileID: 4217076146309618301}
+  - {fileID: 3007696205375659180}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &7343587596485784833
@@ -691,3 +692,85 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.976391, y: 1.107611, z: 0.0322256}
   m_Center: {x: 0.010293782, y: 0.5603858, z: 0.83216155}
+--- !u!1001 &7149808419554317382
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6709542525431697377}
+    m_Modifications:
+    - target: {fileID: 4404114720622931632, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404114720622931632, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404114720622931632, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369490474309847274, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7269572
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369490474309847274, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.71911
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369490474309847274, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369490474309847274, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369490474309847274, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.037
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369490474309847274, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369490474309847274, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369490474309847274, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369490474309847274, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369490474309847274, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369490474309847274, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369490474309847274, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668101899430322603, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+      propertyPath: m_Name
+      value: HumoFrio Congelador
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+--- !u!4 &3007696205375659180 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5369490474309847274, guid: 6f1929bf77fc9b542b660b73751a519a, type: 3}
+  m_PrefabInstance: {fileID: 7149808419554317382}
+  m_PrefabAsset: {fileID: 0}
