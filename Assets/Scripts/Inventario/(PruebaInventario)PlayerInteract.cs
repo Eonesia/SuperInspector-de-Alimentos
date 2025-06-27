@@ -8,6 +8,8 @@ public class PlayerInteract : MonoBehaviour
     public InventoryObject inventory;
     public Transform Mano;
     public float fuerzaLanzamiento = 10f;
+    public float ajusteLanzamientoIzq = 2f;
+    public float ajusteLanzamientoDcha = 1.3f;
     public float tiempoEntreCambios = 0.3f;
     public InputActionAsset inputActions;
 
@@ -43,12 +45,15 @@ public class PlayerInteract : MonoBehaviour
 
     void Update()
     {
+
         if (interactuarAction.WasPressedThisFrame())
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
+            float distanciaMaximaRay = 3f;
+            if (Physics.Raycast(ray, out hit, distanciaMaximaRay))
+
             {
                 // Intentar recoger un objeto
                 var item = hit.collider.GetComponent<Item>();
@@ -69,7 +74,7 @@ public class PlayerInteract : MonoBehaviour
 
                     nuevoObjeto.SetParent(Mano);
                     nuevoObjeto.localPosition = Vector3.zero;
-                    nuevoObjeto.localRotation = Quaternion.identity;
+                    nuevoObjeto.localRotation = Quaternion.Euler(item.rotacionEnMano);
 
                     objetosRecogidos.Add(nuevoObjeto);
                     objetoActivoIndex = objetosRecogidos.Count - 1;
@@ -123,6 +128,9 @@ public class PlayerInteract : MonoBehaviour
             objeto.SetParent(null);
             rb.isKinematic = false;
             rb.AddForce(Camera.main.transform.forward * fuerzaLanzamiento, ForceMode.Impulse);
+            rb.AddForce(-Camera.main.transform.right * ajusteLanzamientoIzq, ForceMode.Impulse);
+            rb.AddForce(Camera.main.transform.right * ajusteLanzamientoDcha, ForceMode.Impulse);
+
         }
 
         objetosRecogidos.RemoveAt(objetoActivoIndex);
