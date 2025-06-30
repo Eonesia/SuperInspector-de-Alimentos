@@ -94,6 +94,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Inspeccion",
+                    "type": "Button",
+                    "id": "cfd03963-c469-4c7b-9b01-73234a5e0233",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -413,6 +422,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Soltar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef114ddd-ef9e-4bee-a6e5-e10e2c7bc56b",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inspeccion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67aeb786-2114-4013-84d8-89bb2dcfa046",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inspeccion",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
