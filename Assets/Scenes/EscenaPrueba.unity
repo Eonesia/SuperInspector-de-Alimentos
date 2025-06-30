@@ -5899,6 +5899,7 @@ MonoBehaviour:
   ajusteLanzamientoIzq: 2
   ajusteLanzamientoDcha: 1
   tiempoEntreCambios: 0.3
+  distanciaSoltarObjeto: 2
   inputActions: {fileID: -944628639613478452, guid: ace1b9fe789dcaf4481f510786221567, type: 3}
 --- !u!1 &736180126
 GameObject:

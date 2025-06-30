@@ -11,6 +11,7 @@ public class PlayerInteract : MonoBehaviour
     public float ajusteLanzamientoIzq = 2f;
     public float ajusteLanzamientoDcha = 1.3f;
     public float tiempoEntreCambios = 0.3f;
+    public float distanciaSoltarObjeto = 1.5f;
     public InputActionAsset inputActions;
 
     private List<Transform> objetosRecogidos = new List<Transform>();
@@ -20,7 +21,7 @@ public class PlayerInteract : MonoBehaviour
     private InputAction interactuarAction;
     private InputAction lanzarAction;
     private InputAction cambiarObjetoAction;
-    private InputAction soltarAction; // NUEVO
+    private InputAction soltarAction;
 
     void Awake()
     {
@@ -28,7 +29,7 @@ public class PlayerInteract : MonoBehaviour
         interactuarAction = mapa.FindAction("Interactuar");
         lanzarAction = mapa.FindAction("Lanzar");
         cambiarObjetoAction = mapa.FindAction("CambiarObjeto");
-        soltarAction = mapa.FindAction("Soltar"); // NUEVO
+        soltarAction = mapa.FindAction("Soltar");
     }
 
     void OnEnable()
@@ -36,7 +37,7 @@ public class PlayerInteract : MonoBehaviour
         interactuarAction.Enable();
         lanzarAction.Enable();
         cambiarObjetoAction.Enable();
-        soltarAction.Enable(); // NUEVO
+        soltarAction.Enable();
     }
 
     void OnDisable()
@@ -44,7 +45,7 @@ public class PlayerInteract : MonoBehaviour
         interactuarAction.Disable();
         lanzarAction.Disable();
         cambiarObjetoAction.Disable();
-        soltarAction.Disable(); // NUEVO
+        soltarAction.Disable();
     }
 
     void Update()
@@ -62,7 +63,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     if (objetosRecogidos.Count >= 5)
                     {
-                        Debug.Log("No puedes llevar m�s de 5 objetos.");
+                        Debug.Log("No puedes llevar más de 5 objetos.");
                         return;
                     }
 
@@ -106,7 +107,7 @@ public class PlayerInteract : MonoBehaviour
 
         if (soltarAction.WasPressedThisFrame() && objetoActivoIndex >= 0)
         {
-            SoltarObjeto(); // NUEVO
+            SoltarObjeto();
         }
     }
 
@@ -144,7 +145,7 @@ public class PlayerInteract : MonoBehaviour
         ActualizarObjetoActivo();
     }
 
-    void SoltarObjeto() // NUEVO
+    void SoltarObjeto()
     {
         Transform objeto = objetosRecogidos[objetoActivoIndex];
         Rigidbody rb = objeto.GetComponent<Rigidbody>();
@@ -154,7 +155,7 @@ public class PlayerInteract : MonoBehaviour
             rb.isKinematic = false;
             rb.useGravity = true;
 
-            Vector3 dropPosition = Camera.main.transform.position + Camera.main.transform.forward * 1.5f;
+            Vector3 dropPosition = Camera.main.transform.position + Camera.main.transform.forward * distanciaSoltarObjeto;
             rb.MovePosition(dropPosition);
 
             rb.linearVelocity = Vector3.zero;
@@ -186,6 +187,7 @@ public class PlayerInteract : MonoBehaviour
         inventory.Container.Clear();
     }
 }
+
 
 
 
