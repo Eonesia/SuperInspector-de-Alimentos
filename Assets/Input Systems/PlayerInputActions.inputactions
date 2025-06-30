@@ -60,6 +60,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Soltar",
+                    "type": "Button",
+                    "id": "5954a28c-3d92-4e6b-8d3a-ce098345cf15",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "CambiarObjeto",
                     "type": "Value",
                     "id": "b319a011-6457-49b6-98fa-cb00e2bb878e",
@@ -382,6 +391,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Lista",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "64d19487-a257-4a0f-9b17-e1ad4f09b747",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Soltar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "18f38c33-2b87-488d-a0eb-013cd31876b9",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Soltar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
