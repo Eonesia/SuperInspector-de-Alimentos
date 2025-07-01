@@ -13,7 +13,8 @@ public class MenuAjustes : MonoBehaviour
     {
         float volumenGuardado = PlayerPrefs.GetFloat("VolumenAudio", 0.75f);
         volumenSlider.value = volumenGuardado;
-        CambiarVolumen(volumenGuardado);
+        CambiarVolumen();
+        
 
         float sensibilidad = PlayerPrefs.GetFloat("Sensibilidad", 1f);
         sensibilidadSlider.value = sensibilidad;
@@ -29,12 +30,13 @@ public class MenuAjustes : MonoBehaviour
         jugador = FindObjectOfType<FirstPersonController>();
     }
 
-    public void CambiarVolumen(float valor)
+    public void CambiarVolumen()
     {
-        float volumenDb = Mathf.Log10(Mathf.Clamp(valor, 0.0001f, 1f)) * 20f;
+        float volumenDb = Mathf.Log10(Mathf.Clamp(volumenSlider.value, 0.0001f, 1f)) * 20f;
         audioMixer.SetFloat("MasterVolume", volumenDb);
 
-        PlayerPrefs.SetFloat("VolumenAudio", valor);
+        PlayerPrefs.SetFloat("VolumenAudio", volumenSlider.value);
+        Debug.Log(volumenDb);
     }
 
     public void CambiarSensibilidad(float valor)
