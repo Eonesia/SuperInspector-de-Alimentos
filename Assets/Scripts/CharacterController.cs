@@ -10,7 +10,7 @@ public class FirstPersonController : MonoBehaviour
     public float fuerzaSalto = 3f;
     public float gravedad = -9.81f;
 
-    [Header("Rotación de cámara")]
+    [Header("Rotaciï¿½n de cï¿½mara")]
     public Transform camaraTransform;
     public float sensibilidadRaton = 1f;
     public float sensibilidadMando = 150f;

@@ -11,7 +11,6 @@ public class PlayerInteract : MonoBehaviour
     public float ajusteLanzamientoIzq = 2f;
     public float ajusteLanzamientoDcha = 1.3f;
     public float tiempoEntreCambios = 0.3f;
-    public float distanciaSoltarObjeto = 1.5f;
     public InputActionAsset inputActions;
 
     private List<Transform> objetosRecogidos = new List<Transform>();
@@ -21,7 +20,6 @@ public class PlayerInteract : MonoBehaviour
     private InputAction interactuarAction;
     private InputAction lanzarAction;
     private InputAction cambiarObjetoAction;
-    private InputAction soltarAction;
 
     void Awake()
     {
@@ -29,7 +27,6 @@ public class PlayerInteract : MonoBehaviour
         interactuarAction = mapa.FindAction("Interactuar");
         lanzarAction = mapa.FindAction("Lanzar");
         cambiarObjetoAction = mapa.FindAction("CambiarObjeto");
-        soltarAction = mapa.FindAction("Soltar");
     }
 
     void OnEnable()
@@ -37,7 +34,6 @@ public class PlayerInteract : MonoBehaviour
         interactuarAction.Enable();
         lanzarAction.Enable();
         cambiarObjetoAction.Enable();
-        soltarAction.Enable();
     }
 
     void OnDisable()
@@ -45,11 +41,11 @@ public class PlayerInteract : MonoBehaviour
         interactuarAction.Disable();
         lanzarAction.Disable();
         cambiarObjetoAction.Disable();
-        soltarAction.Disable();
     }
 
     void Update()
     {
+
         if (interactuarAction.WasPressedThisFrame())
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -57,13 +53,15 @@ public class PlayerInteract : MonoBehaviour
 
             float distanciaMaximaRay = 3f;
             if (Physics.Raycast(ray, out hit, distanciaMaximaRay))
+
             {
+                // Intentar recoger un objeto
                 var item = hit.collider.GetComponent<Item>();
                 if (item)
                 {
                     if (objetosRecogidos.Count >= 5)
                     {
-                        Debug.Log("No puedes llevar m√°s de 5 objetos.");
+                        Debug.Log("No puedes llevar m·s de 5 objetos.");
                         return;
                     }
 
@@ -85,6 +83,7 @@ public class PlayerInteract : MonoBehaviour
                 }
                 else
                 {
+                    // Si no es un objeto recogible, ver si es un trigger de escena
                     var trigger = hit.collider.GetComponent<SceneChangeTrigger>();
                     if (trigger)
                     {
@@ -103,11 +102,6 @@ public class PlayerInteract : MonoBehaviour
         if (lanzarAction.WasPressedThisFrame() && objetoActivoIndex >= 0)
         {
             StartCoroutine(LanzarObjetoConDelay());
-        }
-
-        if (soltarAction.WasPressedThisFrame() && objetoActivoIndex >= 0)
-        {
-            SoltarObjeto();
         }
     }
 
@@ -136,35 +130,13 @@ public class PlayerInteract : MonoBehaviour
             rb.AddForce(Camera.main.transform.forward * fuerzaLanzamiento, ForceMode.Impulse);
             rb.AddForce(-Camera.main.transform.right * ajusteLanzamientoIzq, ForceMode.Impulse);
             rb.AddForce(Camera.main.transform.right * ajusteLanzamientoDcha, ForceMode.Impulse);
+
         }
 
         objetosRecogidos.RemoveAt(objetoActivoIndex);
         objetoActivoIndex = objetosRecogidos.Count > 0 ? 0 : -1;
 
         yield return new WaitForSeconds(0.2f);
-        ActualizarObjetoActivo();
-    }
-
-    void SoltarObjeto()
-    {
-        Transform objeto = objetosRecogidos[objetoActivoIndex];
-        Rigidbody rb = objeto.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            objeto.SetParent(null);
-            rb.isKinematic = false;
-            rb.useGravity = true;
-
-            Vector3 dropPosition = Camera.main.transform.position + Camera.main.transform.forward * distanciaSoltarObjeto;
-            rb.MovePosition(dropPosition);
-
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-        }
-
-        objetosRecogidos.RemoveAt(objetoActivoIndex);
-        objetoActivoIndex = objetosRecogidos.Count > 0 ? 0 : -1;
-
         ActualizarObjetoActivo();
     }
 
@@ -187,8 +159,6 @@ public class PlayerInteract : MonoBehaviour
         inventory.Container.Clear();
     }
 }
-
-
 
 
 

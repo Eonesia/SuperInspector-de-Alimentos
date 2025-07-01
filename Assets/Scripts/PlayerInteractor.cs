@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,13 +17,17 @@ public class PlayerInteractor : MonoBehaviour
     public Color rayColor = Color.green;
 
     [Header("Highlight Material")]
-    public Material highlightMaterial;  // Material para aplicar cuando se apunta al objeto
+    public Material highlightMaterial;
+
+    [Header("Delay Settings")]
+    public float restoreDelay = 1f;  // Tiempo en segundos para restaurar el material
 
     private GameObject lastHitObject = null;
 
-    // Guardamos los materiales originales para cada renderer
     private Renderer[] lastRenderers = null;
     private Material[][] lastOriginalMaterials = null;
+
+    private Coroutine restoreCoroutine = null;
 
     private void OnEnable()
     {
@@ -46,7 +51,13 @@ public class PlayerInteractor : MonoBehaviour
 
             if (hitObject != lastHitObject)
             {
-                RestoreLastObjectMaterial();
+                if (restoreCoroutine != null)
+                {
+                    StopCoroutine(restoreCoroutine);
+                    restoreCoroutine = null;
+                }
+
+                RestoreLastObjectMaterialInstantly();
 
                 ApplyHighlight(hitObject);
 
@@ -55,8 +66,14 @@ public class PlayerInteractor : MonoBehaviour
         }
         else
         {
-            RestoreLastObjectMaterial();
-            lastHitObject = null;
+            if (lastHitObject != null)
+            {
+                if (restoreCoroutine == null)
+                {
+                    restoreCoroutine = StartCoroutine(RestoreMaterialWithDelay(restoreDelay));
+                }
+                lastHitObject = null;
+            }
         }
     }
 
@@ -74,17 +91,13 @@ public class PlayerInteractor : MonoBehaviour
 
     private void ApplyHighlight(GameObject obj)
     {
-        // Conseguimos todos los Renderers en obj y sus hijos
         lastRenderers = obj.GetComponentsInChildren<Renderer>();
-
-        // Guardamos los materiales originales de cada renderer
         lastOriginalMaterials = new Material[lastRenderers.Length][];
 
         for (int i = 0; i < lastRenderers.Length; i++)
         {
             lastOriginalMaterials[i] = lastRenderers[i].materials;
 
-            // Creamos array para asignar el material highlight en cada slot
             Material[] highlightMats = new Material[lastOriginalMaterials[i].Length];
             for (int j = 0; j < highlightMats.Length; j++)
             {
@@ -95,7 +108,7 @@ public class PlayerInteractor : MonoBehaviour
         }
     }
 
-    private void RestoreLastObjectMaterial()
+    private void RestoreLastObjectMaterialInstantly()
     {
         if (lastRenderers != null && lastOriginalMaterials != null)
         {
@@ -110,6 +123,15 @@ public class PlayerInteractor : MonoBehaviour
 
         lastRenderers = null;
         lastOriginalMaterials = null;
+    }
+
+    private IEnumerator RestoreMaterialWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        RestoreLastObjectMaterialInstantly();
+
+        restoreCoroutine = null;
     }
 
     private void OnDrawGizmos()
