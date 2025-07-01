@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: d32887246fd82804ba30d25680b81570, type: 2}
-  rotacionEnMano: {x: 0, y: 0, z: 0}
+  rotacionEnMano: {x: -10, y: -150, z: -10}
 --- !u!1 &3738370704162188344
 GameObject:
   m_ObjectHideFlags: 0

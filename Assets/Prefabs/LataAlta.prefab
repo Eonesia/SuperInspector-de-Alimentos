@@ -142,4 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 0c12f6f6a7335434cb98c38fe31273b3, type: 2}
-  rotacionEnMano: {x: 0, y: 0, z: 0}
+  rotacionEnMano: {x: -10, y: -150, z: -1}
