@@ -13,5 +13,9 @@ public class MenuInspeccion : MonoBehaviour
         objetoMenuInspeccion.SetActive(inspeccion);
         hud.SetActive(!inspeccion);
 
+        Time.timeScale = inspeccion ? 0f : 1f;
+        Cursor.lockState = inspeccion ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = inspeccion;
+
     }
 }

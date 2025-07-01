@@ -24,10 +24,12 @@ public class FirstPersonController : MonoBehaviour
     public InputActionReference pauseAction;
     public InputActionReference listaAction;
     public InputActionReference inspeccionAction;
+    public InputActionReference cambioccAction;
 
     public MenuPausa menuPausa;
     public MenuLista menuLista;
     public MenuInspeccion menuInspeccion;
+    public MenuCC menuCC;
     private CharacterController controlador;
     private Vector2 inputMovimiento;
     private Vector2 inputLook;
@@ -62,6 +64,9 @@ public class FirstPersonController : MonoBehaviour
 
         inspeccionAction.action.Enable();
         inspeccionAction.action.performed += ctx => menuInspeccion.AlternarInspeccion();
+
+        cambioccAction.action.Enable();
+        cambioccAction.action.performed += ctx => menuCC.AlternarCuaderno();
     }
 
     private void OnDisable()
@@ -73,6 +78,7 @@ public class FirstPersonController : MonoBehaviour
         pauseAction.action.Disable();
         listaAction.action.Disable();
         inspeccionAction.action.Disable();
+        cambioccAction.action.Disable();
     }
 
     void Start()

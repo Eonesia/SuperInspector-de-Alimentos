@@ -103,6 +103,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "cambiocc",
+                    "type": "Button",
+                    "id": "ace383b7-cac7-470d-ad74-bbb34df6a528",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -428,7 +437,7 @@
                 {
                     "name": "",
                     "id": "ef114ddd-ef9e-4bee-a6e5-e10e2c7bc56b",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -439,11 +448,33 @@
                 {
                     "name": "",
                     "id": "67aeb786-2114-4013-84d8-89bb2dcfa046",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Inspeccion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "870972e6-80d1-4c8a-bfb9-7405d5498f73",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "cambiocc",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20ba0d78-12cf-4ea6-b8ae-b97e6a3f0f4a",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "cambiocc",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
