@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 7391376301506370381}
   - component: {fileID: 342190293929022053}
   - component: {fileID: 2223397565976159659}
+  - component: {fileID: -7840283622320990893}
   m_Layer: 6
   m_Name: Lata (Sin Cafeina)
   m_TagString: Untagged
@@ -257,3 +258,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-7840283622320990893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8540742238401478455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48047ee08921ff946a18a94c119a4509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 3efa6cca828ff7c4385f30cad085c60a, type: 2}
+  rotacionEnMano: {x: 0, y: 0, z: 0}

@@ -100,6 +100,7 @@ PrefabInstance:
       addedObject: {fileID: 2263683363831760711}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1fef66ffc3028b443901dc19a1568891, type: 3}
       insertIndex: -1
+<<<<<<< Updated upstream
       addedObject: {fileID: 9061928003806315282}
   m_SourcePrefab: {fileID: 100100000, guid: 1fef66ffc3028b443901dc19a1568891, type: 3}
 --- !u!1 &7059337150172822967 stripped
@@ -155,7 +156,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+<<<<<<< Updated upstream
 --- !u!114 &9061928003806315282
+=======
+--- !u!114 &1143618927952909915
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,5 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48047ee08921ff946a18a94c119a4509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   item: {fileID: 0}
+=======
+  item: {fileID: 11400000, guid: 69a6efc974e5c7141b57631776ea26d7, type: 2}
+>>>>>>> Stashed changes
   rotacionEnMano: {x: 0, y: 0, z: 0}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2866631754499894999}
   - component: {fileID: 5435017864144309475}
   - component: {fileID: 8144609786469964563}
+  - component: {fileID: -5048049044143486011}
   m_Layer: 6
   m_Name: Lata (Zero)
   m_TagString: Untagged
@@ -85,6 +86,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5048049044143486011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601937311401128236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48047ee08921ff946a18a94c119a4509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: d32887246fd82804ba30d25680b81570, type: 2}
+  rotacionEnMano: {x: 0, y: 0, z: 0}
 --- !u!1 &3738370704162188344
 GameObject:
   m_ObjectHideFlags: 0
