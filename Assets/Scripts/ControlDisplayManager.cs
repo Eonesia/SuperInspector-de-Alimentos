@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using TMPro;
 
 public class ControlDisplayManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class ControlDisplayManager : MonoBehaviour
     private void Update()
     {
         // Detectar entrada real de Gamepad
-        if (Gamepad.current != null && Gamepad.current.allControls.Exists(c => c is ButtonControl btn && btn.wasPressedThisFrame))
+        if (Gamepad.current != null && SePresionoBotonDelGamepad())
         {
             if (controlActual != "Gamepad")
                 ActualizarControles("Gamepad");
@@ -21,6 +22,16 @@ public class ControlDisplayManager : MonoBehaviour
             if (controlActual != "Keyboard")
                 ActualizarControles("Keyboard");
         }
+    }
+
+    private bool SePresionoBotonDelGamepad()
+    {
+        foreach (var control in Gamepad.current.allControls)
+        {
+            if (control is ButtonControl boton && boton.wasPressedThisFrame)
+                return true;
+        }
+        return false;
     }
 
     
