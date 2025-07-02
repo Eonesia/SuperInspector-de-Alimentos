@@ -10,14 +10,14 @@ public class ControlDisplayManager : MonoBehaviour
     private void Update()
     {
         // Detecta si se ha usado un mando este frame
-        if (Gamepad.current != null)
+        if (Gamepad.current != null && Gamepad.current.wasUpdatedThisFrame)
         {
             if (controlActual != "Gamepad")
                 ActualizarControles("Gamepad");
         }
         // Detecta si se ha usado teclado o ratón este frame
-        else if ((Keyboard.current != null ) ||
-                 (Mouse.current != null ))
+        else if ((Keyboard.current != null && Keyboard.current.wasUpdatedThisFrame) ||
+                 (Mouse.current != null && Mouse.current.wasUpdatedThisFrame))
         {
             if (controlActual != "Keyboard")
                 ActualizarControles("Keyboard");
@@ -25,6 +25,7 @@ public class ControlDisplayManager : MonoBehaviour
     }
 
     
+
     private void ActualizarControles(string nuevoControl)
     {
         controlActual = nuevoControl;
