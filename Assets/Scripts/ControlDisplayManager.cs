@@ -1,31 +1,37 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using TMPro;
 
 public class ControlDisplayManager : MonoBehaviour
 {
-     public TMP_Text[] botonesUI;
+    public TMP_Text[] botonesUI;
     private string controlActual = "";
-
-    private float tiempoUltimaEntrada = 0f;
-    private float tiempoEspera = 0.2f;
 
     private void Update()
     {
-        string nuevoControl = controlActual;
-
-        if (Gamepad.current != null && Gamepad.current.wasUpdatedThisFrame)
-            nuevoControl = "Gamepad";
-        else if ((Keyboard.current != null && Keyboard.current.wasUpdatedThisFrame) ||
-                 (Mouse.current != null && Mouse.current.wasUpdatedThisFrame))
-            nuevoControl = "Keyboard";
-
-        // Solo actualiza si ha pasado suficiente tiempo y el control ha cambiado
-        if (nuevoControl != controlActual && Time.time - tiempoUltimaEntrada > tiempoEspera)
+        // Detectar entrada real de Gamepad
+        if (Gamepad.current != null && SePresionoBotonDelGamepad())
         {
-            ActualizarControles(nuevoControl);
-            tiempoUltimaEntrada = Time.time;
+            if (controlActual != "Gamepad")
+                ActualizarControles("Gamepad");
         }
+        // Detectar entrada real de teclado
+        else if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
+        {
+            if (controlActual != "Keyboard")
+                ActualizarControles("Keyboard");
+        }
+    }
+
+    private bool SePresionoBotonDelGamepad()
+    {
+        foreach (var control in Gamepad.current.allControls)
+        {
+            if (control is ButtonControl boton && boton.wasPressedThisFrame)
+                return true;
+        }
+        return false;
     }
 
     
