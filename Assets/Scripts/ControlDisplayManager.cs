@@ -4,23 +4,27 @@ using TMPro;
 
 public class ControlDisplayManager : MonoBehaviour
 {
-    public TMP_Text[] botonesUI; // Arrastra aquí los textos que muestran las letras de control
+     public TMP_Text[] botonesUI;
     private string controlActual = "";
+
+    private float tiempoUltimaEntrada = 0f;
+    private float tiempoEspera = 0.2f;
 
     private void Update()
     {
-        // Detecta si se ha usado un mando este frame
+        string nuevoControl = controlActual;
+
         if (Gamepad.current != null && Gamepad.current.wasUpdatedThisFrame)
-        {
-            if (controlActual != "Gamepad")
-                ActualizarControles("Gamepad");
-        }
-        // Detecta si se ha usado teclado o ratón este frame
+            nuevoControl = "Gamepad";
         else if ((Keyboard.current != null && Keyboard.current.wasUpdatedThisFrame) ||
                  (Mouse.current != null && Mouse.current.wasUpdatedThisFrame))
+            nuevoControl = "Keyboard";
+
+        // Solo actualiza si ha pasado suficiente tiempo y el control ha cambiado
+        if (nuevoControl != controlActual && Time.time - tiempoUltimaEntrada > tiempoEspera)
         {
-            if (controlActual != "Keyboard")
-                ActualizarControles("Keyboard");
+            ActualizarControles(nuevoControl);
+            tiempoUltimaEntrada = Time.time;
         }
     }
 
