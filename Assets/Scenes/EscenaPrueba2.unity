@@ -630,6 +630,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 49729216}
+  - component: {fileID: 49729217}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -652,6 +653,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &49729217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49729215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f65065b0fe3d84ca7ba40d8128537e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  botonesUI:
+  - {fileID: 1612143220}
+  - {fileID: 1063395358}
+  - {fileID: 1068095393}
+  - {fileID: 1331096123}
+  - {fileID: 332132745}
 --- !u!1 &67640452
 GameObject:
   m_ObjectHideFlags: 0
@@ -4235,7 +4254,7 @@ GameObject:
   - component: {fileID: 332132746}
   - component: {fileID: 332132745}
   m_Layer: 5
-  m_Name: Control
+  m_Name: ControlCalculadora
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5419,7 +5438,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1331096122}
   m_Father: {fileID: 1339190484}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6602,7 +6622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &548913800
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13637,7 +13657,7 @@ GameObject:
   - component: {fileID: 1068095394}
   - component: {fileID: 1068095393}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ControlLista
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16486,7 +16506,7 @@ GameObject:
   - component: {fileID: 1331096124}
   - component: {fileID: 1331096123}
   m_Layer: 5
-  m_Name: Control
+  m_Name: ControlCuaderno
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16504,11 +16524,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1339190484}
+  m_Father: {fileID: 430506919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -801.39996, y: -399.1}
+  m_AnchoredPosition: {x: 36.099976, y: -35.200043}
   m_SizeDelta: {x: 41.292, y: 42.4236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1331096123
@@ -16628,7 +16648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1339190484
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16642,7 +16662,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 430506919}
-  - {fileID: 1331096122}
   - {fileID: 1655965328}
   - {fileID: 327744343}
   m_Father: {fileID: 1838541330}
@@ -22878,7 +22897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1870690510
 RectTransform:
   m_ObjectHideFlags: 0
