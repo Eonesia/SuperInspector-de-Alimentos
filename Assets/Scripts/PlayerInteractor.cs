@@ -96,15 +96,29 @@ public class PlayerInteractor : MonoBehaviour
 
         for (int i = 0; i < lastRenderers.Length; i++)
         {
-            lastOriginalMaterials[i] = lastRenderers[i].materials;
+            Renderer renderer = lastRenderers[i];
+            Material[] originalMats = renderer.materials;
+            lastOriginalMaterials[i] = originalMats;
 
-            Material[] highlightMats = new Material[lastOriginalMaterials[i].Length];
-            for (int j = 0; j < highlightMats.Length; j++)
+            // Crear nuevo array con espacio para el outline
+            Material[] newMats;
+            if (originalMats.Length == 1)
             {
-                highlightMats[j] = highlightMaterial;
+                newMats = new Material[2];
+                newMats[0] = originalMats[0]; // material original
+                newMats[1] = highlightMaterial; // outline en el slot 1
+            }
+            else
+            {
+                newMats = new Material[originalMats.Length];
+                originalMats.CopyTo(newMats, 0);
+
+                // Solo reemplazar o añadir outline en slot 1 si es posible
+                if (newMats.Length > 1)
+                    newMats[1] = highlightMaterial;
             }
 
-            lastRenderers[i].materials = highlightMats;
+            renderer.materials = newMats;
         }
     }
 
