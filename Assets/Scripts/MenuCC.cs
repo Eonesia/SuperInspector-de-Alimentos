@@ -13,9 +13,13 @@ public class MenuCC : MonoBehaviour
         objetoMenuCuaderno.SetActive(Cuaderno);
         objetoMenuCalculadora.SetActive(!Cuaderno);
 
-        Time.timeScale = Cuaderno ? 0f : 1f;
-        Cursor.lockState = Cuaderno ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = Cuaderno;
+        Time.timeScale = Cuaderno || !Cuaderno ? 0f : 1f;
+
+        // Mostrar el cursor si cualquiera de los dos menús está activo
+        bool mostrarCursor = Cuaderno || objetoMenuCalculadora.activeSelf;
+
+        Cursor.lockState = mostrarCursor ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = mostrarCursor;
 
     }
 }
