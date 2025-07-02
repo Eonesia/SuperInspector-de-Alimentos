@@ -51,7 +51,7 @@ public class ControlDisplayManager : MonoBehaviour
                     boton.text = nuevoControl == "Gamepad" ? "Y" : "E";
                     break;
                 case "ControlLista":
-                    boton.text = nuevoControl == "Gamepad" ? "R1" : "Q";
+                    boton.text = nuevoControl == "Gamepad" ? "R2" : "Q";
                     break;
                 case "ControlCuaderno":
                     boton.text = nuevoControl == "Gamepad" ? "L2" : "F";
