@@ -6154,6 +6154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objetoMenuLista: {fileID: 476134895}
   hud: {fileID: 1870690509}
+  menuInspeccion: {fileID: 1838541333}
+  menuPausa: {fileID: 1103290036}
   lista: 0
 --- !u!1001 &478807412
 PrefabInstance:
@@ -7079,11 +7081,11 @@ RectTransform:
   m_Children:
   - {fileID: 86993782}
   - {fileID: 173162571}
-  - {fileID: 1103290033}
   - {fileID: 1870690510}
   - {fileID: 1838541330}
   - {fileID: 476134896}
   - {fileID: 1522839630}
+  - {fileID: 1103290033}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -22729,6 +22731,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objetoMenuInspeccion: {fileID: 1838541329}
   hud: {fileID: 1870690509}
+  menuLista: {fileID: 476134899}
+  menuPausa: {fileID: 1103290036}
   inspeccion: 0
 --- !u!114 &1838541334
 MonoBehaviour:
