@@ -17,7 +17,7 @@ public class PlayerInteract : MonoBehaviour
     private List<Transform> objetosRecogidos = new List<Transform>();
     private int objetoActivoIndex = -1;
     private bool puedeCambiar = true;
-    private Transform ultimoObjetoSoltado; // NUEVO
+    private Transform ultimoObjetoSoltado;
 
     private InputAction interactuarAction;
     private InputAction lanzarAction;
@@ -79,6 +79,10 @@ public class PlayerInteract : MonoBehaviour
                     nuevoObjeto.localPosition = Vector3.zero;
                     nuevoObjeto.localRotation = Quaternion.Euler(item.rotacionEnMano);
 
+                    // Desactivar colisión mientras está en la mano
+                    foreach (var col in nuevoObjeto.GetComponentsInChildren<Collider>())
+                        col.enabled = false;
+
                     objetosRecogidos.Add(nuevoObjeto);
                     objetoActivoIndex = objetosRecogidos.Count - 1;
 
@@ -134,6 +138,11 @@ public class PlayerInteract : MonoBehaviour
         {
             objeto.SetParent(null);
             rb.isKinematic = false;
+
+            // Activar colisión al lanzar
+            foreach (var col in objeto.GetComponentsInChildren<Collider>())
+                col.enabled = true;
+
             rb.AddForce(Camera.main.transform.forward * fuerzaLanzamiento, ForceMode.Impulse);
             rb.AddForce(-Camera.main.transform.right * ajusteLanzamientoIzq, ForceMode.Impulse);
             rb.AddForce(Camera.main.transform.right * ajusteLanzamientoDcha, ForceMode.Impulse);
@@ -155,6 +164,10 @@ public class PlayerInteract : MonoBehaviour
             objeto.SetParent(null);
             rb.isKinematic = false;
             rb.useGravity = true;
+
+            // Activar colisión al soltar
+            foreach (var col in objeto.GetComponentsInChildren<Collider>())
+                col.enabled = true;
 
             Collider jugadorCollider = GetComponent<Collider>();
             Collider[] colls = objeto.GetComponentsInChildren<Collider>();
@@ -187,8 +200,9 @@ public class PlayerInteract : MonoBehaviour
             foreach (var renderer in objetosRecogidos[i].GetComponentsInChildren<MeshRenderer>())
                 renderer.enabled = esActivo;
 
+            // Siempre desactivar colliders mientras están en la mano
             foreach (var collider in objetosRecogidos[i].GetComponentsInChildren<Collider>())
-                collider.enabled = esActivo;
+                collider.enabled = false;
 
             if (esActivo)
             {
@@ -249,5 +263,7 @@ public class PlayerInteract : MonoBehaviour
         inventory.Container.Clear();
     }
 }
+
+
 
 
