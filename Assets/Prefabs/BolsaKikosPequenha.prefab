@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3687411501444914864}
   - component: {fileID: 4375681727461579096}
   - component: {fileID: 6266729229444744376}
+  - component: {fileID: 2469834441888744639}
   m_Layer: 6
   m_Name: BolsaKikosPequenha
   m_TagString: Untagged
@@ -151,3 +152,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.18076393, y: 0.11197857, z: 0.49919444}
   m_Center: {x: -5.04871e-29, y: 0.00032704324, z: -0.000000014901161}
+--- !u!114 &2469834441888744639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130697451591829690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48047ee08921ff946a18a94c119a4509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  rotacionEnMano: {x: -101, y: 160, z: 70}
