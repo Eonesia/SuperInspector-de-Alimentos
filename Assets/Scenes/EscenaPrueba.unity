@@ -32591,7 +32591,7 @@ MonoBehaviour:
   pauseAction: {fileID: -5999830279623945127, guid: ace1b9fe789dcaf4481f510786221567, type: 3}
   listaAction: {fileID: 7823280057143487701, guid: ace1b9fe789dcaf4481f510786221567, type: 3}
   inspeccionAction: {fileID: 1490724899871561087, guid: ace1b9fe789dcaf4481f510786221567, type: 3}
-  cambioccAction: {fileID: -7108421489985644817, guid: ace1b9fe789dcaf4481f510786221567, type: 3}
+  cambioccAction: {fileID: -537582489262924155, guid: ace1b9fe789dcaf4481f510786221567, type: 3}
   menuPausa: {fileID: 452740550}
   menuLista: {fileID: 1984337065}
   menuInspeccion: {fileID: 1490885010}
