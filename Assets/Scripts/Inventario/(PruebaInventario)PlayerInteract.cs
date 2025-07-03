@@ -79,7 +79,6 @@ public class PlayerInteract : MonoBehaviour
                     nuevoObjeto.localPosition = Vector3.zero;
                     nuevoObjeto.localRotation = Quaternion.Euler(item.rotacionEnMano);
 
-                    // Desactivar colisión mientras está en la mano
                     foreach (var col in nuevoObjeto.GetComponentsInChildren<Collider>())
                         col.enabled = false;
 
@@ -133,13 +132,14 @@ public class PlayerInteract : MonoBehaviour
     IEnumerator LanzarObjetoConDelay()
     {
         Transform objeto = objetosRecogidos[objetoActivoIndex];
+        ItemObject itemData = objeto.GetComponent<Item>().item;
+
         Rigidbody rb = objeto.GetComponent<Rigidbody>();
         if (rb != null)
         {
             objeto.SetParent(null);
             rb.isKinematic = false;
 
-            // Activar colisión al lanzar
             foreach (var col in objeto.GetComponentsInChildren<Collider>())
                 col.enabled = true;
 
@@ -148,6 +148,7 @@ public class PlayerInteract : MonoBehaviour
             rb.AddForce(Camera.main.transform.right * ajusteLanzamientoDcha, ForceMode.Impulse);
         }
 
+        inventory.RemoveItem(itemData, 1);
         objetosRecogidos.RemoveAt(objetoActivoIndex);
         objetoActivoIndex = objetosRecogidos.Count > 0 ? 0 : -1;
 
@@ -158,6 +159,8 @@ public class PlayerInteract : MonoBehaviour
     void SoltarObjeto()
     {
         Transform objeto = objetosRecogidos[objetoActivoIndex];
+        ItemObject itemData = objeto.GetComponent<Item>().item;
+
         Rigidbody rb = objeto.GetComponent<Rigidbody>();
         if (rb != null)
         {
@@ -165,7 +168,6 @@ public class PlayerInteract : MonoBehaviour
             rb.isKinematic = false;
             rb.useGravity = true;
 
-            // Activar colisión al soltar
             foreach (var col in objeto.GetComponentsInChildren<Collider>())
                 col.enabled = true;
 
@@ -185,6 +187,7 @@ public class PlayerInteract : MonoBehaviour
 
         ultimoObjetoSoltado = objeto;
 
+        inventory.RemoveItem(itemData, 1);
         objetosRecogidos.RemoveAt(objetoActivoIndex);
         objetoActivoIndex = objetosRecogidos.Count > 0 ? 0 : -1;
 
@@ -200,7 +203,6 @@ public class PlayerInteract : MonoBehaviour
             foreach (var renderer in objetosRecogidos[i].GetComponentsInChildren<MeshRenderer>())
                 renderer.enabled = esActivo;
 
-            // Siempre desactivar colliders mientras están en la mano
             foreach (var collider in objetosRecogidos[i].GetComponentsInChildren<Collider>())
                 collider.enabled = false;
 
@@ -263,6 +265,8 @@ public class PlayerInteract : MonoBehaviour
         inventory.Container.Clear();
     }
 }
+
+
 
 
 

@@ -23,6 +23,24 @@ public class InventoryObject : ScriptableObject
             Container.Add(new(_item, _amount));
         }
     }
+
+    public void RemoveItem(ItemObject item, int cantidad)
+    {
+        for (int i = 0; i < Container.Count; i++)
+        {
+            if (Container[i].item == item)
+            {
+                Container[i].amount -= cantidad;
+                if (Container[i].amount <= 0)
+                {
+                    Container.RemoveAt(i);
+                }
+                return;
+            }
+        }
+    }
+
+
 }
 
 [System.Serializable]
