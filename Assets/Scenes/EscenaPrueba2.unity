@@ -14551,8 +14551,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objetoMenuPausa: {fileID: 1103290032}
   hud: {fileID: 1870690509}
-  pausa: 0
   botonInicial: {fileID: 816453222}
+  pausa: 0
+  menuInspeccion: {fileID: 1838541333}
+  menuCC: {fileID: 1838541334}
+  menuLista: {fileID: 476134899}
 --- !u!1001 &1120110817
 PrefabInstance:
   m_ObjectHideFlags: 0
