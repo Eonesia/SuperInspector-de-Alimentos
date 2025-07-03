@@ -9060,6 +9060,7 @@ MonoBehaviour:
   ajusteLanzamientoIzq: 2
   ajusteLanzamientoDcha: 1.3
   tiempoEntreCambios: 0.3
+  distanciaSoltarObjeto: 1.5
   inputActions: {fileID: -944628639613478452, guid: ace1b9fe789dcaf4481f510786221567, type: 3}
 --- !u!1 &734113094
 GameObject:
@@ -22748,6 +22749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objetoMenuCuaderno: {fileID: 548913799}
   objetoMenuCalculadora: {fileID: 1339190483}
+  menuInspeccion: {fileID: 1838541333}
   Cuaderno: 0
 --- !u!1 &1859383469
 GameObject:
