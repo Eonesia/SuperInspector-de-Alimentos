@@ -6,6 +6,7 @@ public class MenuPausa : MonoBehaviour
     public GameObject objetoMenuPausa;
     public GameObject hud;
     public bool pausa = false;
+    public GameObject botonInicial;
 
     public void AlternarPausa()
     {
@@ -16,6 +17,12 @@ public class MenuPausa : MonoBehaviour
         Time.timeScale = pausa ? 0f : 1f;
         Cursor.lockState = pausa ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = pausa;
+
+        if (pausa && botonInicial != null)
+        {
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(botonInicial);
+        }
     }
 
     public void IrAlMenuPrincipal()

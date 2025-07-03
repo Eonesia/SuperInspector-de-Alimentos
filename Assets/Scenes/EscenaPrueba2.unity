@@ -14552,6 +14552,7 @@ MonoBehaviour:
   objetoMenuPausa: {fileID: 1103290032}
   hud: {fileID: 1870690509}
   pausa: 0
+  botonInicial: {fileID: 816453222}
 --- !u!1001 &1120110817
 PrefabInstance:
   m_ObjectHideFlags: 0
