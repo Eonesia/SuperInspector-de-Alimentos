@@ -3,6 +3,9 @@ using UnityEngine;
 public class ARagdoll : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private Renderer[] targetRenderers; // Objetos a los que se les cambiará el material
+    [SerializeField] private Material ragdollMaterial;   // Material a aplicar cuando se active el ragdoll
+
     private Rigidbody[] rigidbodies;
 
     void Start()
@@ -20,6 +23,18 @@ public class ARagdoll : MonoBehaviour
         }
 
         animator.enabled = !enabled;
+
+        // Solo cambia los materiales si se activa el ragdoll
+        if (enabled && ragdollMaterial != null)
+        {
+            foreach (Renderer renderer in targetRenderers)
+            {
+                if (renderer != null)
+                {
+                    renderer.material = ragdollMaterial;
+                }
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
