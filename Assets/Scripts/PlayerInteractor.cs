@@ -113,7 +113,7 @@ public class PlayerInteractor : MonoBehaviour
                 newMats = new Material[originalMats.Length];
                 originalMats.CopyTo(newMats, 0);
 
-                // Solo reemplazar o añadir outline en slot 1 si es posible
+                // Solo reemplazar o aï¿½adir outline en slot 1 si es posible
                 if (newMats.Length > 1)
                     newMats[1] = highlightMaterial;
             }

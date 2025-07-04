@@ -15,3 +15,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 1
   description: Yogur bebido
+  itemName: Yogur bebido
+  calidadReal: 1

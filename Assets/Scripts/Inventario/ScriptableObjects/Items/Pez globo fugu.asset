@@ -15,4 +15,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 1
   description: Pez globo Fugu
+  itemName: Pez globo Fugu
   calidadReal: 1

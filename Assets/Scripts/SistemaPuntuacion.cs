@@ -7,10 +7,15 @@ public class SistemaPuntuacion : MonoBehaviour
     public void EvaluarAlimento(DefaultObject alimento, int notaJugador)
     {
         int diferencia = Mathf.Abs(notaJugador - alimento.calidadReal);
-        int puntosGanados = Mathf.Max(0, 6 - diferencia); // 6 si acierta, 0 si se equivoca por 6
+        int puntosGanados = Mathf.Max(0, 6 - diferencia); // 6 puntos si acierta, menos si se equivoca
 
         puntuacionTotal += puntosGanados;
 
-        Debug.Log($"Evaluaste '{alimento.name}' con un {notaJugador}. Calidad real: {alimento.calidadReal}. Puntos ganados: {puntosGanados}. Total: {puntuacionTotal}");
+        Debug.Log($"Evaluaste '{alimento.name}' con un {notaJugador}. " +
+                  $"Calidad real: {alimento.calidadReal}. " +
+                  $"Puntos ganados: {puntosGanados}. " +
+                  $"Total acumulado: {puntuacionTotal}");
+
     }
+    
 }

@@ -15,3 +15,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 1
   description: Super Epic Energy Drink
+  itemName: Super Epic Energy Drink
+  calidadReal: 1

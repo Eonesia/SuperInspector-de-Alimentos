@@ -15,4 +15,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 1
   description: Lata de maiz dulce
+  itemName: Lata de maiz dulce
   calidadReal: 1

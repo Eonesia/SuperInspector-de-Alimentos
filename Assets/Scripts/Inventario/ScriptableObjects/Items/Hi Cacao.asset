@@ -15,4 +15,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 1
   description: Hi Cacao
+  itemName: Hi Cacao
   calidadReal: 1

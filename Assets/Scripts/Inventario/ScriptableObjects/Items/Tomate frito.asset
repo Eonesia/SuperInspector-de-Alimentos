@@ -17,3 +17,5 @@ MonoBehaviour:
   description: 'Tomate frito
 
 '
+  itemName: Tomate frito
+  calidadReal: 1

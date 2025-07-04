@@ -15,3 +15,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 1
   description: "Guaycola sin cafe\xEDna"
+  itemName: "Guaycola sin cafe\xEDna"
+  calidadReal: 1
