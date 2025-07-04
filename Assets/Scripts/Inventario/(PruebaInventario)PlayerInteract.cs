@@ -272,7 +272,32 @@ public class PlayerInteract : MonoBehaviour
     {
         return objetosRecogidos;
     }
+    public DefaultObject ObtenerAlimentoActivo()
+    {
+        if (objetoActivoIndex >= 0 && objetoActivoIndex < objetosRecogidos.Count)
+        {
+            Transform objeto = objetosRecogidos[objetoActivoIndex];
+            Item itemComponent = objeto.GetComponent<Item>();
+        if (itemComponent != null && itemComponent.item is DefaultObject alimento)
+        {
+            return alimento;
+        }
+    }
+    return null;
+    }
 
+    public DefaultObject alimentoSeleccionado;
+
+    public void TomarAlimento(DefaultObject alimento)
+    {
+        alimentoSeleccionado = alimento;
+        Debug.Log($"Alimento seleccionado desde el inventario: {alimento.name}");
+    }
+
+    public DefaultObject GetAlimentoSeleccionado()
+    {
+        return alimentoSeleccionado;
+    }
 }
 
 

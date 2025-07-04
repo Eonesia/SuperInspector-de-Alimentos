@@ -2,13 +2,25 @@ using UnityEngine;
 
 public class UIEstrellas : MonoBehaviour
 {
-    public AlimentoInteractivo alimentoActual;
-
     public void Calificar(int nota)
     {
-        if (alimentoActual != null)
+        PlayerInteract player = FindObjectOfType<PlayerInteract>();
+        if (player != null)
         {
-            alimentoActual.AsignarNota(nota);
+            DefaultObject alimento = player.GetAlimentoSeleccionado();
+            if (alimento != null)
+            {
+                SistemaPuntuacion sistema = FindObjectOfType<SistemaPuntuacion>();
+                if (sistema != null)
+                {
+                    sistema.EvaluarAlimento(alimento, nota);
+                    Debug.Log($"Alimento evaluado: {alimento.name} con nota {nota}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("No hay alimento seleccionado para evaluar.");
+            }
         }
     }
 }

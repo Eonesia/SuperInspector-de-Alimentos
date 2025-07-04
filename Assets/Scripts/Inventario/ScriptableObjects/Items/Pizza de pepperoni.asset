@@ -17,4 +17,5 @@ MonoBehaviour:
   description: 'Pizza de pepperoni
 
 '
+  itemName: Pizza de pepperoni
   calidadReal: 3

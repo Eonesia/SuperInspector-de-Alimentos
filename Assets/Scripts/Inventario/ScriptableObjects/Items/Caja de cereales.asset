@@ -15,4 +15,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 0
   description: Caja de cereales integrales
+  itemName: Caja de cereales integrales
   RestorHealthValue: 0

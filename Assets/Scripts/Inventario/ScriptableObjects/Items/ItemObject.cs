@@ -8,6 +8,7 @@ public abstract class ItemObject : ScriptableObject
     public ItemType type;
     [TextArea(15, 20)]
     public string description;
+    public string itemName;
 }
 public enum ItemType
 {

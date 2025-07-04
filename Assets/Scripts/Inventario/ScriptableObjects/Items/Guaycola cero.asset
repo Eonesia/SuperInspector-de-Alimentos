@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Guaycola cero
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 2
   description: Guay Cola cero
+  itemName: Guay Cola cero
   atqbonus: 0
   defbonus: 0

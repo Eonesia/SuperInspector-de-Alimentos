@@ -15,3 +15,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 1
   description: "Jam\xF3n serrano marca superblanca"
+  itemName: "Jam\xF3n serrano marca superblanca"
+  calidadReal: 1

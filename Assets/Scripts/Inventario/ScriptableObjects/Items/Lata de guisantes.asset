@@ -15,3 +15,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 1
   description: Lata de guisantes
+  itemName: Lata de guisantes
+  calidadReal: 1
