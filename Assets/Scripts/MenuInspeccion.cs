@@ -5,7 +5,10 @@ public class MenuInspeccion : MonoBehaviour
     public GameObject objetoMenuInspeccion;
     public GameObject hud;
     public MenuLista menuLista;       // Referencia al menú de lista
-    public MenuPausa menuPausa;       // NUEVO: Referencia al menú de pausa
+    public MenuPausa menuPausa;       // Referencia al menú de pausa
+
+    public InspectionHandler inspectionHandler; // NUEVO: Referencia al sistema de inspección
+    public PlayerInteract playerInteract;       // NUEVO: Referencia al sistema de inventario
 
     public bool inspeccion = false;
 
@@ -24,5 +27,13 @@ public class MenuInspeccion : MonoBehaviour
         Time.timeScale = inspeccion ? 0f : 1f;
         Cursor.lockState = inspeccion ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = inspeccion;
+
+        if (inspectionHandler != null && playerInteract != null)
+        {
+            if (inspeccion)
+                inspectionHandler.ActivarModoInspeccion(playerInteract.GetObjetosRecogidos());
+            else
+                inspectionHandler.DesactivarModoInspeccion();
+        }
     }
 }

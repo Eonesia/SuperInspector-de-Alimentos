@@ -13,6 +13,8 @@ public class PlayerInteract : MonoBehaviour
     public float tiempoEntreCambios = 0.3f;
     public float distanciaSoltarObjeto = 1.5f;
     public InputActionAsset inputActions;
+    public InspectionHandler inspectionHandler;
+
 
     private List<Transform> objetosRecogidos = new List<Transform>();
     private int objetoActivoIndex = -1;
@@ -23,6 +25,7 @@ public class PlayerInteract : MonoBehaviour
     private InputAction lanzarAction;
     private InputAction cambiarObjetoAction;
     private InputAction soltarAction;
+
 
     void Awake()
     {
@@ -264,6 +267,12 @@ public class PlayerInteract : MonoBehaviour
     {
         inventory.Container.Clear();
     }
+
+    public List<Transform> GetObjetosRecogidos()
+    {
+        return objetosRecogidos;
+    }
+
 }
 
 
