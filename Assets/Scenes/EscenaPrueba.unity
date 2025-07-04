@@ -21927,9 +21927,9 @@ MonoBehaviour:
   hud: {fileID: 551153825}
   botonInicial: {fileID: 1998836955}
   pausa: 0
-  menuInspeccion: {fileID: 0}
-  menuCC: {fileID: 0}
-  menuLista: {fileID: 0}
+  menuInspeccion: {fileID: 1490885010}
+  menuCC: {fileID: 1490885011}
+  menuLista: {fileID: 1984337065}
 --- !u!114 &452740551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21989,7 +21989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 409.3908, y: 208.04108}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &453140896
@@ -26899,8 +26899,8 @@ RectTransform:
   - {fileID: 551153828}
   - {fileID: 1490885014}
   - {fileID: 286800791}
-  - {fileID: 452740553}
   - {fileID: 1984337064}
+  - {fileID: 452740553}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
