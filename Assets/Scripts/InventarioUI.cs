@@ -17,7 +17,7 @@ public class InventarioUI : MonoBehaviour
             AlimentoInteractivo interactivo = go.AddComponent<AlimentoInteractivo>();
             interactivo.datosAlimento = alimento;
 
-            FindObjectOfType<PlayerInteract>().TomarAlimento(alimento);
+            FindObjectOfType<PlayerInteract>().TomarAlimento();
         }
         else
         {

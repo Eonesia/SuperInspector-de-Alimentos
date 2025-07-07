@@ -12,10 +12,6 @@ public class InspectionHandler : MonoBehaviour
     private Dictionary<Transform, Quaternion> rotacionesOriginales = new Dictionary<Transform, Quaternion>();
     private List<Transform> objetosInspeccionados = new List<Transform>();
 
-    /// <summary>
-    /// Activa el modo de inspección para los objetos analizables en la mano.
-    /// </summary>
-    /// <param name="objetosEnMano">Lista de objetos que el jugador tiene en la mano.</param>
     public void ActivarModoInspeccion(List<Transform> objetosEnMano)
     {
         Debug.Log("Activando inspección");
@@ -38,9 +34,6 @@ public class InspectionHandler : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Restaura los objetos inspeccionados a su posición y rotación original suavemente.
-    /// </summary>
     public void DesactivarModoInspeccion()
     {
         foreach (Transform objeto in objetosInspeccionados)
@@ -59,9 +52,22 @@ public class InspectionHandler : MonoBehaviour
         rotacionesOriginales.Clear();
     }
 
-    /// <summary>
-    /// Determina si un objeto es analizable según su tipo en el ScriptableObject.
-    /// </summary>
+    public void AplicarAnimacionInspeccionIndividual(Transform objeto)
+    {
+        if (!EsObjetoAnalizable(objeto)) return;
+
+        // Guardar siempre la posición y rotación actuales como originales
+        posicionesOriginales[objeto] = objeto.localPosition;
+        rotacionesOriginales[objeto] = objeto.localRotation;
+
+        Vector3 destinoPos = objeto.localPosition + offsetInspeccionPosicion;
+        Quaternion destinoRot = objeto.localRotation * Quaternion.Euler(offsetInspeccionRotacion);
+
+        // Reiniciar la animación incluso si ya está en destino
+        StartCoroutine(MoverObjetoSuavemente(objeto, destinoPos, destinoRot, duracionTransicion));
+    }
+
+
     private bool EsObjetoAnalizable(Transform objeto)
     {
         Item item = objeto.GetComponent<Item>();
@@ -70,9 +76,6 @@ public class InspectionHandler : MonoBehaviour
         return item.item.type == ItemType.AlimentoObjetivo;
     }
 
-    /// <summary>
-    /// Mueve un objeto suavemente a una posición y rotación dadas.
-    /// </summary>
     private IEnumerator MoverObjetoSuavemente(Transform objeto, Vector3 destinoPos, Quaternion destinoRot, float duracion)
     {
         Vector3 inicioPos = objeto.localPosition;
@@ -92,6 +95,18 @@ public class InspectionHandler : MonoBehaviour
         objeto.localPosition = destinoPos;
         objeto.localRotation = destinoRot;
     }
+    public void RestaurarInspeccionIndividual(Transform objeto)
+    {
+        if (posicionesOriginales.ContainsKey(objeto) && rotacionesOriginales.ContainsKey(objeto))
+        {
+            Vector3 posOriginal = posicionesOriginales[objeto];
+            Quaternion rotOriginal = rotacionesOriginales[objeto];
+
+            StartCoroutine(MoverObjetoSuavemente(objeto, posOriginal, rotOriginal, duracionTransicion));
+        }
+    }
+
 }
+
 
 

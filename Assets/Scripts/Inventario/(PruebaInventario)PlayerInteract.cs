@@ -13,8 +13,9 @@ public class PlayerInteract : MonoBehaviour
     public float tiempoEntreCambios = 0.3f;
     public float distanciaSoltarObjeto = 1.5f;
     public InputActionAsset inputActions;
-    public InspectionHandler inspectionHandler;
 
+    public InspectionHandler inspectionHandler;
+    public MenuInspeccion menuInspeccion;
 
     private List<Transform> objetosRecogidos = new List<Transform>();
     private int objetoActivoIndex = -1;
@@ -25,7 +26,6 @@ public class PlayerInteract : MonoBehaviour
     private InputAction lanzarAction;
     private InputAction cambiarObjetoAction;
     private InputAction soltarAction;
-
 
     void Awake()
     {
@@ -59,8 +59,7 @@ public class PlayerInteract : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
 
-            float distanciaMaximaRay = 3f;
-            if (Physics.Raycast(ray, out hit, distanciaMaximaRay))
+            if (Physics.Raycast(ray, out hit, 3f))
             {
                 var item = hit.collider.GetComponent<Item>();
                 if (item)
@@ -75,8 +74,7 @@ public class PlayerInteract : MonoBehaviour
                     Transform nuevoObjeto = item.transform;
 
                     Rigidbody rb = nuevoObjeto.GetComponent<Rigidbody>();
-                    if (rb != null)
-                        rb.isKinematic = true;
+                    if (rb != null) rb.isKinematic = true;
 
                     nuevoObjeto.SetParent(Mano);
                     nuevoObjeto.localPosition = Vector3.zero;
@@ -93,10 +91,7 @@ public class PlayerInteract : MonoBehaviour
                 else
                 {
                     var trigger = hit.collider.GetComponent<SceneChangeTrigger>();
-                    if (trigger)
-                    {
-                        trigger.Interact();
-                    }
+                    if (trigger) trigger.Interact();
                 }
             }
         }
@@ -128,7 +123,7 @@ public class PlayerInteract : MonoBehaviour
 
         ActualizarObjetoActivo();
 
-        yield return new WaitForSeconds(tiempoEntreCambios);
+        yield return new WaitForSecondsRealtime(tiempoEntreCambios);
         puedeCambiar = true;
     }
 
@@ -175,11 +170,8 @@ public class PlayerInteract : MonoBehaviour
                 col.enabled = true;
 
             Collider jugadorCollider = GetComponent<Collider>();
-            Collider[] colls = objeto.GetComponentsInChildren<Collider>();
-            foreach (var col in colls)
-            {
+            foreach (var col in objeto.GetComponentsInChildren<Collider>())
                 Physics.IgnoreCollision(col, jugadorCollider, true);
-            }
 
             Vector3 dropPosition = Camera.main.transform.position + Camera.main.transform.forward * distanciaSoltarObjeto;
             rb.MovePosition(dropPosition);
@@ -219,35 +211,43 @@ public class PlayerInteract : MonoBehaviour
                     Collider[] collsSoltado = ultimoObjetoSoltado.GetComponentsInChildren<Collider>();
 
                     foreach (var colNuevo in collsNuevo)
-                    {
                         foreach (var colSoltado in collsSoltado)
-                        {
                             Physics.IgnoreCollision(colNuevo, colSoltado, true);
+
+                    StartCoroutine(RestaurarColisionEntreObjetos(collsNuevo, collsSoltado, 0.5f));
+                }
+
+                if (inspectionHandler != null)
+                {
+                    // Restaurar suavemente los demás objetos inspeccionados
+                    for (int j = 0; j < objetosRecogidos.Count; j++)
+                    {
+                        if (j != i)
+                        {
+                            inspectionHandler.RestaurarInspeccionIndividual(objetosRecogidos[j]);
                         }
                     }
 
-                    StartCoroutine(RestaurarColisionEntreObjetos(collsNuevo, collsSoltado, 0.5f));
+                    // Aplicar animación al nuevo objeto activo
+                    inspectionHandler.AplicarAnimacionInspeccionIndividual(objetosRecogidos[i]);
                 }
             }
         }
     }
 
+
+
+
     IEnumerator IgnorarColisionTemporal(Transform objeto, float duracion)
     {
         Collider jugadorCollider = GetComponent<Collider>();
-        Collider[] colls = objeto.GetComponentsInChildren<Collider>();
-
-        foreach (var col in colls)
-        {
+        foreach (var col in objeto.GetComponentsInChildren<Collider>())
             Physics.IgnoreCollision(col, jugadorCollider, true);
-        }
 
         yield return new WaitForSeconds(duracion);
 
-        foreach (var col in colls)
-        {
+        foreach (var col in objeto.GetComponentsInChildren<Collider>())
             Physics.IgnoreCollision(col, jugadorCollider, false);
-        }
     }
 
     IEnumerator RestaurarColisionEntreObjetos(Collider[] collsA, Collider[] collsB, float delay)
@@ -255,50 +255,36 @@ public class PlayerInteract : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         foreach (var colA in collsA)
-        {
             foreach (var colB in collsB)
-            {
                 Physics.IgnoreCollision(colA, colB, false);
-            }
-        }
-    }
-
-    private void OnApplicationQuit()
-    {
-        inventory.Container.Clear();
     }
 
     public List<Transform> GetObjetosRecogidos()
     {
         return objetosRecogidos;
     }
-    public DefaultObject ObtenerAlimentoActivo()
+
+    public ItemObject TomarAlimento()
     {
         if (objetoActivoIndex >= 0 && objetoActivoIndex < objetosRecogidos.Count)
         {
             Transform objeto = objetosRecogidos[objetoActivoIndex];
-            Item itemComponent = objeto.GetComponent<Item>();
-        if (itemComponent != null && itemComponent.item is DefaultObject alimento)
-        {
-            return alimento;
+            Item item = objeto.GetComponent<Item>();
+            if (item != null)
+            {
+                return item.item;
+            }
         }
-    }
-    return null;
+        return null;
     }
 
-    public DefaultObject alimentoSeleccionado;
-
-    public void TomarAlimento(DefaultObject alimento)
+    private void OnApplicationQuit()
     {
-        alimentoSeleccionado = alimento;
-        Debug.Log($"Alimento seleccionado desde el inventario: {alimento.name}");
-    }
-
-    public DefaultObject GetAlimentoSeleccionado()
-    {
-        return alimentoSeleccionado;
+        inventory.Container.Clear();
     }
 }
+
+
 
 
 
