@@ -10,7 +10,7 @@ public class FirstPersonController : MonoBehaviour
     public float fuerzaSalto = 3f;
     public float gravedad = -9.81f;
 
-    [Header("Rotaci�n de c�mara")]
+    [Header("Rotación de cámara")]
     public Transform camaraTransform;
     public float sensibilidadRaton = 1f;
     public float sensibilidadMando = 150f;
@@ -20,7 +20,7 @@ public class FirstPersonController : MonoBehaviour
     public InputActionReference moveAction;
     public InputActionReference jumpAction;
     public InputActionReference runAction;
-    public InputActionReference lookAction; // <-- Joystick derecho
+    public InputActionReference lookAction;
     public InputActionReference pauseAction;
     public InputActionReference listaAction;
     public InputActionReference inspeccionAction;
@@ -30,6 +30,7 @@ public class FirstPersonController : MonoBehaviour
     public MenuLista menuLista;
     public MenuInspeccion menuInspeccion;
     public MenuCC menuCC;
+
     private CharacterController controlador;
     private Vector2 inputMovimiento;
     private Vector2 inputLook;
@@ -38,12 +39,22 @@ public class FirstPersonController : MonoBehaviour
     private bool saltar = false;
     private bool corriendo = false;
 
+    // Delegados nombrados para desuscribir correctamente
+    private System.Action<InputAction.CallbackContext> pausaCallback;
+    private System.Action<InputAction.CallbackContext> listaCallback;
+    private System.Action<InputAction.CallbackContext> inspeccionCallback;
+    private System.Action<InputAction.CallbackContext> cuadernoCallback;
+
     private void OnEnable()
     {
         moveAction.action.Enable();
         jumpAction.action.Enable();
         runAction.action.Enable();
         lookAction.action.Enable();
+        pauseAction.action.Enable();
+        listaAction.action.Enable();
+        inspeccionAction.action.Enable();
+        cambioccAction.action.Enable();
 
         moveAction.action.performed += ctx => inputMovimiento = ctx.ReadValue<Vector2>();
         moveAction.action.canceled += ctx => inputMovimiento = Vector2.zero;
@@ -56,17 +67,33 @@ public class FirstPersonController : MonoBehaviour
         lookAction.action.performed += ctx => inputLook = ctx.ReadValue<Vector2>();
         lookAction.action.canceled += ctx => inputLook = Vector2.zero;
 
-        pauseAction.action.Enable();
-        pauseAction.action.performed += ctx => menuPausa.AlternarPausa();
+        pausaCallback = ctx =>
+        {
+            if (menuPausa != null)
+                menuPausa.AlternarPausa();
+        };
+        pauseAction.action.performed += pausaCallback;
 
-        listaAction.action.Enable();
-        listaAction.action.performed += ctx => menuLista.AlternarLista();
+        listaCallback = ctx =>
+        {
+            if (menuLista != null)
+                menuLista.AlternarLista();
+        };
+        listaAction.action.performed += listaCallback;
 
-        inspeccionAction.action.Enable();
-        inspeccionAction.action.performed += ctx => menuInspeccion.AlternarInspeccion();
+        inspeccionCallback = ctx =>
+        {
+            if (menuInspeccion != null)
+                menuInspeccion.AlternarInspeccion();
+        };
+        inspeccionAction.action.performed += inspeccionCallback;
 
-        cambioccAction.action.Enable();
-        cambioccAction.action.performed += ctx => menuCC.AlternarCuaderno();
+        cuadernoCallback = ctx =>
+        {
+            if (menuCC != null)
+                menuCC.AlternarCuaderno();
+        };
+        cambioccAction.action.performed += cuadernoCallback;
     }
 
     private void OnDisable()
@@ -79,6 +106,12 @@ public class FirstPersonController : MonoBehaviour
         listaAction.action.Disable();
         inspeccionAction.action.Disable();
         cambioccAction.action.Disable();
+
+        // Desuscribir correctamente los delegados para evitar MissingReferenceException
+        if (pauseAction != null) pauseAction.action.performed -= pausaCallback;
+        if (listaAction != null) listaAction.action.performed -= listaCallback;
+        if (inspeccionAction != null) inspeccionAction.action.performed -= inspeccionCallback;
+        if (cambioccAction != null) cambioccAction.action.performed -= cuadernoCallback;
     }
 
     void Start()
@@ -101,8 +134,8 @@ public class FirstPersonController : MonoBehaviour
             velocidadVertical = -2f;
 
         Vector3 direccionMovimiento = transform.right * inputMovimiento.x + transform.forward * inputMovimiento.y;
-
         float velocidadActual = corriendo ? velocidadCorrer : velocidadCaminar;
+
         controlador.Move(direccionMovimiento * velocidadActual * Time.deltaTime);
 
         if (saltar && enSuelo)
@@ -111,7 +144,6 @@ public class FirstPersonController : MonoBehaviour
         }
 
         saltar = false;
-
         velocidadVertical += gravedad * Time.deltaTime;
         controlador.Move(Vector3.up * velocidadVertical * Time.deltaTime);
     }
