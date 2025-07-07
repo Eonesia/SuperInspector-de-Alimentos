@@ -25833,6 +25833,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 545857513}
+  targetRenderers: []
+  ragdollMaterial: {fileID: 0}
 --- !u!65 &919132149129372059
 BoxCollider:
   m_ObjectHideFlags: 0
