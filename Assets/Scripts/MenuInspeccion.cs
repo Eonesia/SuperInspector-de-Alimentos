@@ -7,13 +7,14 @@ public class MenuInspeccion : MonoBehaviour
     public MenuLista menuLista;       // Referencia al menú de lista
     public MenuPausa menuPausa;       // Referencia al menú de pausa
 
-    public InspectionHandler inspectionHandler; // Referencia al sistema de inspección
-    public PlayerInteract playerInteract;       // Referencia al sistema de inventario
+    public InspectionHandler inspectionHandler; // NUEVO: Referencia al sistema de inspección
+    public PlayerInteract playerInteract;       // NUEVO: Referencia al sistema de inventario
 
     public bool inspeccion = false;
 
     public void AlternarInspeccion()
     {
+        // Bloquear si el menú de lista o el menú de pausa están activos
         if (!inspeccion && (
             (menuLista != null && menuLista.lista) ||
             (menuPausa != null && menuPausa.pausa)))
@@ -30,17 +31,9 @@ public class MenuInspeccion : MonoBehaviour
         if (inspectionHandler != null && playerInteract != null)
         {
             if (inspeccion)
-            {
-                playerInteract.ForzarObjetoInspeccionable();
                 inspectionHandler.ActivarModoInspeccion(playerInteract.GetObjetosRecogidos());
-            }
             else
-            {
                 inspectionHandler.DesactivarModoInspeccion();
-            }
         }
-
     }
-
 }
-
