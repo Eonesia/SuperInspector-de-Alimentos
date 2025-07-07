@@ -94,7 +94,6 @@ public class InspectionHandler : MonoBehaviour
 
         objeto.localPosition = destinoPos;
         objeto.localRotation = destinoRot;
-        
     }
     public void RestaurarInspeccionIndividual(Transform objeto)
     {
