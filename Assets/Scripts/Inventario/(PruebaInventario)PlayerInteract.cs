@@ -16,6 +16,8 @@ public class PlayerInteract : MonoBehaviour
 
     public InspectionHandler inspectionHandler;
     public MenuInspeccion menuInspeccion;
+    public ItemObject itemGenerico; // Asignar el ScriptableObject genérico en el Inspector
+
 
     private List<Transform> objetosRecogidos = new List<Transform>();
     private int objetoActivoIndex = -1;
@@ -117,15 +119,69 @@ public class PlayerInteract : MonoBehaviour
     {
         puedeCambiar = false;
 
-        objetoActivoIndex += scroll > 0 ? 1 : -1;
-        if (objetoActivoIndex >= objetosRecogidos.Count) objetoActivoIndex = 0;
-        if (objetoActivoIndex < 0) objetoActivoIndex = objetosRecogidos.Count - 1;
+        int intentos = 0;
+        int nuevaIndex = objetoActivoIndex;
 
-        ActualizarObjetoActivo();
+        do
+        {
+            nuevaIndex += scroll > 0 ? 1 : -1;
+
+            if (nuevaIndex >= objetosRecogidos.Count) nuevaIndex = 0;
+            if (nuevaIndex < 0) nuevaIndex = objetosRecogidos.Count - 1;
+
+            intentos++;
+
+            // Validar que el índice es válido y el objeto no es null
+            if (nuevaIndex >= 0 && nuevaIndex < objetosRecogidos.Count && objetosRecogidos[nuevaIndex] != null)
+            {
+                Transform candidato = objetosRecogidos[nuevaIndex];
+
+                // Si no estamos en inspección, aceptamos cualquier objeto
+                if (menuInspeccion == null || !menuInspeccion.inspeccion || EsAlimentoObjetivo(candidato))
+                {
+                    objetoActivoIndex = nuevaIndex;
+                    ActualizarObjetoActivo();
+                    break;
+                }
+            }
+
+            if (intentos > objetosRecogidos.Count)
+            {
+                Debug.Log("No hay objetos del tipo AlimentoObjetivo para inspeccionar.");
+                puedeCambiar = true;
+                yield break;
+            }
+
+        } while (true);
 
         yield return new WaitForSecondsRealtime(tiempoEntreCambios);
         puedeCambiar = true;
     }
+
+
+
+
+
+
+    private bool EsAlimentoObjetivo(Transform objeto)
+    {
+        if (objeto == null) return false;
+
+        Item item = objeto.GetComponent<Item>();
+        if (item == null || item.item == null) return false;
+
+        if (itemGenerico == null)
+        {
+            Debug.LogWarning("itemGenerico no está asignado en PlayerInteract.");
+            return false;
+        }
+
+        return item.item.type == ItemType.AlimentoObjetivo && item.item != itemGenerico;
+    }
+
+
+
+
 
     IEnumerator LanzarObjetoConDelay()
     {
@@ -193,47 +249,69 @@ public class PlayerInteract : MonoBehaviour
     {
         for (int i = 0; i < objetosRecogidos.Count; i++)
         {
+            Transform objeto = objetosRecogidos[i];
+            if (objeto == null) continue;
+
             bool esActivo = (i == objetoActivoIndex);
+            bool esInspeccionable = EsAlimentoObjetivo(objeto);
 
-            foreach (var renderer in objetosRecogidos[i].GetComponentsInChildren<MeshRenderer>())
-                renderer.enabled = esActivo;
+            // Mostrar solo si es el activo y es inspeccionable (cuando el menú está activo)
+            bool mostrarVisualmente = esActivo && (!menuInspeccion?.inspeccion ?? true || esInspeccionable);
 
-            foreach (var collider in objetosRecogidos[i].GetComponentsInChildren<Collider>())
-                collider.enabled = false;
+            foreach (var renderer in objeto.GetComponentsInChildren<MeshRenderer>(true))
+            {
+                if (renderer != null)
+                    renderer.enabled = mostrarVisualmente;
+            }
+
+            foreach (var collider in objeto.GetComponentsInChildren<Collider>(true))
+            {
+                if (collider != null)
+                    collider.enabled = false;
+            }
 
             if (esActivo)
             {
-                StartCoroutine(IgnorarColisionTemporal(objetosRecogidos[i], 0.5f));
+                StartCoroutine(IgnorarColisionTemporal(objeto, 0.5f));
 
                 if (ultimoObjetoSoltado != null)
                 {
-                    Collider[] collsNuevo = objetosRecogidos[i].GetComponentsInChildren<Collider>();
-                    Collider[] collsSoltado = ultimoObjetoSoltado.GetComponentsInChildren<Collider>();
+                    Collider[] collsNuevo = objeto.GetComponentsInChildren<Collider>(true);
+                    Collider[] collsSoltado = ultimoObjetoSoltado.GetComponentsInChildren<Collider>(true);
 
                     foreach (var colNuevo in collsNuevo)
                         foreach (var colSoltado in collsSoltado)
-                            Physics.IgnoreCollision(colNuevo, colSoltado, true);
+                            if (colNuevo != null && colSoltado != null)
+                                Physics.IgnoreCollision(colNuevo, colSoltado, true);
 
                     StartCoroutine(RestaurarColisionEntreObjetos(collsNuevo, collsSoltado, 0.5f));
                 }
 
-                if (inspectionHandler != null)
+                if (inspectionHandler != null && menuInspeccion != null && menuInspeccion.inspeccion)
                 {
-                    // Restaurar suavemente los demás objetos inspeccionados
                     for (int j = 0; j < objetosRecogidos.Count; j++)
                     {
-                        if (j != i)
+                        if (j != i && objetosRecogidos[j] != null)
                         {
                             inspectionHandler.RestaurarInspeccionIndividual(objetosRecogidos[j]);
                         }
                     }
 
-                    // Aplicar animación al nuevo objeto activo
-                    inspectionHandler.AplicarAnimacionInspeccionIndividual(objetosRecogidos[i]);
+                    if (esInspeccionable)
+                    {
+                        inspectionHandler.AplicarAnimacionInspeccionIndividual(objeto);
+                    }
+                    else
+                    {
+                        inspectionHandler.RestaurarInspeccionIndividual(objeto);
+                    }
                 }
             }
         }
     }
+
+
+
 
 
 
@@ -277,6 +355,37 @@ public class PlayerInteract : MonoBehaviour
         }
         return null;
     }
+
+    public void ForzarObjetoInspeccionable()
+    {
+        if (menuInspeccion != null && menuInspeccion.inspeccion)
+        {
+            if (objetoActivoIndex < 0 || objetoActivoIndex >= objetosRecogidos.Count || !EsAlimentoObjetivo(objetosRecogidos[objetoActivoIndex]))
+            {
+                for (int i = 0; i < objetosRecogidos.Count; i++)
+                {
+                    if (EsAlimentoObjetivo(objetosRecogidos[i]))
+                    {
+                        objetoActivoIndex = i;
+                        ActualizarObjetoActivo();
+                        return;
+                    }
+                }
+
+                Debug.Log("No hay objetos del tipo AlimentoObjetivo al activar el menú de inspección.");
+            }
+            else
+            {
+                ActualizarObjetoActivo();
+            }
+        }
+    }
+
+
+
+
+
+
 
     private void OnApplicationQuit()
     {
