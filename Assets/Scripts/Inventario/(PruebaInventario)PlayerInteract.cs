@@ -191,6 +191,8 @@ public class PlayerInteract : MonoBehaviour
 
     void ActualizarObjetoActivo()
     {
+        //Debug.Log("Actualizando objeto activo...");
+
         for (int i = 0; i < objetosRecogidos.Count; i++)
         {
             bool esActivo = (i == objetoActivoIndex);
@@ -217,7 +219,7 @@ public class PlayerInteract : MonoBehaviour
                     StartCoroutine(RestaurarColisionEntreObjetos(collsNuevo, collsSoltado, 0.5f));
                 }
 
-                if (inspectionHandler != null)
+                if (inspectionHandler != null && menuInspeccion != null && menuInspeccion.inspeccion)
                 {
                     // Restaurar suavemente los demás objetos inspeccionados
                     for (int j = 0; j < objetosRecogidos.Count; j++)
@@ -227,7 +229,7 @@ public class PlayerInteract : MonoBehaviour
                             inspectionHandler.RestaurarInspeccionIndividual(objetosRecogidos[j]);
                         }
                     }
-
+                    //Debug.Log("Aplicando animación de inspección al nuevo objeto activo.");
                     // Aplicar animación al nuevo objeto activo
                     inspectionHandler.AplicarAnimacionInspeccionIndividual(objetosRecogidos[i]);
                 }
