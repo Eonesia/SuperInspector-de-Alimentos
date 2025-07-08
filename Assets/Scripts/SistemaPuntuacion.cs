@@ -8,6 +8,8 @@ public class SistemaPuntuacion : MonoBehaviour
     public int puntuacionTotal = 0;
     public int puntuacionMinimaParaGanar = 0;
 
+    public GameObject panelMensajeRepetido; // Arrástralo en el Inspector
+
     private HashSet<DefaultObject> alimentosEvaluados = new HashSet<DefaultObject>();
 
     private void Awake()
@@ -15,11 +17,11 @@ public class SistemaPuntuacion : MonoBehaviour
         if (instanciaUnica == null)
         {
             instanciaUnica = this;
-            DontDestroyOnLoad(gameObject); // Este objeto sobrevive entre escenas
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject); // Evita duplicados si ya existe uno
+            Destroy(gameObject);
         }
     }
 
@@ -27,7 +29,7 @@ public class SistemaPuntuacion : MonoBehaviour
     {
         if (alimentosEvaluados.Contains(alimento))
         {
-            Debug.LogWarning($"El alimento '{alimento.name}' ya fue evaluado.");
+            MostrarMensajeAlimentoRepetido();
             return;
         }
 
@@ -46,11 +48,11 @@ public class SistemaPuntuacion : MonoBehaviour
     {
         if (puntuacionTotal >= puntuacionMinimaParaGanar)
         {
-            Debug.Log("¡Ganaste el juego! 🎉");
+            Debug.Log("¡Ganaste el juego! ");
         }
         else
         {
-            Debug.Log("Perdiste el juego 😢");
+            Debug.Log("Perdiste el juego ");
         }
     }
 
@@ -58,5 +60,31 @@ public class SistemaPuntuacion : MonoBehaviour
     {
         puntuacionTotal = 0;
         alimentosEvaluados.Clear();
+    }
+
+    private void MostrarMensajeAlimentoRepetido()
+    {
+        if (panelMensajeRepetido != null)
+        {
+            panelMensajeRepetido.SetActive(true);
+            var fade = panelMensajeRepetido.GetComponent<TextoFade>();
+            if (fade != null)
+            {
+                fade.FadeIn();
+                Invoke(nameof(OcultarMensajeAlimentoRepetido), 2.5f);
+            }
+        }
+    }
+
+    private void OcultarMensajeAlimentoRepetido()
+    {
+        if (panelMensajeRepetido != null)
+        {
+            var fade = panelMensajeRepetido.GetComponent<TextoFade>();
+            if (fade != null)
+            {
+                fade.FadeOut();
+            }
+        }
     }
 }
