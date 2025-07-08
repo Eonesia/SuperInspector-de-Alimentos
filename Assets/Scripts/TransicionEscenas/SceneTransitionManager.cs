@@ -10,8 +10,13 @@ public class SceneTransitionManagerTMP : MonoBehaviour
     public TextMeshProUGUI transitionText;
     public float fadeDuration = 1.5f;
     public float textFadeDuration = 1f;
-    public string message = "D�a siguiente...";
+    public string message = "Dia siguiente...";
     public string sceneToLoad = "EscenaPrueba2";
+
+    public int diaActual = 1;
+    public int totalDias = 4;
+
+    public SistemaPuntuacion sistemaPuntuacion; // Asignar desde el Inspector
 
     private void Start()
     {
@@ -28,20 +33,20 @@ public class SceneTransitionManagerTMP : MonoBehaviour
 
     private IEnumerator TransitionRoutine()
     {
-        // Fade out pantalla
         yield return StartCoroutine(FadeImage(0, 1));
 
-        // Mostrar texto con fade in
         transitionText.text = message;
         yield return StartCoroutine(FadeText(0, 1));
-
-        // Esperar un momento con el texto visible
         yield return new WaitForSeconds(1.5f);
-
-        // Fade out del texto
         yield return StartCoroutine(FadeText(1, 0));
 
-        // Cambiar de escena
+        if (diaActual >= totalDias)
+        {
+            sistemaPuntuacion.EvaluarResultadoFinal();
+            yield break; // No cambiar de escena si ya es el último día
+        }
+
+        diaActual++; // Aumentar el día actual
         SceneManager.LoadScene(sceneToLoad);
     }
 
