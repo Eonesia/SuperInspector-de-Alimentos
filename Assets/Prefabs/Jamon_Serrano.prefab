@@ -441,6 +441,7 @@ GameObject:
   - component: {fileID: 7691054222148937485}
   - component: {fileID: 2263683363831760711}
   - component: {fileID: 5012446672377252405}
+  - component: {fileID: 8111383006731916272}
   m_Layer: 6
   m_Name: Jamon_Serrano
   m_TagString: Untagged
@@ -456,7 +457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7059337150172822967}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -10.29, y: 1.60966, z: 11.818}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -511,6 +512,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 69a6efc974e5c7141b57631776ea26d7, type: 2}
   rotacionEnMano: {x: 20, y: 180, z: -10}
+--- !u!65 &8111383006731916272
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059337150172822967}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.54145813, y: 0.050667644, z: 0.92998886}
+  m_Center: {x: 0.00046539307, y: 0.00044327974, z: -0.0003681183}
 --- !u!1 &7929565514318351329
 GameObject:
   m_ObjectHideFlags: 0

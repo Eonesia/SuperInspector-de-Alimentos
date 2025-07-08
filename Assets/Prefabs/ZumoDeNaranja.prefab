@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
-  rotacionEnMano: {x: 0, y: 0, z: 0}
+  rotacionEnMano: {x: -10, y: 150, z: 0}
 --- !u!136 &6593272882650290512
 CapsuleCollider:
   m_ObjectHideFlags: 0
