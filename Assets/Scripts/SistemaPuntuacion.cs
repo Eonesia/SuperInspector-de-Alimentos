@@ -3,11 +3,12 @@ using UnityEngine;
 public class SistemaPuntuacion : MonoBehaviour
 {
     public int puntuacionTotal = 0;
+    public int puntuacionMinimaParaGanar = 0; // Pon el valor que tú quieras desde el Inspector
 
     public void EvaluarAlimento(DefaultObject alimento, int notaJugador)
     {
         int diferencia = Mathf.Abs(notaJugador - alimento.calidadReal);
-        int puntosGanados = Mathf.Max(0, 6 - diferencia); // 6 puntos si acierta, menos si se equivoca
+        int puntosGanados = Mathf.Max(0, 6 - diferencia);
 
         puntuacionTotal += puntosGanados;
 
@@ -15,7 +16,19 @@ public class SistemaPuntuacion : MonoBehaviour
                   $"Calidad real: {alimento.calidadReal}. " +
                   $"Puntos ganados: {puntosGanados}. " +
                   $"Total acumulado: {puntuacionTotal}");
-
     }
-    
+
+    public void EvaluarResultadoFinal()
+    {
+        if (puntuacionTotal >= puntuacionMinimaParaGanar)
+        {
+            Debug.Log("¡Ganaste el juego! ");
+            // Aquí puedes mostrar una UI de victoria o cargar otra escena
+        }
+        else
+        {
+            Debug.Log("Perdiste el juego ");
+            // Aquí puedes mostrar una UI de derrota o reiniciar el juego
+        }
+    }
 }
