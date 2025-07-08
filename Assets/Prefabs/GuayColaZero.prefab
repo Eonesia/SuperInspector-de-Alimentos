@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48047ee08921ff946a18a94c119a4509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: d32887246fd82804ba30d25680b81570, type: 2}
+  item: {fileID: 11400000, guid: 9d4f327ceec0cec478ae60d7c7af7be9, type: 2}
   rotacionEnMano: {x: -10, y: -150, z: -10}
 --- !u!136 &6876059186955255263
 CapsuleCollider:
