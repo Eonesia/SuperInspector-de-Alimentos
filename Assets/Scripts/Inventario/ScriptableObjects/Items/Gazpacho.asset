@@ -15,5 +15,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 1
   description: Tortila de patatas
-  itemName: Tortila de patatas
+  itemName: Gazpacho
   calidadReal: 1

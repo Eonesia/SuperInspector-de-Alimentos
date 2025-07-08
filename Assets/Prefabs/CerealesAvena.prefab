@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8abd5e7db9a028543bbcfe3190f53ca4, type: 2}
     - target: {fileID: 919132149155446097, guid: 13dd50fa9e4198e49a39868886b6861d, type: 3}
       propertyPath: m_Name
-      value: Caja_de_Cereales
+      value: CerealesAvena
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 13dd50fa9e4198e49a39868886b6861d, type: 3}
       propertyPath: m_Layer
@@ -139,5 +139,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48047ee08921ff946a18a94c119a4509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: b346f933faf02284e8e4533bf95d6c0b, type: 2}
+  item: {fileID: 11400000, guid: 501ed7baf61e3fb4fb0168f4a6916f83, type: 2}
   rotacionEnMano: {x: -70, y: 80, z: 180}

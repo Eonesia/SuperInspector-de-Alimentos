@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48047ee08921ff946a18a94c119a4509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  item: {fileID: 11400000, guid: 303f2c18d9eecb145b42dacbf1dd8ac0, type: 2}
   rotacionEnMano: {x: 0, y: 0, z: 0}
 --- !u!136 &7145558827682061624
 CapsuleCollider:
