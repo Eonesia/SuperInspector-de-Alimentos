@@ -16,4 +16,4 @@ MonoBehaviour:
   type: 1
   description: Tortila de patatas
   itemName: Gazpacho
-  calidadReal: 1
+  calidadReal: 5
