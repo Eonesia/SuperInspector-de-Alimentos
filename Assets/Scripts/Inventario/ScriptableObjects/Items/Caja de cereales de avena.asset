@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 1
-  description: 'Bolsa de colines
+  description: 'Caja de cereales de avena
 
 '
   itemName: Caja de cereales de avena
-  calidadReal: 1
+  calidadReal: 6

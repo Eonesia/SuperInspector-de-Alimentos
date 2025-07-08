@@ -3,7 +3,7 @@ using UnityEngine;
 public class SistemaPuntuacion : MonoBehaviour
 {
     public int puntuacionTotal = 0;
-    public int puntuacionMinimaParaGanar = 0; // Pon el valor que tú quieras desde el Inspector
+    public int puntuacionMinimaParaGanar = 60; // Pon el valor que tú quieras desde el Inspector
 
     public void EvaluarAlimento(DefaultObject alimento, int notaJugador)
     {
