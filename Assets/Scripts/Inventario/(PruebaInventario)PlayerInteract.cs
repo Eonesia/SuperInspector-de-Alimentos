@@ -94,6 +94,12 @@ public class PlayerInteract : MonoBehaviour
                 {
                     var trigger = hit.collider.GetComponent<SceneChangeTrigger>();
                     if (trigger) trigger.Interact();
+                    var messageTrigger = hit.collider.GetComponent<MessageTrigger>();
+                    if (messageTrigger)
+                    {
+                        messageTrigger.Interact();
+                    }
+
                 }
             }
         }
