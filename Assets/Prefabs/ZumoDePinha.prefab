@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 2420e171da2a83e4a932330607a46e5e, type: 2}
-  rotacionEnMano: {x: -10, y: 150, z: 0}
+  rotacionEnMano: {x: -10, y: 70, z: 0}
 --- !u!136 &2155008655841150457
 CapsuleCollider:
   m_ObjectHideFlags: 0

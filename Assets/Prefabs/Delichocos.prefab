@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 2420e171da2a83e4a932330607a46e5e, type: 2}
-  rotacionEnMano: {x: 0, y: 0, z: 0}
+  rotacionEnMano: {x: -90, y: -120, z: 15}
 --- !u!65 &4032776556763206512
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -122,8 +122,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6351613, y: 0.26171014, z: 0.5928859}
-  m_Center: {x: 0, y: 0, z: 0.09973436}
+  m_Size: {x: 0.64390564, y: 0.27182007, z: 0.59594536}
+  m_Center: {x: -0.0005340576, y: 0.0016860962, z: 0.09945369}
 --- !u!54 &228742395995096720
 Rigidbody:
   m_ObjectHideFlags: 0
