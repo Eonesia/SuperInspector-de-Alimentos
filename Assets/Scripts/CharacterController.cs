@@ -15,6 +15,8 @@ public class FirstPersonController : MonoBehaviour
     public float sensibilidadRaton = 1f;
     public float sensibilidadMando = 150f;
     public float limiteRotacionVertical = 80f;
+    [HideInInspector] public bool bloquearRotacion = false;
+
 
     [Header("Input Actions")]
     public InputActionReference moveAction;
@@ -150,6 +152,11 @@ public class FirstPersonController : MonoBehaviour
 
     void RotarCamara()
     {
+        if (bloquearRotacion)
+        {
+            
+            return;
+        }
         Vector2 deltaRaton = Mouse.current != null && Mouse.current.delta.IsActuated()
             ? Mouse.current.delta.ReadValue() * sensibilidadRaton
             : Vector2.zero;
