@@ -27,12 +27,24 @@ public class SistemaPuntuacion : MonoBehaviour
 
     public void EvaluarAlimento(DefaultObject alimento, int notaJugador)
     {
+        // 🚫 Verificar si el alimento está permitido hoy
+        List<DefaultObject> permitidos = DiaActualManager.instancia.ObtenerAlimentosPermitidos();
+
+        if (!permitidos.Contains(alimento))
+        {
+            Debug.Log($"El alimento '{alimento.name}' no se puede evaluar en esta escena.");
+            // Aquí puedes mostrar un panel visual si lo deseas
+            return;
+        }
+
+        // 📛 Verificar si ya fue evaluado
         if (alimentosEvaluados.Contains(alimento))
         {
             MostrarMensajeAlimentoRepetido();
             return;
         }
 
+        // ✅ Evaluación normal
         int diferencia = Mathf.Abs(notaJugador - alimento.calidadReal);
         int puntosGanados = Mathf.Max(0, 6 - diferencia);
         puntuacionTotal += puntosGanados;
