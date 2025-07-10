@@ -11,15 +11,15 @@ public class MessageTrigger : MonoBehaviour
     {
         if (messageManager != null)
         {
-            // Si el mensaje ya está visible, lo cerramos directamente
-            if (messageManager.IsMessageVisible())
-            {
-                messageManager.HideMessage();
-            }
-            else
-            {
+            //// Si el mensaje ya está visible, lo cerramos directamente
+            //if (messageManager.IsMessageVisible())
+            //{
+            //    messageManager.HideMessage();
+            //}
+            //else
+            //{
                 messageManager.ShowMessage(messageToShow, imageToShow);
-            }
+            //}
         }
     }
 
