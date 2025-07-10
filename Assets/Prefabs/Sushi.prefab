@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 2219597440701863226}
   - component: {fileID: 3861550579278653692}
   - component: {fileID: 1325397063484725672}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sushi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48047ee08921ff946a18a94c119a4509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  item: {fileID: 11400000, guid: 2420e171da2a83e4a932330607a46e5e, type: 2}
   rotacionEnMano: {x: 0, y: 0, z: 0}
 --- !u!65 &1325397063484725672
 BoxCollider:
