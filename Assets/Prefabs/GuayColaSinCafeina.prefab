@@ -136,6 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 3efa6cca828ff7c4385f30cad085c60a, type: 2}
   rotacionEnMano: {x: -10, y: -150, z: -10}
+  posicionEnMano: {x: 0, y: 0, z: 0}
+  posicionInspeccionPersonalizada: {x: -0.35, y: 0.15, z: -0.35}
   rotacionInspeccionPersonalizada: {x: -10, y: 20, z: 0}
 --- !u!136 &3230981719053038747
 CapsuleCollider:
