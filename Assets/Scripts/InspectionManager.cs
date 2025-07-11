@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,9 +10,16 @@ public class InspectionHandler : MonoBehaviour
     private Dictionary<Transform, Quaternion> rotacionesOriginales = new Dictionary<Transform, Quaternion>();
     private List<Transform> objetosInspeccionados = new List<Transform>();
 
+    private SistemaPuntuacion sistemaPuntuacion;
+
+    private void Start()
+    {
+        sistemaPuntuacion = SistemaPuntuacion.instanciaUnica;
+    }
+
     public void ActivarModoInspeccion(List<Transform> objetosEnMano)
     {
-        Debug.Log("Activando inspecci�n");
+        Debug.Log("Activando inspección");
 
         foreach (Transform objeto in objetosEnMano)
         {
@@ -48,6 +55,12 @@ public class InspectionHandler : MonoBehaviour
         objetosInspeccionados.Clear();
         posicionesOriginales.Clear();
         rotacionesOriginales.Clear();
+
+        // ✅ Verificar si ya se evaluaron todos los alimentos al salir del modo inspección
+        if (sistemaPuntuacion != null)
+        {
+            sistemaPuntuacion.VerificarEvaluacionCompletaDelDia();
+        }
     }
 
     public void AplicarAnimacionInspeccionIndividual(Transform objeto)
@@ -124,6 +137,8 @@ public class InspectionHandler : MonoBehaviour
         }
     }
 }
+
+
 
 
 
