@@ -8,7 +8,8 @@ public class SistemaPuntuacion : MonoBehaviour
     public int puntuacionTotal = 0;
     public int puntuacionMinimaParaGanar = 0;
 
-    public GameObject panelMensajeRepetido; // Arrástralo en el Inspector
+    public GameObject panelMensajeRepetido;     // Asignar en el Inspector
+    public GameObject panelTodosEvaluados;      // Asignar en el Inspector
 
     private HashSet<DefaultObject> alimentosEvaluados = new HashSet<DefaultObject>();
 
@@ -27,24 +28,20 @@ public class SistemaPuntuacion : MonoBehaviour
 
     public void EvaluarAlimento(DefaultObject alimento, int notaJugador)
     {
-        // 🚫 Verificar si el alimento está permitido hoy
         List<DefaultObject> permitidos = DiaActualManager.instancia.ObtenerAlimentosPermitidos();
 
         if (!permitidos.Contains(alimento))
         {
             Debug.Log($"El alimento '{alimento.name}' no se puede evaluar en esta escena.");
-            // Aquí puedes mostrar un panel visual si lo deseas
             return;
         }
 
-        // 📛 Verificar si ya fue evaluado
         if (alimentosEvaluados.Contains(alimento))
         {
             MostrarMensajeAlimentoRepetido();
             return;
         }
 
-        // ✅ Evaluación normal
         int diferencia = Mathf.Abs(notaJugador - alimento.calidadReal);
         int puntosGanados = Mathf.Max(0, 6 - diferencia);
         puntuacionTotal += puntosGanados;
@@ -56,15 +53,69 @@ public class SistemaPuntuacion : MonoBehaviour
                   $"Total acumulado: {puntuacionTotal}");
     }
 
+    public void VerificarEvaluacionCompletaDelDia()
+    {
+        List<DefaultObject> permitidos = DiaActualManager.instancia.ObtenerAlimentosPermitidos();
+
+        if (TodosLosAlimentosEvaluados(permitidos))
+        {
+            MostrarMensajeTodosEvaluados();
+        }
+    }
+
+    private bool TodosLosAlimentosEvaluados(List<DefaultObject> permitidos)
+    {
+        foreach (var alimento in permitidos)
+        {
+            if (!alimentosEvaluados.Contains(alimento))
+                return false;
+        }
+        return true;
+    }
+
+    private void MostrarMensajeTodosEvaluados()
+    {
+        if (panelTodosEvaluados != null)
+        {
+            panelTodosEvaluados.SetActive(true);
+            var fade = panelTodosEvaluados.GetComponent<TextoFade>();
+            if (fade != null)
+            {
+                fade.FadeIn();
+                Invoke(nameof(OcultarMensajeTodosEvaluados), 3f); // Ocultar tras 3 segundos
+            }
+            else
+            {
+                Invoke(nameof(OcultarMensajeTodosEvaluados), 3f);
+            }
+        }
+    }
+
+    private void OcultarMensajeTodosEvaluados()
+    {
+        if (panelTodosEvaluados != null)
+        {
+            var fade = panelTodosEvaluados.GetComponent<TextoFade>();
+            if (fade != null)
+            {
+                fade.FadeOut();
+            }
+            else
+            {
+                panelTodosEvaluados.SetActive(false);
+            }
+        }
+    }
+
     public void EvaluarResultadoFinal()
     {
         if (puntuacionTotal >= puntuacionMinimaParaGanar)
         {
-            Debug.Log("¡Ganaste el juego! ");
+            Debug.Log("¡Ganaste el juego!");
         }
         else
         {
-            Debug.Log("Perdiste el juego ");
+            Debug.Log("Perdiste el juego");
         }
     }
 
@@ -100,3 +151,5 @@ public class SistemaPuntuacion : MonoBehaviour
         }
     }
 }
+
+
