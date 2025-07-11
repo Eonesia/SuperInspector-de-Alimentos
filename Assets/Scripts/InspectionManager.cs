@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InspectionHandler : MonoBehaviour
 {
-    public Vector3 offsetInspeccionPosicion = new Vector3(0, 0.1f, 0.2f);
     public float duracionTransicion = 0.5f;
 
     private Dictionary<Transform, Vector3> posicionesOriginales = new Dictionary<Transform, Vector3>();
@@ -25,7 +24,7 @@ public class InspectionHandler : MonoBehaviour
                 posicionesOriginales[objeto] = objeto.localPosition;
                 rotacionesOriginales[objeto] = objeto.localRotation;
 
-                Vector3 destinoPos = objeto.localPosition + offsetInspeccionPosicion;
+                Vector3 destinoPos = ObtenerPosicionInspeccion(objeto);
                 Quaternion destinoRot = ObtenerRotacionInspeccion(objeto);
 
                 StartCoroutine(MoverObjetoSuavemente(objeto, destinoPos, destinoRot, duracionTransicion));
@@ -58,7 +57,7 @@ public class InspectionHandler : MonoBehaviour
         posicionesOriginales[objeto] = objeto.localPosition;
         rotacionesOriginales[objeto] = objeto.localRotation;
 
-        Vector3 destinoPos = objeto.localPosition + offsetInspeccionPosicion;
+        Vector3 destinoPos = ObtenerPosicionInspeccion(objeto);
         Quaternion destinoRot = ObtenerRotacionInspeccion(objeto);
 
         StartCoroutine(MoverObjetoSuavemente(objeto, destinoPos, destinoRot, duracionTransicion));
@@ -73,6 +72,17 @@ public class InspectionHandler : MonoBehaviour
         }
 
         return objeto.localRotation;
+    }
+
+    private Vector3 ObtenerPosicionInspeccion(Transform objeto)
+    {
+        Item item = objeto.GetComponent<Item>();
+        if (item != null)
+        {
+            return item.posicionInspeccionPersonalizada;
+        }
+
+        return objeto.localPosition;
     }
 
     private bool EsObjetoAnalizable(Transform objeto)
@@ -114,6 +124,7 @@ public class InspectionHandler : MonoBehaviour
         }
     }
 }
+
 
 
 

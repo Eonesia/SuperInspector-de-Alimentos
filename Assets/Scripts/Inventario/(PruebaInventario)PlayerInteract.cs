@@ -79,7 +79,7 @@ public class PlayerInteract : MonoBehaviour
                     if (rb != null) rb.isKinematic = true;
 
                     nuevoObjeto.SetParent(Mano);
-                    nuevoObjeto.localPosition = Vector3.zero;
+                    nuevoObjeto.localPosition = item.posicionEnMano;
                     nuevoObjeto.localRotation = Quaternion.Euler(item.rotacionEnMano);
 
                     foreach (var col in nuevoObjeto.GetComponentsInChildren<Collider>())
