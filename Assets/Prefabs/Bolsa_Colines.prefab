@@ -141,4 +141,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: edced3feed44eb64f8a3e8faa96628ad, type: 2}
   rotacionEnMano: {x: -101, y: 160, z: 70}
+  posicionEnMano: {x: 0, y: 0, z: 0}
+  posicionInspeccionPersonalizada: {x: -0.25, y: 0, z: 0}
   rotacionInspeccionPersonalizada: {x: -95, y: 0, z: 20}

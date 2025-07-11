@@ -101,8 +101,8 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 0c12f6f6a7335434cb98c38fe31273b3, type: 2}
   rotacionEnMano: {x: -10, y: -150, z: -1}
   posicionEnMano: {x: 0, y: 0, z: 0}
-  posicionInspeccionPersonalizada: {x: -0.35, y: 0.1, z: -0.35}
-  rotacionInspeccionPersonalizada: {x: -10, y: 28, z: 0}
+  posicionInspeccionPersonalizada: {x: -0.4, y: 0.1, z: -0.35}
+  rotacionInspeccionPersonalizada: {x: -4.943, y: 23.059, z: -3.394}
 --- !u!1 &3652848391263794795
 GameObject:
   m_ObjectHideFlags: 0

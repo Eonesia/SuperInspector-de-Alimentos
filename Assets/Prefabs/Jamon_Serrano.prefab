@@ -512,6 +512,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 69a6efc974e5c7141b57631776ea26d7, type: 2}
   rotacionEnMano: {x: 20, y: 180, z: -10}
+  posicionEnMano: {x: 0, y: 0, z: 0}
+  posicionInspeccionPersonalizada: {x: -0.3, y: 0.1, z: 0}
   rotacionInspeccionPersonalizada: {x: 90, y: 0, z: 0}
 --- !u!65 &8111383006731916272
 BoxCollider:

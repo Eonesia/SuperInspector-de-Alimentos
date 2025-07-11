@@ -213,4 +213,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: e3ac49217e9691845b60aec76326f00e, type: 2}
   rotacionEnMano: {x: 100, y: -50, z: 90}
+  posicionEnMano: {x: 0, y: 0, z: 0}
+  posicionInspeccionPersonalizada: {x: -0.25, y: 0.15, z: 0}
   rotacionInspeccionPersonalizada: {x: 90, y: 0, z: -10}

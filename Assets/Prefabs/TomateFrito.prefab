@@ -150,4 +150,5 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 58e46b3969da92b49a750e6f15beb847, type: 2}
   rotacionEnMano: {x: 0, y: 200, z: -5}
   posicionEnMano: {x: 0, y: -0.25, z: 0}
+  posicionInspeccionPersonalizada: {x: -0.35, y: -0.1, z: -0.15}
   rotacionInspeccionPersonalizada: {x: -5, y: 20, z: 0}
