@@ -5,7 +5,6 @@ using UnityEngine;
 public class InspectionHandler : MonoBehaviour
 {
     public Vector3 offsetInspeccionPosicion = new Vector3(0, 0.1f, 0.2f);
-    public Vector3 offsetInspeccionRotacion = new Vector3(15f, 0f, 0f);
     public float duracionTransicion = 0.5f;
 
     private Dictionary<Transform, Vector3> posicionesOriginales = new Dictionary<Transform, Vector3>();
@@ -27,7 +26,7 @@ public class InspectionHandler : MonoBehaviour
                 rotacionesOriginales[objeto] = objeto.localRotation;
 
                 Vector3 destinoPos = objeto.localPosition + offsetInspeccionPosicion;
-                Quaternion destinoRot = objeto.localRotation * Quaternion.Euler(offsetInspeccionRotacion);
+                Quaternion destinoRot = ObtenerRotacionInspeccion(objeto);
 
                 StartCoroutine(MoverObjetoSuavemente(objeto, destinoPos, destinoRot, duracionTransicion));
             }
@@ -56,17 +55,25 @@ public class InspectionHandler : MonoBehaviour
     {
         if (!EsObjetoAnalizable(objeto)) return;
 
-        // Guardar siempre la posición y rotación actuales como originales
         posicionesOriginales[objeto] = objeto.localPosition;
         rotacionesOriginales[objeto] = objeto.localRotation;
 
         Vector3 destinoPos = objeto.localPosition + offsetInspeccionPosicion;
-        Quaternion destinoRot = objeto.localRotation * Quaternion.Euler(offsetInspeccionRotacion);
+        Quaternion destinoRot = ObtenerRotacionInspeccion(objeto);
 
-        // Reiniciar la animación incluso si ya está en destino
         StartCoroutine(MoverObjetoSuavemente(objeto, destinoPos, destinoRot, duracionTransicion));
     }
 
+    private Quaternion ObtenerRotacionInspeccion(Transform objeto)
+    {
+        Item item = objeto.GetComponent<Item>();
+        if (item != null)
+        {
+            return Quaternion.Euler(item.rotacionInspeccionPersonalizada);
+        }
+
+        return objeto.localRotation;
+    }
 
     private bool EsObjetoAnalizable(Transform objeto)
     {
@@ -94,8 +101,8 @@ public class InspectionHandler : MonoBehaviour
 
         objeto.localPosition = destinoPos;
         objeto.localRotation = destinoRot;
-        
     }
+
     public void RestaurarInspeccionIndividual(Transform objeto)
     {
         if (posicionesOriginales.ContainsKey(objeto) && rotacionesOriginales.ContainsKey(objeto))
@@ -106,8 +113,8 @@ public class InspectionHandler : MonoBehaviour
             StartCoroutine(MoverObjetoSuavemente(objeto, posOriginal, rotOriginal, duracionTransicion));
         }
     }
-
 }
+
 
 
 

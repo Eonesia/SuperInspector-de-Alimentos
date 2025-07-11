@@ -154,8 +154,7 @@ public class FirstPersonController : MonoBehaviour
     {
         if (bloquearRotacion)
         {
-            
-            return;
+              return;
         }
         Vector2 deltaRaton = Mouse.current != null && Mouse.current.delta.IsActuated()
             ? Mouse.current.delta.ReadValue() * sensibilidadRaton

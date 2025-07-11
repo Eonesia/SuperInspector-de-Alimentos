@@ -6,6 +6,6 @@ public class Item : MonoBehaviour
 {
     public ItemObject item;
     public Vector3 rotacionEnMano; // editable desde el Inspector
-    
+    public Vector3 rotacionInspeccionPersonalizada = Vector3.zero;
 }
 

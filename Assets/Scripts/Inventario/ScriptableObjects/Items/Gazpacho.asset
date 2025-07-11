@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 1
-  description: Tortila de patatas
+  description: 'Gazpacho
+
+'
   itemName: Gazpacho
   calidadReal: 5

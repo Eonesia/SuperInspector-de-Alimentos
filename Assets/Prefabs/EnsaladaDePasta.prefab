@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 900ffbdfae4835f4393b483cbd3834e4, type: 2}
     - target: {fileID: 919132149155446097, guid: 48c85518f29ee804aba647bc2a0c8e77, type: 3}
       propertyPath: m_Name
-      value: Ensalada
+      value: EnsaladaDePasta
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 48c85518f29ee804aba647bc2a0c8e77, type: 3}
       propertyPath: m_Layer
@@ -142,3 +142,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: d36fbc92fce60cf4ba44419afc2af7d9, type: 2}
   rotacionEnMano: {x: -110, y: 50, z: 180}
+  rotacionInspeccionPersonalizada: {x: 180, y: 190, z: 0}
