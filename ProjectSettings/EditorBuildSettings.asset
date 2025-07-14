@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Final.unity
     guid: d7dd84402a5b06044bad995c259ad5ce
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EscenaPrueba/EscenaPrueba2.unity
     guid: 796e6f1772b374e4aada98468de3c7db
   m_configObjects:

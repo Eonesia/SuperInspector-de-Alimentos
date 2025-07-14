@@ -11,13 +11,12 @@ public class SceneTransitionManagerTMP : MonoBehaviour
     public float fadeDuration = 1.5f;
     public float textFadeDuration = 1f;
     public string message = "Día siguiente...";
-    public string sceneToLoad = "EscenaPrueba2";
 
     public int diaActual = 1;
     public int totalDias = 4;
 
-    public GameObject pantallaResultado;        // Panel final
-    public TextMeshProUGUI TextoResultado;      // Texto de resultado
+    public GameObject pantallaResultado;
+    public TextMeshProUGUI TextoResultado;
 
     private void Start()
     {
@@ -59,10 +58,6 @@ public class SceneTransitionManagerTMP : MonoBehaviour
                     grupo.alpha = 0;
                     StartCoroutine(FadeCanvasGroup(grupo, 0f, 1f, 1.5f));
                 }
-                else
-                {
-                    Debug.LogWarning("⚠️ CanvasGroup no encontrado en pantallaResultado.");
-                }
 
                 if (TextoResultado != null)
                 {
@@ -71,19 +66,12 @@ public class SceneTransitionManagerTMP : MonoBehaviour
                     else
                         TextoResultado.text = "Las acciones que has llevado a cabo han hecho que seas despedido";
                 }
-                else
-                {
-                    Debug.LogError("⚠️ TextoResultado no está asignado.");
-                }
 
                 StartCoroutine(EsperarYIrAlMenu());
                 return;
             }
-            else
-            {
-                Debug.LogError("⚠️ pantallaResultado no está asignada.");
-            }
 
+            Debug.LogError("⚠️ pantallaResultado no está asignada.");
             return;
         }
 
@@ -100,7 +88,17 @@ public class SceneTransitionManagerTMP : MonoBehaviour
         yield return StartCoroutine(FadeText(1, 0));
 
         diaActual++;
-        SceneManager.LoadScene(sceneToLoad);
+
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.LogError("❌ No hay más escenas en el Build Settings.");
+        }
     }
 
     private IEnumerator FadeImage(float startAlpha, float endAlpha)
@@ -155,5 +153,6 @@ public class SceneTransitionManagerTMP : MonoBehaviour
         SceneManager.LoadScene("MenuInicio");
     }
 }
+
 
 
