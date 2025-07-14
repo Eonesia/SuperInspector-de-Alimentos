@@ -5,7 +5,7 @@ public class MenuInicio : MonoBehaviour
 {
     public void Jugar()
     {
-        SceneManager.LoadScene("EscenaPrueba");
+        SceneManager.LoadScene("TextosPrincipio");
     }
 
     public void Salir()
