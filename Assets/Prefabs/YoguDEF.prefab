@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4c6171e72677d0d44a59919fe9250dc5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 39.5
+      value: 43.39689
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4c6171e72677d0d44a59919fe9250dc5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -120,7 +120,7 @@ PrefabInstance:
       addedObject: {fileID: 5482173803064808239}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4c6171e72677d0d44a59919fe9250dc5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 978051321377873949}
+      addedObject: {fileID: 9030156156875990713}
   m_SourcePrefab: {fileID: 100100000, guid: 4c6171e72677d0d44a59919fe9250dc5, type: 3}
 --- !u!1 &5038815598970760580 stripped
 GameObject:
@@ -175,7 +175,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &978051321377873949
+--- !u!114 &9030156156875990713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,5 +190,5 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 409e9de27be4800499e47a1deee4b5f1, type: 2}
   rotacionEnMano: {x: 0, y: 270, z: 0}
   posicionEnMano: {x: 0, y: 0, z: 0}
-  posicionInspeccionPersonalizada: {x: -0.3, y: 0.15, z: -0.1}
-  rotacionInspeccionPersonalizada: {x: -7, y: 20, z: 0}
+  posicionInspeccionPersonalizada: {x: -0.3, y: 0, z: 0}
+  rotacionInspeccionPersonalizada: {x: 0, y: 0, z: 0}
