@@ -16,8 +16,6 @@ public class SceneTransitionManagerTMP : MonoBehaviour
     public int diaActual = 1;
     public int totalDias = 4;
 
-    public SistemaPuntuacion sistemaPuntuacion; // Asignar en el Inspector
-
     public GameObject pantallaResultado;        // Panel final
     public TextMeshProUGUI TextoResultado;      // Texto de resultado
 
@@ -28,7 +26,6 @@ public class SceneTransitionManagerTMP : MonoBehaviour
         transitionText.text = "";
         transitionText.alpha = 0;
 
-        // Si usas CanvasGroup en pantallaResultado, asegúrate de tener alpha en 0 al inicio
         var canvasGroup = pantallaResultado.GetComponent<CanvasGroup>();
         if (canvasGroup != null)
             canvasGroup.alpha = 0;
@@ -36,9 +33,11 @@ public class SceneTransitionManagerTMP : MonoBehaviour
 
     public void StartSceneTransition()
     {
+        var sistemaPuntuacion = SistemaPuntuacion.instanciaUnica;
+
         if (sistemaPuntuacion == null)
         {
-            Debug.LogError("❌ sistemaPuntuacion no está asignado.");
+            Debug.LogError("❌ sistemaPuntuacion no está disponible.");
             return;
         }
 
@@ -46,7 +45,6 @@ public class SceneTransitionManagerTMP : MonoBehaviour
         {
             sistemaPuntuacion.EvaluarResultadoFinal();
 
-            // Activar el panel final con fade
             if (pantallaResultado != null)
             {
                 pantallaResultado.SetActive(true);
@@ -67,20 +65,18 @@ public class SceneTransitionManagerTMP : MonoBehaviour
                 }
 
                 if (TextoResultado != null)
-            {
-                if (sistemaPuntuacion.puntuacionTotal >= Mathf.Max(1, sistemaPuntuacion.puntuacionMinimaParaGanar))
-                    TextoResultado.text = "Tu vida como inspector de alimentos continua, eres un buen trabajador";
+                {
+                    if (sistemaPuntuacion.puntuacionTotal >= Mathf.Max(1, sistemaPuntuacion.puntuacionMinimaParaGanar))
+                        TextoResultado.text = "Tu vida como inspector de alimentos continúa, eres un buen trabajador";
+                    else
+                        TextoResultado.text = "Las acciones que has llevado a cabo han hecho que seas despedido";
+                }
                 else
-                    TextoResultado.text = "Las acciones que has llevado a cabo han hecho que seas despedido";
+                {
+                    Debug.LogError("⚠️ TextoResultado no está asignado.");
+                }
 
-                
-            }
-            else
-            {
-                Debug.LogError("⚠️ textoResultado no está asignado.");
-            }
-
-                StartCoroutine(EsperarYIrAlMenu()); // ← Añade esta línea al final
+                StartCoroutine(EsperarYIrAlMenu());
                 return;
             }
             else
@@ -88,10 +84,9 @@ public class SceneTransitionManagerTMP : MonoBehaviour
                 Debug.LogError("⚠️ pantallaResultado no está asignada.");
             }
 
-            return; // Detener transición
+            return;
         }
 
-        // Día normal: transición con fade y cambio de escena
         StartCoroutine(TransitionRoutine());
     }
 
@@ -155,10 +150,10 @@ public class SceneTransitionManagerTMP : MonoBehaviour
     }
 
     private IEnumerator EsperarYIrAlMenu()
-{
-    yield return new WaitForSeconds(10f); // 🕒 Espera de 10 segundos
+    {
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("MenuInicio");
+    }
+}
 
-    SceneManager.LoadScene("MenuInicio"); // Cambia "MenuInicio" por el nombre exacto de tu menú
-}
-}
 
