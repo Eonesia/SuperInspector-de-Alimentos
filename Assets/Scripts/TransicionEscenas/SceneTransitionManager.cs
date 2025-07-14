@@ -149,7 +149,7 @@ public class SceneTransitionManagerTMP : MonoBehaviour
 
     private IEnumerator EsperarYIrAlMenu()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("MenuInicio");
     }
 }
