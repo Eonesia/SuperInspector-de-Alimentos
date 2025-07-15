@@ -1,63 +1,40 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using System.Collections;
 
 public class TextoFade : MonoBehaviour
 {
     public CanvasGroup canvasGroup;
-    public float duracionFade = 1.5f;
+    public float duracionFade = 1f;
+
+    private void Awake()
+    {
+        if (canvasGroup == null)
+            canvasGroup = GetComponent<CanvasGroup>();
+    }
 
     public void FadeIn()
     {
         StopAllCoroutines();
-        gameObject.SetActive(true);
-        canvasGroup.alpha = 0f;
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
-        StartCoroutine(Fade(0, 1)); // <- ¡Esto es lo importante!
+        StartCoroutine(FadeCanvasGroup(0f, 1f));
     }
 
     public void FadeOut()
     {
         StopAllCoroutines();
-        StartCoroutine(Fade(1, 0));
+        StartCoroutine(FadeCanvasGroup(1f, 0f));
     }
 
-    private IEnumerator Fade(float from, float to)
-{
-    float tiempo = 0f;
-    canvasGroup.alpha = from;
-
-    while (tiempo < duracionFade)
+    private IEnumerator FadeCanvasGroup(float startAlpha, float endAlpha)
     {
-        tiempo += Time.deltaTime;
-        float alpha = Mathf.Lerp(from, to, tiempo / duracionFade);
-        canvasGroup.alpha = alpha;
-        yield return null;
-    }
-
-    canvasGroup.alpha = to;
-
-    if (to == 0f)
-    {
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
-        gameObject.SetActive(false);
-    }
-    else
-    {
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
-    }
-}
-
-    private void Awake()
-    {
-        if (canvasGroup != null)
+        float tiempo = 0f;
+        while (tiempo < duracionFade)
         {
-            canvasGroup.alpha = 0f;
-            canvasGroup.interactable = false;
-            canvasGroup.blocksRaycasts = false;
-            gameObject.SetActive(false);
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, tiempo / duracionFade);
+            tiempo += Time.unscaledDeltaTime;
+            yield return null;
         }
-}
+        canvasGroup.alpha = endAlpha;
+    }
 }

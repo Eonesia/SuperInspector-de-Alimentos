@@ -42,5 +42,17 @@ public class MenuInspeccion : MonoBehaviour
 
     }
 
+    public void MostrarMensajeEvaluacionRepetida()
+{
+    Time.timeScale = 0f;
+    Cursor.lockState = CursorLockMode.None;
+    Cursor.visible = true;
+
+    if (SistemaPuntuacion.instanciaUnica != null)
+    {
+        SistemaPuntuacion.instanciaUnica.MostrarMensajeAlimentoRepetido();
+    }
+}
+
 }
 
