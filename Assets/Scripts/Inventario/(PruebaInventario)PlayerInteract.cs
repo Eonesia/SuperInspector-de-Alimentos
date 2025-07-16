@@ -16,8 +16,7 @@ public class PlayerInteract : MonoBehaviour
 
     public InspectionHandler inspectionHandler;
     public MenuInspeccion menuInspeccion;
-    public ItemObject itemGenerico; // Asignar el ScriptableObject genérico en el Inspector
-
+    public ItemObject itemGenerico;
 
     private List<Transform> objetosRecogidos = new List<Transform>();
     private int objetoActivoIndex = -1;
@@ -29,6 +28,8 @@ public class PlayerInteract : MonoBehaviour
     private InputAction cambiarObjetoAction;
     private InputAction soltarAction;
 
+    private Collider[] collidersJugador;
+
     void Awake()
     {
         var mapa = inputActions.FindActionMap("Jugador");
@@ -36,6 +37,12 @@ public class PlayerInteract : MonoBehaviour
         lanzarAction = mapa.FindAction("Lanzar");
         cambiarObjetoAction = mapa.FindAction("CambiarObjeto");
         soltarAction = mapa.FindAction("Soltar");
+
+        GameObject jugador = GameObject.FindGameObjectWithTag("Player");
+        if (jugador != null)
+        {
+            collidersJugador = jugador.GetComponentsInChildren<Collider>();
+        }
     }
 
     void OnEnable()
@@ -95,11 +102,7 @@ public class PlayerInteract : MonoBehaviour
                     var trigger = hit.collider.GetComponent<SceneChangeTrigger>();
                     if (trigger) trigger.Interact();
                     var messageTrigger = hit.collider.GetComponent<MessageTrigger>();
-                    if (messageTrigger)
-                    {
-                        messageTrigger.Interact();
-                    }
-
+                    if (messageTrigger) messageTrigger.Interact();
                 }
             }
         }
@@ -137,12 +140,10 @@ public class PlayerInteract : MonoBehaviour
 
             intentos++;
 
-            // Validar que el índice es válido y el objeto no es null
             if (nuevaIndex >= 0 && nuevaIndex < objetosRecogidos.Count && objetosRecogidos[nuevaIndex] != null)
             {
                 Transform candidato = objetosRecogidos[nuevaIndex];
 
-                // Si no estamos en inspección, aceptamos cualquier objeto
                 if (menuInspeccion == null || !menuInspeccion.inspeccion || EsAlimentoObjetivo(candidato))
                 {
                     objetoActivoIndex = nuevaIndex;
@@ -164,11 +165,6 @@ public class PlayerInteract : MonoBehaviour
         puedeCambiar = true;
     }
 
-
-
-
-
-
     private bool EsAlimentoObjetivo(Transform objeto)
     {
         if (objeto == null) return false;
@@ -185,10 +181,6 @@ public class PlayerInteract : MonoBehaviour
         return item.item.type == ItemType.AlimentoObjetivo && item.item != itemGenerico;
     }
 
-
-
-
-
     IEnumerator LanzarObjetoConDelay()
     {
         Transform objeto = objetosRecogidos[objetoActivoIndex];
@@ -199,6 +191,9 @@ public class PlayerInteract : MonoBehaviour
         {
             objeto.SetParent(null);
             rb.isKinematic = false;
+            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+            objeto.position = Camera.main.transform.position + Camera.main.transform.forward * 0.5f;
 
             foreach (var col in objeto.GetComponentsInChildren<Collider>())
                 col.enabled = true;
@@ -206,6 +201,19 @@ public class PlayerInteract : MonoBehaviour
             rb.AddForce(Camera.main.transform.forward * fuerzaLanzamiento, ForceMode.Impulse);
             rb.AddForce(-Camera.main.transform.right * ajusteLanzamientoIzq, ForceMode.Impulse);
             rb.AddForce(Camera.main.transform.right * ajusteLanzamientoDcha, ForceMode.Impulse);
+
+            if (collidersJugador != null)
+            {
+                foreach (var colJugador in collidersJugador)
+                {
+                    foreach (var colObjeto in objeto.GetComponentsInChildren<Collider>())
+                    {
+                        Physics.IgnoreCollision(colJugador, colObjeto, true);
+                    }
+                }
+
+                StartCoroutine(RestaurarColisionConJugador(objeto.GetComponentsInChildren<Collider>(), 2f));
+            }
         }
 
         inventory.RemoveItem(itemData, 1);
@@ -227,19 +235,29 @@ public class PlayerInteract : MonoBehaviour
             objeto.SetParent(null);
             rb.isKinematic = false;
             rb.useGravity = true;
+            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
             foreach (var col in objeto.GetComponentsInChildren<Collider>())
                 col.enabled = true;
-
-            Collider jugadorCollider = GetComponent<Collider>();
-            foreach (var col in objeto.GetComponentsInChildren<Collider>())
-                Physics.IgnoreCollision(col, jugadorCollider, true);
 
             Vector3 dropPosition = Camera.main.transform.position + Camera.main.transform.forward * distanciaSoltarObjeto;
             rb.MovePosition(dropPosition);
 
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+
+            if (collidersJugador != null)
+            {
+                foreach (var colJugador in collidersJugador)
+                {
+                    foreach (var colObjeto in objeto.GetComponentsInChildren<Collider>())
+                    {
+                        Physics.IgnoreCollision(colJugador, colObjeto, true);
+                    }
+                }
+
+                StartCoroutine(RestaurarColisionConJugador(objeto.GetComponentsInChildren<Collider>(), 2f));
+            }
         }
 
         ultimoObjetoSoltado = objeto;
@@ -260,21 +278,13 @@ public class PlayerInteract : MonoBehaviour
 
             bool esActivo = (i == objetoActivoIndex);
             bool esInspeccionable = EsAlimentoObjetivo(objeto);
-
-            // Mostrar solo si es el activo y es inspeccionable (cuando el menú está activo)
             bool mostrarVisualmente = esActivo && (!menuInspeccion?.inspeccion ?? true || esInspeccionable);
 
             foreach (var renderer in objeto.GetComponentsInChildren<MeshRenderer>(true))
-            {
-                if (renderer != null)
-                    renderer.enabled = mostrarVisualmente;
-            }
+                renderer.enabled = mostrarVisualmente;
 
             foreach (var collider in objeto.GetComponentsInChildren<Collider>(true))
-            {
-                if (collider != null)
-                    collider.enabled = false;
-            }
+                collider.enabled = false;
 
             if (esActivo)
             {
@@ -287,8 +297,7 @@ public class PlayerInteract : MonoBehaviour
 
                     foreach (var colNuevo in collsNuevo)
                         foreach (var colSoltado in collsSoltado)
-                            if (colNuevo != null && colSoltado != null)
-                                Physics.IgnoreCollision(colNuevo, colSoltado, true);
+                            Physics.IgnoreCollision(colNuevo, colSoltado, true);
 
                     StartCoroutine(RestaurarColisionEntreObjetos(collsNuevo, collsSoltado, 0.5f));
                 }
@@ -316,12 +325,6 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-
-
-
-
-
-
     IEnumerator IgnorarColisionTemporal(Transform objeto, float duracion)
     {
         Collider jugadorCollider = GetComponent<Collider>();
@@ -341,6 +344,22 @@ public class PlayerInteract : MonoBehaviour
         foreach (var colA in collsA)
             foreach (var colB in collsB)
                 Physics.IgnoreCollision(colA, colB, false);
+    }
+
+    IEnumerator RestaurarColisionConJugador(Collider[] collsObjeto, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (collidersJugador != null)
+        {
+            foreach (var colJugador in collidersJugador)
+            {
+                foreach (var colObjeto in collsObjeto)
+                {
+                    Physics.IgnoreCollision(colJugador, colObjeto, false);
+                }
+            }
+        }
     }
 
     public List<Transform> GetObjetosRecogidos()
@@ -387,17 +406,12 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-
-
-
-
-
-
     private void OnApplicationQuit()
     {
         inventory.Container.Clear();
     }
 }
+
 
 
 
