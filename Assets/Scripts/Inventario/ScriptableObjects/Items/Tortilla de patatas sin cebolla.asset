@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96ab257b8117a074bb18914e2379e884, type: 3}
-  m_Name: Hi Cacao
+  m_Name: Tortilla de patatas sin cebolla
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 1
-  description: Hi Cacao
-  itemName: Hi Cacao
+  description: Tortila de patatas
+  itemName: ' Tortilla de patatas sin cebolla'
   calidadReal: 4
