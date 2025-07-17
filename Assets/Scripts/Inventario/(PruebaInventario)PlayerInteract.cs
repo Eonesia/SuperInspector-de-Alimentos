@@ -202,6 +202,8 @@ public class PlayerInteract : MonoBehaviour
             rb.AddForce(-Camera.main.transform.right * ajusteLanzamientoIzq, ForceMode.Impulse);
             rb.AddForce(Camera.main.transform.right * ajusteLanzamientoDcha, ForceMode.Impulse);
 
+            objeto.gameObject.AddComponent<FriccionPersonalizada>().friccion = 0.5f;
+
             if (collidersJugador != null)
             {
                 foreach (var colJugador in collidersJugador)
@@ -245,6 +247,8 @@ public class PlayerInteract : MonoBehaviour
 
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+
+            objeto.gameObject.AddComponent<FriccionPersonalizada>().friccion = 0.5f;
 
             if (collidersJugador != null)
             {
@@ -410,7 +414,42 @@ public class PlayerInteract : MonoBehaviour
     {
         inventory.Container.Clear();
     }
+
+    // Clase de fricción personalizada
+    public class FriccionPersonalizada : MonoBehaviour
+    {
+        public float friccion = 0.5f;
+        public float umbralParada = 0.05f; // Velocidad mínima para detener el objeto
+        private Rigidbody rb;
+
+        void Start()
+        {
+            rb = GetComponent<Rigidbody>();
+        }
+
+        void FixedUpdate()
+        {
+            if (rb == null) return;
+
+            Vector3 velocidad = rb.linearVelocity;
+            Vector3 velocidadHorizontal = new Vector3(velocidad.x, 0, velocidad.z);
+
+            if (velocidadHorizontal.magnitude > umbralParada)
+            {
+                Vector3 friccionForce = -velocidadHorizontal.normalized * friccion;
+                rb.AddForce(friccionForce, ForceMode.Acceleration);
+            }
+            else
+            {
+                // Detener completamente el movimiento horizontal
+                rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+            }
+        }
+    }
+
 }
+
+
 
 
 
