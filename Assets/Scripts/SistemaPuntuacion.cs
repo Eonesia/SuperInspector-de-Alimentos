@@ -11,7 +11,7 @@ public class SistemaPuntuacion : MonoBehaviour
 
     public GameObject panelMensajeRepetido;     // Asignar en el Inspector
     public GameObject panelTodosEvaluados;      // Asignar en el Inspector
-
+    public MenuLista menuLista;
     private HashSet<DefaultObject> alimentosEvaluados = new HashSet<DefaultObject>();
 
     private void Awake()
@@ -56,10 +56,18 @@ public class SistemaPuntuacion : MonoBehaviour
         puntuacionTotal += puntosGanados;
 
         alimentosEvaluados.Add(alimento);
+        Debug.Log("Marcando como analizado: " + alimento.name);
+
+        menuLista?.MarcarComoAnalizado(alimento.name);
+
+
+
 
         Debug.Log($"Evaluaste '{alimento.name}' con un {notaJugador}. " +
                   $"Calidad real: {alimento.calidadReal}. Puntos ganados: {puntosGanados}. " +
                   $"Total acumulado: {puntuacionTotal}");
+
+        
     }
 
     public void VerificarEvaluacionCompletaDelDia()
