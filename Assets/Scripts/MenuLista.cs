@@ -12,6 +12,7 @@ public class MenuLista : MonoBehaviour
     {
         public string nombre;
         public bool analizado = false;
+        public int valoracion = -1; // -1 si no ha sido evaluado
     }
 
     public GameObject objetoMenuLista;
@@ -36,7 +37,7 @@ public class MenuLista : MonoBehaviour
         hud.SetActive(!lista);
     }
 
-    public void MarcarComoAnalizado(string nombre)
+    public void MarcarComoAnalizado(string nombre, int valoracion)
     {
         string nombreNormalizado = NormalizarTexto(nombre);
 
@@ -45,7 +46,8 @@ public class MenuLista : MonoBehaviour
             if (NormalizarTexto(entrada.nombre) == nombreNormalizado && !entrada.analizado)
             {
                 entrada.analizado = true;
-                Debug.Log("Marcando como analizado");
+                entrada.valoracion = valoracion;
+                Debug.Log($"Marcando como analizado con valoración {valoracion}");
                 break;
             }
         }
@@ -61,7 +63,8 @@ public class MenuLista : MonoBehaviour
         {
             if (entrada.analizado)
             {
-                resultado += $"• <s><color=#888888>{entrada.nombre}</color></s>\n";
+                string spriteEstrella = ObtenerEtiquetaSprite(entrada.valoracion);
+                resultado += $"• <s><color=#888888>{entrada.nombre}</color></s> {spriteEstrella}\n";
             }
             else
             {
@@ -73,9 +76,17 @@ public class MenuLista : MonoBehaviour
         Debug.Log(textoLista.text);
     }
 
-    private void Start()
+    private string ObtenerEtiquetaSprite(int valoracion)
     {
-        ActualizarTexto();
+        switch (valoracion)
+        {
+            case 6: return "<sprite name=\"estrella verde oscuro\">";
+            case 5: return "<sprite name=\"estrella verde claro\">";
+            case 4: return "<sprite name=\"estrella amarillo\">";
+            case 3: return "<sprite name=\"estrella naranja\">";
+            case 2: return "<sprite name=\"estrella roja\">";
+            default: return "<sprite name=\"estrella negra\">";
+        }
     }
 
     private string NormalizarTexto(string texto)
@@ -87,6 +98,12 @@ public class MenuLista : MonoBehaviour
             .ToArray());
         return textoSinTildes.Normalize(NormalizationForm.FormC);
     }
+
+    private void Start()
+    {
+        ActualizarTexto();
+    }
 }
+
 
 
