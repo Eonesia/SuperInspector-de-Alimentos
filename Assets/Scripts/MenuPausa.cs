@@ -8,6 +8,7 @@ public class MenuPausa : MonoBehaviour
     public GameObject hud;
     public GameObject botonInicial;
     public bool pausa = false;
+    public GameObject objetoMenuAjustes;
 
     // ✅ Referencias a otros menús
     public MenuInspeccion menuInspeccion;
@@ -49,4 +50,22 @@ public class MenuPausa : MonoBehaviour
         Debug.Log("Saliendo del juego...");
         Application.Quit();
     }
+
+    public void AbrirAjustes()
+{
+    objetoMenuPausa.SetActive(false);
+    objetoMenuAjustes.SetActive(true);
+}
+
+public void VolverDesdeAjustes()
+{
+    objetoMenuAjustes.SetActive(false);
+    objetoMenuPausa.SetActive(true);
+
+    if (botonInicial != null)
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(botonInicial);
+    }
+}
 }
