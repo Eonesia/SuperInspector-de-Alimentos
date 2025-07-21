@@ -4542,26 +4542,26 @@ MonoBehaviour:
     a analizar los alimentos. \r\nAdem\xE1s, dentro del diario de an\xE1lisis, encontrar\xE1s
     informaci\xF3n sobre los c\xE1lculos a tener en cuenta a la hora de calificar
     esos alimentos.\n\nCada alimento requiere que sumes y restes los puntos en base
-    a su cantidad de componentes, Ejemplo: si tiene 41 gramos de az\xFAcar por cada
-    100 g buscar\xE1s en tu diario la tabla del az\xFAcar y comporbar\xE1s cuantos
-    puntos deber\xE1s sumar por esa cantidad.\n\nCuidado porque las bebidas y al
-    comidas a veces no tienen las mismas tablas y hay alimentos que tienen componentes
-    t\xF3xicos o prohibidos que deber\xE1s calificar como estrellas negras.\r\n\r\nEn
-    el despacho, podr\xE1s leer el peri\xF3dico, para informarte sobre acontecimientos
-    y noticias que te facilitar\xE1n el an\xE1lisis de alimentos especiales y componentes
-    prohibidos.\r\n\r\nTendr\xE1s que usar tu libreta personal, para saber que alimentos
-    ser\xE1 necesario analizar en cada mes (nivel).\r\n\r\nPara encontrar los alimentos
-    que haya que analizar, tendr\xE1s que explorar el supermercado para encontrarlos.\r\n\r\nPara
-    analizar los alimentos, tienes que abrir la interfaz de an\xE1lisis, donde los
-    alimentos girar\xE1n revelando su informaci\xF3n nutricional. Tendr\xE1s que
-    analizar esta informaci\xF3n, y usando las notas y tendr\xE1s que ponerle la
-    nota adecuada a cada uno tocando una de las estrellas como antes se ha ejemplificado.\r\n\r\nUna
-    vez analizados todos los alimentos del mes, tendr\xE1s que tocar la bola del
-    despacho para pasar al siguiente mes y repetir el proceso con otros alimentos
-    y teniendo en cuenta nuevas noticias.\r\n\r\nCuidado con los alimentos con edulcorantes
-    porque sua n\xE1lisis tiene que ser m\xE1s cuidadoso.\n\nAs\xED pasar\xE1n los
-    meses, y al llegar al cuarto mes, se analizar\xE1 tu eficiencia como trabajador
-    del supermercado."
+    a su cantidad de componentes.      \nEjemplo: si tiene 41 gramos de az\xFAcar
+    por cada 100 g, buscar\xE1s en tu diario la tabla del az\xFAcar y comprobar\xE1s
+    cuantos puntos deber\xE1s sumar por esa cantidad.\n\nCuidado, porque las bebidas
+    y las comidas a veces no tienen las mismas tablas y puede que haya alimentos
+    que tengan componentes t\xF3xicos o prohibidos que deber\xE1s calificar con estrellas
+    negras.\r\n\r\nEn el despacho podr\xE1s leer el peri\xF3dico para informarte
+    sobre acontecimientos y noticias que te facilitar\xE1n el an\xE1lisis de alimentos
+    especiales y componentes prohibidos.\r\n\r\nTendr\xE1s que usar tu libreta personal,
+    para saber que alimentos ser\xE1 necesario analizar en cada mes (nivel).\r\n\r\nPara
+    encontrar los alimentos que haya que analizar, tendr\xE1s que explorar el supermercado
+    para encontrarlos.\r\n\r\nPara analizar los alimentos, tienes que abrir la interfaz
+    de an\xE1lisis, donde los alimentos girar\xE1n revelando su informaci\xF3n nutricional.
+    Tendr\xE1s que analizar esta informaci\xF3n, y usando las notas y tendr\xE1s
+    que ponerle la calificaci\xF3n adecuada a cada uno, tocando una de las estrellas
+    como antes se ha ejemplificado.\r\n\r\nUna vez analizados todos los alimentos
+    del mes, tendr\xE1s que tocar el reloj del despacho para pasar al siguiente mes
+    y repetir el proceso con otros alimentos y teniendo en cuenta nuevas noticias.\r\n\r\nCuidado
+    con los alimentos con edulcorantes porque su an\xE1lisis tiene que ser m\xE1s
+    cuidadoso.\n\nAs\xED pasar\xE1n los meses, y al llegar al cuarto mes, se analizar\xE1
+    tu eficiencia como trabajador del supermercado."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
