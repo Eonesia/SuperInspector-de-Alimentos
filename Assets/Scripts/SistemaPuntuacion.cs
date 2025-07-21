@@ -28,6 +28,25 @@ public class SistemaPuntuacion : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        ReconectarReferencias();
+    }
+
+
+    public void ReconectarReferencias()
+    {
+        if (panelMensajeRepetido == null)
+            panelMensajeRepetido = GameObject.Find("AlimentoRepetido");
+
+        if (panelTodosEvaluados == null)
+            panelTodosEvaluados = GameObject.Find("MensajeJornadaTerminada");
+
+        if (menuLista == null)
+            menuLista = FindObjectOfType<MenuLista>();
+    }
+
+
     public void EvaluarAlimento(DefaultObject alimento, int notaJugador)
     {
         List<DefaultObject> permitidos = DiaActualManager.instancia.ObtenerAlimentosPermitidos();
