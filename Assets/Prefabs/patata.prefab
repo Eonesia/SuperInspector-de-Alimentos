@@ -92,7 +92,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 2420e171da2a83e4a932330607a46e5e, type: 2}
-  rotacionEnMano: {x: 0, y: 0, z: 0}
+  rotacionEnMano: {x: -90, y: -50, z: 15}
+  posicionEnMano: {x: 0.08, y: -0.1, z: 0}
+  posicionInspeccionPersonalizada: {x: 0, y: 0, z: 0}
+  rotacionInspeccionPersonalizada: {x: 0, y: 0, z: 0}
 --- !u!136 &1589127736735955649
 CapsuleCollider:
   m_ObjectHideFlags: 0

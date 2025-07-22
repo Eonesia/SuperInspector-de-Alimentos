@@ -231,7 +231,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 2420e171da2a83e4a932330607a46e5e, type: 2}
-  rotacionEnMano: {x: 0, y: 0, z: 0}
+  rotacionEnMano: {x: -90, y: -50, z: 15}
+  posicionEnMano: {x: 0.08, y: -0.1, z: 0}
+  posicionInspeccionPersonalizada: {x: 0, y: 0, z: 0}
+  rotacionInspeccionPersonalizada: {x: 0, y: 0, z: 0}
 --- !u!4 &5702925932565996831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7e0f03d3d09441a4783014d885f4d52b, type: 3}
