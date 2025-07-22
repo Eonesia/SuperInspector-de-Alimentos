@@ -8,6 +8,11 @@ public class MenuInicio : MonoBehaviour
         SceneManager.LoadScene("TextosPrincipio");
     }
 
+    public void Tutorial ()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
     public void Salir()
     {
         Application.Quit();
