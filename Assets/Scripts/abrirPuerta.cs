@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class abrirPuerta : MonoBehaviour, IInteractable
 {
     [Header("Rotación de apertura (en grados):")]
@@ -11,6 +10,11 @@ public class abrirPuerta : MonoBehaviour, IInteractable
 
     [Header("Objeto externo opcional para rotar igual")]
     [SerializeField] private Transform objetoExtraARotar;
+
+    [Header("Opcional: permitir rotación distinta para el objeto extra")]
+    [SerializeField] private bool noMismaRotacion = false;
+
+    [SerializeField] private Vector3 rotacionExtraApertura = new Vector3(0, 90, 0);
 
     private Quaternion rotacionInicial;
     private Quaternion rotacionAbierta;
@@ -25,14 +29,17 @@ public class abrirPuerta : MonoBehaviour, IInteractable
 
     private void Start()
     {
+        // Rotación de la puerta
         rotacionInicial = transform.rotation;
         rotacionAbierta = rotacionInicial * Quaternion.Euler(rotacionApertura);
         rotacionObjetivo = rotacionInicial;
 
+        // Rotación del objeto extra
         if (objetoExtraARotar != null)
         {
             rotacionInicialExtra = objetoExtraARotar.rotation;
-            rotacionAbiertaExtra = rotacionInicialExtra * Quaternion.Euler(rotacionApertura);
+            Vector3 apertura = noMismaRotacion ? rotacionExtraApertura : rotacionApertura;
+            rotacionAbiertaExtra = rotacionInicialExtra * Quaternion.Euler(apertura);
             rotacionObjetivoExtra = rotacionInicialExtra;
         }
     }
@@ -44,7 +51,9 @@ public class abrirPuerta : MonoBehaviour, IInteractable
         rotacionObjetivo = estaAbierto ? rotacionInicial : rotacionAbierta;
 
         if (objetoExtraARotar != null)
+        {
             rotacionObjetivoExtra = estaAbierto ? rotacionInicialExtra : rotacionAbiertaExtra;
+        }
 
         estaAbierto = !estaAbierto;
         rotando = true;
@@ -61,7 +70,7 @@ public class abrirPuerta : MonoBehaviour, IInteractable
             velocidadRotacion * Time.deltaTime
         );
 
-        // Rotar el objeto extra si está asignado
+        // Rotar el objeto extra
         if (objetoExtraARotar != null)
         {
             objetoExtraARotar.rotation = Quaternion.RotateTowards(
@@ -71,16 +80,16 @@ public class abrirPuerta : MonoBehaviour, IInteractable
             );
         }
 
-        // Comprobar si ya llegaron ambos
         bool principalListo = Quaternion.Angle(transform.rotation, rotacionObjetivo) < 0.1f;
         bool extraListo = objetoExtraARotar == null || Quaternion.Angle(objetoExtraARotar.rotation, rotacionObjetivoExtra) < 0.1f;
 
         if (principalListo && extraListo)
         {
+            transform.rotation = rotacionObjetivo;
+
             if (objetoExtraARotar != null)
                 objetoExtraARotar.rotation = rotacionObjetivoExtra;
 
-            transform.rotation = rotacionObjetivo;
             rotando = false;
         }
     }
