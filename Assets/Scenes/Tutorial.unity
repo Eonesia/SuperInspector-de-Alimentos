@@ -1575,6 +1575,7 @@ GameObject:
   - component: {fileID: 56030219}
   - component: {fileID: 56030223}
   - component: {fileID: 56030222}
+  - component: {fileID: 56030224}
   m_Layer: 0
   m_Name: CambiarMesTexto (7)
   m_TagString: Untagged
@@ -1612,8 +1613,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 0
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1776,6 +1777,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texto3D: {fileID: 56030219}
   duracionFade: 0.2
+--- !u!114 &56030224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56030218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &56782486
 GameObject:
   m_ObjectHideFlags: 0
@@ -5214,8 +5230,8 @@ Transform:
   m_GameObject: {fileID: 237231607}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -63.3, y: 2.2763, z: 27.49}
-  m_LocalScale: {x: 0.96270716, y: 1, z: 0.4787967}
+  m_LocalPosition: {x: -63.3072, y: 2.2763, z: 27.49}
+  m_LocalScale: {x: 0.9641512, y: 1, z: 0.4787967}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2131116406}
@@ -6034,8 +6050,8 @@ Transform:
   m_GameObject: {fileID: 266314109}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -94.4094, y: -0.07, z: 29.8388}
-  m_LocalScale: {x: 1.4942572, y: 1, z: 3.7327354}
+  m_LocalPosition: {x: -94.3483, y: -0.07, z: 29.8388}
+  m_LocalScale: {x: 1.5065101, y: 1, z: 3.7327354}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -15377,8 +15393,8 @@ Transform:
   m_GameObject: {fileID: 703841457}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -63.3, y: 7.0642667, z: 27.49}
-  m_LocalScale: {x: 0.96270716, y: 1, z: 0.4787967}
+  m_LocalPosition: {x: -63.3072, y: 7.0642667, z: 27.49}
+  m_LocalScale: {x: 0.9641512, y: 1, z: 0.4787967}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2131116406}
@@ -28482,6 +28498,7 @@ GameObject:
   - component: {fileID: 1245418882}
   - component: {fileID: 1245418886}
   - component: {fileID: 1245418885}
+  - component: {fileID: 1245418887}
   m_Layer: 0
   m_Name: CambiarMesTexto (3)
   m_TagString: Untagged
@@ -28519,8 +28536,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 0
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -28683,6 +28700,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texto3D: {fileID: 1245418882}
   duracionFade: 0.2
+--- !u!114 &1245418887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245418881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1251029246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29434,6 +29466,7 @@ GameObject:
   - component: {fileID: 1281621808}
   - component: {fileID: 1281621812}
   - component: {fileID: 1281621811}
+  - component: {fileID: 1281621813}
   m_Layer: 0
   m_Name: CambiarMesTexto (5)
   m_TagString: Untagged
@@ -29471,8 +29504,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 0
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -29635,6 +29668,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texto3D: {fileID: 1281621808}
   duracionFade: 0.2
+--- !u!114 &1281621813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281621807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1290227779
 GameObject:
   m_ObjectHideFlags: 0
@@ -35717,6 +35765,7 @@ GameObject:
   - component: {fileID: 1561355331}
   - component: {fileID: 1561355335}
   - component: {fileID: 1561355334}
+  - component: {fileID: 1561355336}
   m_Layer: 0
   m_Name: CambiarMesTexto (1)
   m_TagString: Untagged
@@ -35753,8 +35802,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 0
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -35917,6 +35966,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texto3D: {fileID: 1561355331}
   duracionFade: 0.2
+--- !u!114 &1561355336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561355330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1565239798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36128,6 +36192,7 @@ GameObject:
   - component: {fileID: 1568572978}
   - component: {fileID: 1568572977}
   - component: {fileID: 1568572976}
+  - component: {fileID: 1568572981}
   m_Layer: 0
   m_Name: CambiarMesTexto (8)
   m_TagString: Untagged
@@ -36199,7 +36264,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 0
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -36327,6 +36392,21 @@ RectTransform:
   m_AnchoredPosition: {x: -42.489, y: 2.5931}
   m_SizeDelta: {x: 1.2264, y: 0.2863}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1568572981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568572975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1568678012
 GameObject:
   m_ObjectHideFlags: 0
@@ -36448,6 +36528,7 @@ GameObject:
   - component: {fileID: 1571647630}
   - component: {fileID: 1571647633}
   - component: {fileID: 1571647634}
+  - component: {fileID: 1571647635}
   m_Layer: 0
   m_Name: CambiarMesTexto (4)
   m_TagString: Untagged
@@ -36485,8 +36566,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 0
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -36649,6 +36730,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texto3D: {fileID: 1571647630}
   duracionFade: 0.2
+--- !u!114 &1571647635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571647629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1576342754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38012,6 +38108,7 @@ GameObject:
   - component: {fileID: 1641060913}
   - component: {fileID: 1641060917}
   - component: {fileID: 1641060916}
+  - component: {fileID: 1641060918}
   m_Layer: 0
   m_Name: CambiarMesTexto (6)
   m_TagString: Untagged
@@ -38050,8 +38147,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 0
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -38214,6 +38311,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.5481825, y: 6.369398, z: 5.372822}
   m_Center: {x: 0.19961157, y: 0.27487895, z: 0.74089587}
+--- !u!114 &1641060918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641060912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1644552223
 GameObject:
   m_ObjectHideFlags: 0
@@ -47259,6 +47371,7 @@ GameObject:
   - component: {fileID: 2007345616}
   - component: {fileID: 2007345620}
   - component: {fileID: 2007345619}
+  - component: {fileID: 2007345621}
   m_Layer: 0
   m_Name: CambiarMesTexto (2)
   m_TagString: Untagged
@@ -47296,8 +47409,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 0
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -47460,6 +47573,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.522527, y: 5.9333177, z: 4.0915275}
   m_Center: {x: -0.3321252, y: -0.14289969, z: -2.045729}
+--- !u!114 &2007345621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007345615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2015910408
 GameObject:
   m_ObjectHideFlags: 0
@@ -49485,6 +49613,7 @@ GameObject:
   - component: {fileID: 2098036872}
   - component: {fileID: 2098036875}
   - component: {fileID: 2098036876}
+  - component: {fileID: 2098036877}
   m_Layer: 0
   m_Name: CambiarMesTexto
   m_TagString: Untagged
@@ -49521,8 +49650,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 0
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -49685,6 +49814,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texto3D: {fileID: 2098036872}
   duracionFade: 0.2
+--- !u!114 &2098036877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098036871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2098242869
 GameObject:
   m_ObjectHideFlags: 0
