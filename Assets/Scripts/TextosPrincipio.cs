@@ -10,7 +10,7 @@ public class TextosPrincipio : MonoBehaviour
 
     private string[] frases = {
         "Trabajas en EoMarket como inspector de alimentos",
-        "La sociedad hoy en dia valora mucho el etiquetado de los productos alimenticios",
+        "La sociedad hoy en día valora mucho el etiquetado de los productos alimenticios",
         "Tu trabajo puede cambiar la vida de la gente",
         "Prepara las pegatinas y a calificar",
         "Tu jornada comienza ahora..."
