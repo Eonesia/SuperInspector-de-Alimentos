@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: TECLADO
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
-  m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60.55
+  m_fontSize: 61.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -871,8 +871,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SALIR DEL JUEGO
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
-  m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1260,8 +1260,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CONTROLES
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
-  m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1648,8 +1648,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SENSIBILIDAD
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
-  m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1782,10 +1782,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: COMO JUGAR
+  m_text: "C\xD3MO JUGAR"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
-  m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2234,8 +2234,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: EMPEZAR PARTIDA
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
-  m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3088,8 +3088,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: MANDO
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
-  m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3678,8 +3678,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: VOLUMEN DE JUEGO
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
-  m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4131,8 +4131,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: AJUSTES
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
-  m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4681,8 +4681,8 @@ MonoBehaviour:
     inspecci\xF3n de producto)\nD-Pad - Pasar objetos del inventario\r\nOptions -
     Abrir men\xFA de pausa\r"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
-  m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4706,7 +4706,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.55
+  m_fontSize: 40.15
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5233,8 +5233,8 @@ MonoBehaviour:
     de producto)\r\nMovimiento del rat\xF3n - Rotar c\xE1mara\nRueda del rat\xF3n
     - Pasar objetos del inventario\r\nEsc - Abrir men\xFA de pausa\r"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
-  m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5258,7 +5258,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.45
+  m_fontSize: 39.05
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
