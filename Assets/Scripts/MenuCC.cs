@@ -1,13 +1,17 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MenuCC : MonoBehaviour
 {
     public GameObject objetoMenuCuaderno;
     public GameObject objetoMenuCalculadora;
 
-    public MenuInspeccion menuInspeccion; // NUEVO: Referencia al menú de inspección
+    public MenuInspeccion menuInspeccion;
 
     public bool Cuaderno = false;
+
+    // NUEVO: botón inicial del menú cuaderno para navegación con mando
+    public GameObject botonInicialCuaderno;
 
     public void AlternarCuaderno()
     {
@@ -24,5 +28,12 @@ public class MenuCC : MonoBehaviour
         bool mostrarCursor = Cuaderno || objetoMenuCalculadora.activeSelf;
         Cursor.lockState = mostrarCursor ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = mostrarCursor;
+
+        // NUEVO: Seleccionar botón inicial para navegación con mando
+        if (Cuaderno && botonInicialCuaderno != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(botonInicialCuaderno);
+        }
     }
 }

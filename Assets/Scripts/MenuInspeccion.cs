@@ -1,16 +1,20 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MenuInspeccion : MonoBehaviour
 {
     public GameObject objetoMenuInspeccion;
     public GameObject hud;
-    public MenuLista menuLista;       // Referencia al menú de lista
-    public MenuPausa menuPausa;       // Referencia al menú de pausa
+    public MenuLista menuLista;       
+    public MenuPausa menuPausa;       
 
-    public InspectionHandler inspectionHandler; // Referencia al sistema de inspección
-    public PlayerInteract playerInteract;       // Referencia al sistema de inventario
+    public InspectionHandler inspectionHandler;
+    public PlayerInteract playerInteract;
 
     public bool inspeccion = false;
+
+    // Botón inicial que se seleccionará cuando se abra el menú
+    public GameObject botonInicial;
 
     public void AlternarInspeccion()
     {
@@ -40,19 +44,24 @@ public class MenuInspeccion : MonoBehaviour
             }
         }
 
+        // Seleccionamos el botón inicial para navegación con mando cuando el menú se active
+        if (inspeccion && botonInicial != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(botonInicial);
+        }
     }
 
     public void MostrarMensajeEvaluacionRepetida()
-{
-    Time.timeScale = 0f;
-    Cursor.lockState = CursorLockMode.None;
-    Cursor.visible = true;
-
-    if (SistemaPuntuacion.instanciaUnica != null)
     {
-        SistemaPuntuacion.instanciaUnica.MostrarMensajeAlimentoRepetido();
-    }
-}
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
+        if (SistemaPuntuacion.instanciaUnica != null)
+        {
+            SistemaPuntuacion.instanciaUnica.MostrarMensajeAlimentoRepetido();
+        }
+    }
 }
 
