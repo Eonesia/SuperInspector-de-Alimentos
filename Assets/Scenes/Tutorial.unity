@@ -1606,8 +1606,8 @@ MonoBehaviour:
   m_text: "Perfecto! ya est\xE1s listo para vivir tu vida de inspector, vuelve al
     men\xFA inicial y empieza la partida"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
-  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
+  m_sharedMaterial: {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1701,7 +1701,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  - {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28529,8 +28529,8 @@ MonoBehaviour:
   m_text: "Con el alimento en la mano puedes hacer varias cosas. Tu principal funci\xF3n
     ser\xE1 evaluarlo, pulsa E para ver el men\xFA de evaluaci\xF3n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
-  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
+  m_sharedMaterial: {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -28624,7 +28624,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  - {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29497,8 +29497,8 @@ MonoBehaviour:
   m_text: "Si has agarrado mas de 1 alimento, puedes ir intercambi\xE1ndolos con
     la rueda del rat\xF3n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
-  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
+  m_sharedMaterial: {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -29592,7 +29592,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  - {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -35795,8 +35795,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Usa WASD para moverte y el rat\xF3n para controlar la c\xE1mara"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
-  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
+  m_sharedMaterial: {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -35890,7 +35890,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  - {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -36559,8 +36559,8 @@ MonoBehaviour:
   m_text: "para soltar el alimento, puedes pulsar la tecla R, pero si quieres divertirte,
     lanza los alimentos con el click derecho del rat\xF3n. \xA1Prueba a darle a Jaime!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
-  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
+  m_sharedMaterial: {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -36654,7 +36654,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  - {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -38140,8 +38140,8 @@ MonoBehaviour:
     en la nutrigu\xEDa que aparece al abrir el men\xFA de inspecci\xF3n, puedes usar
     la calculadora si lo necesitas"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
-  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
+  m_sharedMaterial: {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -38235,7 +38235,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  - {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -47402,8 +47402,8 @@ MonoBehaviour:
   m_text: "\xBFVes esa estanter\xEDa?  dir\xEDgete a ella y coge un producto con
     el click izquierdo del rat\xF3n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
-  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
+  m_sharedMaterial: {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -47497,7 +47497,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  - {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -49643,8 +49643,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Bienvenido a Superinspector de alimentos
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
-  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
+  m_sharedMaterial: {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -49738,7 +49738,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  - {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
