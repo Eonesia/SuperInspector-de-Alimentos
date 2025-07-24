@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AlimentoMercado
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 0
+  type: 1
   description: Alimento Mercado
   itemName: Alimento Mercado
   calidadReal: 1
