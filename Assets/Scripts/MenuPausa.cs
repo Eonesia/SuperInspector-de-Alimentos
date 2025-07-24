@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class MenuPausa : MonoBehaviour
 {
@@ -8,17 +9,16 @@ public class MenuPausa : MonoBehaviour
     public GameObject hud;
     public GameObject botonInicial;
     public bool pausa = false;
-    public GameObject objetoMenuAjustes;
 
-    // ✅ Referencias a otros menús
+    public MenuAjustes menuAjustes;  // Referencia al script MenuAjustes
+
     public MenuInspeccion menuInspeccion;
     public MenuCC menuCC;
-    public MenuLista menuLista; // ✅ NUEVO: referencia al menú de lista
+    public MenuLista menuLista;
 
     public void AlternarPausa()
     {
-        // ✅ Si el menú de ajustes está activo, ciérralo primero en lugar de cerrar el menú de pausa
-        if (objetoMenuAjustes.activeSelf)
+        if (menuAjustes != null && menuAjustes.menuAjustesUI.activeSelf)
         {
             VolverDesdeAjustes();
             return;
@@ -27,7 +27,6 @@ public class MenuPausa : MonoBehaviour
         pausa = !pausa;
         objetoMenuPausa.SetActive(pausa);
 
-        // ✅ Verificar si hay otros menús abiertos antes de activar el HUD
         bool otrosMenusAbiertos =
             (menuInspeccion != null && menuInspeccion.inspeccion) ||
             (menuCC != null && menuCC.Cuaderno) ||
@@ -41,8 +40,7 @@ public class MenuPausa : MonoBehaviour
 
         if (pausa && botonInicial != null)
         {
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(botonInicial);
+            StartCoroutine(SeleccionarConRetraso(botonInicial));
         }
     }
 
@@ -60,19 +58,38 @@ public class MenuPausa : MonoBehaviour
 
     public void AbrirAjustes()
     {
-        objetoMenuPausa.SetActive(false);
-        objetoMenuAjustes.SetActive(true);
+        if (menuAjustes != null)
+        {
+            objetoMenuPausa.SetActive(false);
+            menuAjustes.AbrirMenuAjustes();
+        }
     }
 
     public void VolverDesdeAjustes()
+{
+    if (menuAjustes != null)
     {
-        objetoMenuAjustes.SetActive(false);
-        objetoMenuPausa.SetActive(true);
+        menuAjustes.CerrarMenuAjustes();
+    }
 
-        if (botonInicial != null)
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(botonInicial);
-        }
+    objetoMenuPausa.SetActive(true);
+
+    // Restaurar pausa correctamente
+    pausa = true;
+    Time.timeScale = 0f;
+    Cursor.lockState = CursorLockMode.None;
+    Cursor.visible = true;
+
+    if (botonInicial != null)
+    {
+        StartCoroutine(SeleccionarConRetraso(botonInicial));
+    }
+}
+
+    private IEnumerator SeleccionarConRetraso(GameObject objeto)
+    {
+        yield return null; // espera 1 frame para que se actualice UI
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(objeto);
     }
 }

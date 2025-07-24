@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
-
 public class MessageDisplayManager : MonoBehaviour
 {
     [Header("Referencias UI")]
@@ -21,12 +20,14 @@ public class MessageDisplayManager : MonoBehaviour
     public Pagina[] paginas;
     private int paginaActual = 0;
 
-    [Header("Bot髇 de pasar p醙ina")]
+    [Header("Bot贸n de pasar p谩gina")]
     public Button botonPagina;
     public Sprite iconoPrimeraPagina;
     public Sprite iconoSegundaPagina;
 
-
+    // NUEVO: bot贸n inicial para navegar con mando
+    [Header("Navegaci贸n mando")]
+    public GameObject botonInicial;
 
     private void Start()
     {
@@ -34,19 +35,6 @@ public class MessageDisplayManager : MonoBehaviour
         if (messageImage != null)
             messageImage.gameObject.SetActive(false);
     }
-
-    //private void Update()
-    //{
-    //    if (isVisible && canClose && Mouse.current.leftButton.wasPressedThisFrame)
-    //    {
-    //        // Solo cerrar si NO se ha hecho clic sobre un bot髇 u otro UI
-    //        if (!EventSystem.current.IsPointerOverGameObject())
-    //        {
-    //            HideMessage();
-    //        }
-    //    }
-    //}
-
 
     public void ToggleMessage(string message, Sprite optionalImage = null)
     {
@@ -72,18 +60,29 @@ public class MessageDisplayManager : MonoBehaviour
         if (playerControllerScript != null)
             playerControllerScript.bloquearRotacion = true;
 
-
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        MostrarPagina(0); // Siempre empieza en la primera p醙ina
-    }
+        MostrarPagina(0);
 
+        // NUEVO: seleccionar bot贸n inicial para navegaci贸n con mando
+        if (botonInicial != null)
+        {
+            StartCoroutine(SeleccionarConRetraso(botonInicial));
+        }
+    }
 
     private System.Collections.IEnumerator EnableCloseAfterDelay()
     {
-        yield return null; // Espera un frame
+        yield return null;
         canClose = true;
+    }
+
+    private System.Collections.IEnumerator SeleccionarConRetraso(GameObject boton)
+    {
+        yield return null; // espera un frame para asegurar el SetActive
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(boton);
     }
 
     public void HideMessage()
@@ -95,13 +94,11 @@ public class MessageDisplayManager : MonoBehaviour
         if (playerControllerScript != null)
             playerControllerScript.bloquearRotacion = false;
 
-
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         StartCoroutine(ReactivateTriggerAfterDelay());
     }
-
 
     public void ActiveTrigger()
     {
@@ -118,7 +115,7 @@ public class MessageDisplayManager : MonoBehaviour
 
     private System.Collections.IEnumerator ReactivateTriggerAfterDelay()
     {
-        yield return new WaitForSeconds(0.01f); // Espera 0.2 segundos antes de reactivar
+        yield return new WaitForSeconds(0.01f);
         if (NoticiasTrigger != null)
             NoticiasTrigger.SetActive(true);
     }
@@ -143,23 +140,17 @@ public class MessageDisplayManager : MonoBehaviour
             }
         }
 
-        // Cambiar el icono del bot髇 seg鷑 la p醙ina
         if (botonPagina != null && botonPagina.image != null)
         {
             botonPagina.image.sprite = (paginaActual == 0) ? iconoPrimeraPagina : iconoSegundaPagina;
         }
     }
 
-
     public void CambiarPagina()
     {
         int siguientePagina = (paginaActual + 1) % paginas.Length;
         MostrarPagina(siguientePagina);
     }
-
-
-
-
 }
 
 
