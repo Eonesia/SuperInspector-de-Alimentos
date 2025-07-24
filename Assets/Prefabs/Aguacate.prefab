@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48047ee08921ff946a18a94c119a4509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 2420e171da2a83e4a932330607a46e5e, type: 2}
+  item: {fileID: 11400000, guid: 96a6f69fd0c8fb24d86f2a9db737367e, type: 2}
   rotacionEnMano: {x: -90, y: -50, z: 15}
   posicionEnMano: {x: 0.08, y: -0.1, z: 0}
   posicionInspeccionPersonalizada: {x: 0, y: 0, z: 0}
