@@ -10,8 +10,9 @@ public class MenuCC : MonoBehaviour
 
     public bool Cuaderno = false;
 
-    // NUEVO: botón inicial del menú cuaderno para navegación con mando
+    [Header("Botones para navegación con mando")]
     public GameObject botonInicialCuaderno;
+    public GameObject botonInicialCalculadora;
 
     public void AlternarCuaderno()
     {
@@ -23,17 +24,22 @@ public class MenuCC : MonoBehaviour
         objetoMenuCuaderno.SetActive(Cuaderno);
         objetoMenuCalculadora.SetActive(!Cuaderno);
 
-        Time.timeScale = Cuaderno || !Cuaderno ? 0f : 1f;
+        Time.timeScale = 0f; // Pausar correctamente
 
         bool mostrarCursor = Cuaderno || objetoMenuCalculadora.activeSelf;
         Cursor.lockState = mostrarCursor ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = mostrarCursor;
 
-        // NUEVO: Seleccionar botón inicial para navegación con mando
+        // Seleccionar el botón inicial adecuado según el menú activo
         if (Cuaderno && botonInicialCuaderno != null)
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(botonInicialCuaderno);
+        }
+        else if (!Cuaderno && botonInicialCalculadora != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(botonInicialCalculadora);
         }
     }
 }
