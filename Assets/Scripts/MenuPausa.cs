@@ -17,11 +17,18 @@ public class MenuPausa : MonoBehaviour
 
     public void AlternarPausa()
     {
+        // ✅ Si el menú de ajustes está activo, ciérralo primero en lugar de cerrar el menú de pausa
+        if (objetoMenuAjustes.activeSelf)
+        {
+            VolverDesdeAjustes();
+            return;
+        }
+
         pausa = !pausa;
         objetoMenuPausa.SetActive(pausa);
 
         // ✅ Verificar si hay otros menús abiertos antes de activar el HUD
-        bool otrosMenusAbiertos = 
+        bool otrosMenusAbiertos =
             (menuInspeccion != null && menuInspeccion.inspeccion) ||
             (menuCC != null && menuCC.Cuaderno) ||
             (menuLista != null && menuLista.lista);
@@ -41,8 +48,8 @@ public class MenuPausa : MonoBehaviour
 
     public void IrAlMenuPrincipal()
     {
-        Time.timeScale = 1f; 
-        SceneManager.LoadScene("MenuInicio"); 
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MenuInicio");
     }
 
     public void SalirDelJuego()
@@ -52,20 +59,20 @@ public class MenuPausa : MonoBehaviour
     }
 
     public void AbrirAjustes()
-{
-    objetoMenuPausa.SetActive(false);
-    objetoMenuAjustes.SetActive(true);
-}
-
-public void VolverDesdeAjustes()
-{
-    objetoMenuAjustes.SetActive(false);
-    objetoMenuPausa.SetActive(true);
-
-    if (botonInicial != null)
     {
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(botonInicial);
+        objetoMenuPausa.SetActive(false);
+        objetoMenuAjustes.SetActive(true);
     }
-}
+
+    public void VolverDesdeAjustes()
+    {
+        objetoMenuAjustes.SetActive(false);
+        objetoMenuPausa.SetActive(true);
+
+        if (botonInicial != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(botonInicial);
+        }
+    }
 }
