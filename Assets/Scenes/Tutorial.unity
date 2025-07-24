@@ -34296,6 +34296,7 @@ MonoBehaviour:
   menuInspeccion: {fileID: 1490885010}
   Cuaderno: 0
   botonInicialCuaderno: {fileID: 789372283}
+  botonInicialCalculadora: {fileID: 739829905}
 --- !u!114 &1490885012
 MonoBehaviour:
   m_ObjectHideFlags: 0
