@@ -2,11 +2,15 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI; // <-- Necesario para Button
 
 public class TextosPrincipio : MonoBehaviour
 {
     public TextMeshProUGUI textoNarrativo;
     public float tiempoEntreFrases = 3f;
+    public Button botonSkip; // <-- Asignar en el inspector
+
+    private Coroutine secuenciaTexto;
 
     private string[] frases = {
         "Trabajas en EoMarket como inspector de alimentos",
@@ -18,35 +22,31 @@ public class TextosPrincipio : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(MostrarTextoNarrativo());
+        // Iniciar narrativa
+        secuenciaTexto = StartCoroutine(MostrarTextoNarrativo());
+
+        // Configurar botón skip
+        botonSkip.onClick.AddListener(SaltarNarrativa);
     }
 
     private IEnumerator MostrarTextoNarrativo()
     {
         foreach (string frase in frases)
         {
-            // Establecer el texto con opacidad cero
             textoNarrativo.text = frase;
             textoNarrativo.alpha = 0;
 
-            // Fade in
             yield return StartCoroutine(FadeText(0f, 1f, 1f));
-
-            // Mantener visible
             yield return new WaitForSeconds(tiempoEntreFrases);
-
-            // Fade out
             yield return StartCoroutine(FadeText(1f, 0f, 1f));
         }
 
-        // Cambiar de escena al final
-        SceneManager.LoadScene("EscenaPrueba"); // Cambia esto por el nombre de tu escena principal
+        CargarSiguienteEscena();
     }
 
     private IEnumerator FadeText(float startAlpha, float endAlpha, float duration)
     {
         float elapsed = 0f;
-
         while (elapsed < duration)
         {
             float alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / duration);
@@ -54,7 +54,26 @@ public class TextosPrincipio : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-
         textoNarrativo.alpha = endAlpha;
     }
+
+    public void SaltarNarrativa()
+    {
+        if (secuenciaTexto != null)
+        {
+            StopCoroutine(secuenciaTexto);
+        }
+
+        // Opcional: ocultar texto y botón
+        textoNarrativo.alpha = 0f;
+        botonSkip.gameObject.SetActive(false);
+
+        CargarSiguienteEscena();
+    }
+
+    private void CargarSiguienteEscena()
+    {
+        SceneManager.LoadScene("EscenaPrueba"); // Cambia por el nombre de tu escena
+    }
+
 }
