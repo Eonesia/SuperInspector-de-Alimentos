@@ -268,8 +268,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: TECLADO
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
-  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
+  m_sharedMaterial: {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5540,8 +5540,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: MANDO
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
-  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
+  m_sharedMaterial: {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7721,7 +7721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1675368292
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8554,14 +8554,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8820755, g: 0.91705436, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7d4b449404e5e9341ad2d5857e3c5c77, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cdab38e930101d4db96912117b61bd5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9452,8 +9452,8 @@ MonoBehaviour:
     izquierdo abajo -  Abrir calculadora, abrir libreta (en la inspecci\xF3n de producto)\nCruceta
     - Pasar objetos del inventario\r\nOptions - Abrir men\xFA de pausa\r"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
-  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
+  m_sharedMaterial: {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9484,7 +9484,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -10331,8 +10331,8 @@ MonoBehaviour:
     de producto)\r\nMovimiento del rat\xF3n - Rotar c\xE1mara\nRueda del rat\xF3n
     - Pasar objetos del inventario\r\nEsc - Abrir men\xFA de pausa\r"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
-  m_sharedMaterial: {fileID: 1903834507107384912, guid: 8198544d257e00a4984b49b0be8d2c2b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
+  m_sharedMaterial: {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10363,7 +10363,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
