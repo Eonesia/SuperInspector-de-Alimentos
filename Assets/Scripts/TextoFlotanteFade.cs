@@ -8,12 +8,27 @@ public class TextoFlotanteFade : MonoBehaviour
     public float duracionFade = 1f;
 
     private bool mostrando = false;
+    private Coroutine fadeCoroutine;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!mostrando && other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            StartCoroutine(FadeInTexto());
+            if (fadeCoroutine != null)
+                StopCoroutine(fadeCoroutine);
+
+            fadeCoroutine = StartCoroutine(FadeInTexto());
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (fadeCoroutine != null)
+                StopCoroutine(fadeCoroutine);
+
+            fadeCoroutine = StartCoroutine(FadeOutTexto());
         }
     }
 
@@ -22,18 +37,37 @@ public class TextoFlotanteFade : MonoBehaviour
         mostrando = true;
         float t = 0f;
 
-        Color colorInicial = texto3D.color;
-        colorInicial.a = 0f;
-        texto3D.color = colorInicial;
+        Color color = texto3D.color;
+        color.a = 0f;
+        texto3D.color = color;
 
         while (t < duracionFade)
         {
             float alpha = Mathf.Lerp(0f, 1f, t / duracionFade);
-            texto3D.color = new Color(colorInicial.r, colorInicial.g, colorInicial.b, alpha);
+            texto3D.color = new Color(color.r, color.g, color.b, alpha);
             t += Time.deltaTime;
             yield return null;
         }
 
-        texto3D.color = new Color(colorInicial.r, colorInicial.g, colorInicial.b, 1f);
+        texto3D.color = new Color(color.r, color.g, color.b, 1f);
+    }
+
+    private IEnumerator FadeOutTexto()
+    {
+        mostrando = false;
+        float t = 0f;
+
+        Color color = texto3D.color;
+        color.a = 1f;
+
+        while (t < duracionFade)
+        {
+            float alpha = Mathf.Lerp(1f, 0f, t / duracionFade);
+            texto3D.color = new Color(color.r, color.g, color.b, alpha);
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        texto3D.color = new Color(color.r, color.g, color.b, 0f);
     }
 }
