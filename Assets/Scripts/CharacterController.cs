@@ -17,7 +17,6 @@ public class FirstPersonController : MonoBehaviour
     public float limiteRotacionVertical = 80f;
     [HideInInspector] public bool bloquearRotacion = false;
 
-
     [Header("Input Actions")]
     public InputActionReference moveAction;
     public InputActionReference jumpAction;
@@ -33,6 +32,15 @@ public class FirstPersonController : MonoBehaviour
     public MenuInspeccion menuInspeccion;
     public MenuCC menuCC;
 
+    [Header("Sonidos de pasos")]
+    public AudioSource pasosAudioSource;
+    public AudioClip[] pasosCaminar;
+    public AudioClip[] pasosCorrer;
+    public float intervaloPasosCaminar = 0.5f;
+    public float intervaloPasosCorrer = 0.3f;
+    [Range(0f, 1f)] public float volumenPasos = 1f;
+
+
     private CharacterController controlador;
     private Vector2 inputMovimiento;
     private Vector2 inputLook;
@@ -40,8 +48,8 @@ public class FirstPersonController : MonoBehaviour
     private float rotacionVertical = 0f;
     private bool saltar = false;
     private bool corriendo = false;
+    private float tiempoUltimoPaso = 0f;
 
-    // Delegados nombrados para desuscribir correctamente
     private System.Action<InputAction.CallbackContext> pausaCallback;
     private System.Action<InputAction.CallbackContext> listaCallback;
     private System.Action<InputAction.CallbackContext> inspeccionCallback;
@@ -69,32 +77,16 @@ public class FirstPersonController : MonoBehaviour
         lookAction.action.performed += ctx => inputLook = ctx.ReadValue<Vector2>();
         lookAction.action.canceled += ctx => inputLook = Vector2.zero;
 
-        pausaCallback = ctx =>
-        {
-            if (menuPausa != null)
-                menuPausa.AlternarPausa();
-        };
+        pausaCallback = ctx => { if (menuPausa != null) menuPausa.AlternarPausa(); };
         pauseAction.action.performed += pausaCallback;
 
-        listaCallback = ctx =>
-        {
-            if (menuLista != null)
-                menuLista.AlternarLista();
-        };
+        listaCallback = ctx => { if (menuLista != null) menuLista.AlternarLista(); };
         listaAction.action.performed += listaCallback;
 
-        inspeccionCallback = ctx =>
-        {
-            if (menuInspeccion != null)
-                menuInspeccion.AlternarInspeccion();
-        };
+        inspeccionCallback = ctx => { if (menuInspeccion != null) menuInspeccion.AlternarInspeccion(); };
         inspeccionAction.action.performed += inspeccionCallback;
 
-        cuadernoCallback = ctx =>
-        {
-            if (menuCC != null)
-                menuCC.AlternarCuaderno();
-        };
+        cuadernoCallback = ctx => { if (menuCC != null) menuCC.AlternarCuaderno(); };
         cambioccAction.action.performed += cuadernoCallback;
     }
 
@@ -109,7 +101,6 @@ public class FirstPersonController : MonoBehaviour
         inspeccionAction.action.Disable();
         cambioccAction.action.Disable();
 
-        // Desuscribir correctamente los delegados para evitar MissingReferenceException
         if (pauseAction != null) pauseAction.action.performed -= pausaCallback;
         if (listaAction != null) listaAction.action.performed -= listaCallback;
         if (inspeccionAction != null) inspeccionAction.action.performed -= inspeccionCallback;
@@ -148,14 +139,24 @@ public class FirstPersonController : MonoBehaviour
         saltar = false;
         velocidadVertical += gravedad * Time.deltaTime;
         controlador.Move(Vector3.up * velocidadVertical * Time.deltaTime);
+
+        // Reproducir pasos
+        if (enSuelo && inputMovimiento.magnitude > 0.1f)
+        {
+            float intervalo = corriendo ? intervaloPasosCorrer : intervaloPasosCaminar;
+
+            if (Time.time - tiempoUltimoPaso > intervalo)
+            {
+                ReproducirPaso();
+                tiempoUltimoPaso = Time.time;
+            }
+        }
     }
 
     void RotarCamara()
     {
-        if (bloquearRotacion)
-        {
-              return;
-        }
+        if (bloquearRotacion) return;
+
         Vector2 deltaRaton = Mouse.current != null && Mouse.current.delta.IsActuated()
             ? Mouse.current.delta.ReadValue() * sensibilidadRaton
             : Vector2.zero;
@@ -168,4 +169,17 @@ public class FirstPersonController : MonoBehaviour
         camaraTransform.localRotation = Quaternion.Euler(rotacionVertical, 0f, 0f);
         transform.Rotate(Vector3.up * lookInput.x);
     }
+
+    void ReproducirPaso()
+    {
+        if (pasosAudioSource == null) return;
+
+        AudioClip[] clips = corriendo ? pasosCorrer : pasosCaminar;
+        if (clips.Length == 0) return;
+
+        AudioClip clip = clips[Random.Range(0, clips.Length)];
+        pasosAudioSource.PlayOneShot(clip, volumenPasos);
+    }
+
 }
+
