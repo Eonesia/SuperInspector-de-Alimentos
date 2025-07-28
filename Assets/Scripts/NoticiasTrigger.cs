@@ -6,6 +6,8 @@ public class MessageTrigger : MonoBehaviour
     [TextArea]
     public string messageToShow;
     public Sprite imageToShow;
+    public AudioSource audioSource;
+    public AudioClip interactionSound;
 
     public void Interact()
     {
@@ -19,10 +21,16 @@ public class MessageTrigger : MonoBehaviour
             //else
             //{
                 messageManager.ShowMessage(messageToShow, imageToShow);
+              
             //}
         }
+        audioSource.PlayOneShot(interactionSound);
     }
 
+    public void AudioPeriodico()
+    {
+        audioSource.PlayOneShot(interactionSound);
+    }
 }
 
 

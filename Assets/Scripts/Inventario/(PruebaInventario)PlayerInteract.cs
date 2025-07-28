@@ -101,11 +101,20 @@ public class PlayerInteract : MonoBehaviour
                 {
                     var trigger = hit.collider.GetComponent<SceneChangeTrigger>();
                     if (trigger) trigger.Interact();
+
                     var messageTrigger = hit.collider.GetComponent<MessageTrigger>();
                     if (messageTrigger) messageTrigger.Interact();
                 }
+
+                // 🔊 Reproducir sonido si el objeto tiene InteractableSound
+                var sound = hit.collider.GetComponent<InteractableSound>();
+                if (sound != null)
+                {
+                    sound.PlayInteractionSound();
+                }
             }
         }
+
 
         float scroll = cambiarObjetoAction.ReadValue<Vector2>().y;
         if (puedeCambiar && scroll != 0 && objetosRecogidos.Count > 0)
