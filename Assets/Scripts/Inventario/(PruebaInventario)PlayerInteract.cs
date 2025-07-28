@@ -331,15 +331,28 @@ public class PlayerInteract : MonoBehaviour
 
     IEnumerator IgnorarColisionTemporal(Transform objeto, float duracion)
     {
+        if (objeto == null) yield break;
+
         Collider jugadorCollider = GetComponent<Collider>();
-        foreach (var col in objeto.GetComponentsInChildren<Collider>())
-            Physics.IgnoreCollision(col, jugadorCollider, true);
+        Collider[] colliders = objeto.GetComponentsInChildren<Collider>();
+
+        foreach (var col in colliders)
+        {
+            if (col != null && jugadorCollider != null)
+                Physics.IgnoreCollision(col, jugadorCollider, true);
+        }
 
         yield return new WaitForSeconds(duracion);
 
-        foreach (var col in objeto.GetComponentsInChildren<Collider>())
-            Physics.IgnoreCollision(col, jugadorCollider, false);
+        if (objeto == null) yield break;
+
+        foreach (var col in colliders)
+        {
+            if (col != null && jugadorCollider != null)
+                Physics.IgnoreCollision(col, jugadorCollider, false);
+        }
     }
+
 
     IEnumerator RestaurarColisionEntreObjetos(Collider[] collsA, Collider[] collsB, float delay)
     {
