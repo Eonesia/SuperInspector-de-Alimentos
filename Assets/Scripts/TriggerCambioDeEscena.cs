@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class TriggerCambioDeEscena : MonoBehaviour
 {
     public string nombreEscenaDestino = "MenuInicio";
+    public AudioSource audioSource;
+    public AudioClip sonidoReloj;
 
     // Acción pública para asignar desde otro script o inspector
     public InputAction clickAction;
@@ -27,6 +29,7 @@ public class TriggerCambioDeEscena : MonoBehaviour
     private void OnClick(InputAction.CallbackContext context)
     {
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        audioSource.PlayOneShot(sonidoReloj);
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
