@@ -25,6 +25,9 @@ public class MenuLista : MonoBehaviour
 
     public bool lista = false;
 
+    public AudioSource audioSource;
+    public AudioClip sonidoInterfaz;
+
     public void AlternarLista()
     {
         if (!lista &&
@@ -35,6 +38,7 @@ public class MenuLista : MonoBehaviour
         lista = !lista;
         objetoMenuLista.SetActive(lista);
         hud.SetActive(!lista);
+        audioSource.PlayOneShot(sonidoInterfaz);
     }
 
     public void MarcarComoAnalizado(string nombre, int valoracion)
