@@ -30,6 +30,9 @@ public class PlayerInteract : MonoBehaviour
 
     private Collider[] collidersJugador;
 
+    public AudioSource audioSource;
+    public AudioClip sonidoLanzarObjeto;
+
     void Awake()
     {
         var mapa = inputActions.FindActionMap("Jugador");
@@ -194,6 +197,7 @@ public class PlayerInteract : MonoBehaviour
     {
         Transform objeto = objetosRecogidos[objetoActivoIndex];
         ItemObject itemData = objeto.GetComponent<Item>().item;
+        audioSource.PlayOneShot(sonidoLanzarObjeto);
 
         Rigidbody rb = objeto.GetComponent<Rigidbody>();
         if (rb != null)
@@ -233,6 +237,7 @@ public class PlayerInteract : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
         ActualizarObjetoActivo();
+        
     }
 
     void SoltarObjeto()
