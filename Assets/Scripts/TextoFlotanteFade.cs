@@ -9,11 +9,24 @@ public class TextoFlotanteFade : MonoBehaviour
 
     private bool mostrando = false;
     private Coroutine fadeCoroutine;
+    private Transform objetivo; // El jugador
+
+    private void Update()
+    {
+        if (mostrando && objetivo != null)
+    {
+        Vector3 direccion = objetivo.position - transform.position;
+        direccion.y = 0f; // ← opcional: mantener texto horizontal
+        transform.forward = -direccion.normalized; // ← invertir para que se lea bien
+    }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            objetivo = other.transform;
+
             if (fadeCoroutine != null)
                 StopCoroutine(fadeCoroutine);
 
@@ -25,6 +38,8 @@ public class TextoFlotanteFade : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            objetivo = null;
+
             if (fadeCoroutine != null)
                 StopCoroutine(fadeCoroutine);
 
