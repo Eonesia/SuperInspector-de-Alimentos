@@ -16,6 +16,9 @@ public class MenuInspeccion : MonoBehaviour
     // Botón inicial que se seleccionará cuando se abra el menú
     public GameObject botonInicial;
 
+    public AudioSource audioSource;
+    public AudioClip sonidoInterfaz;
+
     public void AlternarInspeccion()
     {
         if (!inspeccion && (
@@ -26,6 +29,7 @@ public class MenuInspeccion : MonoBehaviour
         inspeccion = !inspeccion;
         objetoMenuInspeccion.SetActive(inspeccion);
         hud.SetActive(!inspeccion);
+        audioSource.PlayOneShot(sonidoInterfaz);
 
         Time.timeScale = inspeccion ? 0f : 1f;
         Cursor.lockState = inspeccion ? CursorLockMode.None : CursorLockMode.Locked;
