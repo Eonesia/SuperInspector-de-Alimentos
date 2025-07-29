@@ -2664,6 +2664,8 @@ MonoBehaviour:
   - {fileID: 980860713}
   - {fileID: 2037335592}
   ragdollMaterial: {fileID: 2100000, guid: 40b50817c104a2f42b88fa31b999f188, type: 2}
+  audioSource: {fileID: 0}
+  interactionSound: {fileID: 0}
 --- !u!95 &641532705
 Animator:
   serializedVersion: 7
@@ -7742,7 +7744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 42}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675368293
