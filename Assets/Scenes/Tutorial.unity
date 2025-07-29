@@ -16963,7 +16963,7 @@ Transform:
   m_GameObject: {fileID: 733557254}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.6588435, z: -0, w: 0.75228006}
-  m_LocalPosition: {x: -86.266, y: 2.42, z: 23.763}
+  m_LocalPosition: {x: -85.029, y: 2.42, z: 23.763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17021,6 +17021,8 @@ MonoBehaviour:
   inspectionHandler: {fileID: 0}
   menuInspeccion: {fileID: 0}
   itemGenerico: {fileID: 11400000, guid: 2420e171da2a83e4a932330607a46e5e, type: 2}
+  audioSource: {fileID: 0}
+  sonidoLanzarObjeto: {fileID: 0}
 --- !u!1 &736180126
 GameObject:
   m_ObjectHideFlags: 0
@@ -21745,7 +21747,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f4654eed34d116142afab59a14c08f54, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 935032577}
   m_SourcePrefab: {fileID: 100100000, guid: f4654eed34d116142afab59a14c08f54, type: 3}
 --- !u!1 &933898653
 GameObject:
@@ -21855,6 +21860,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933898653}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &935032575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f4654eed34d116142afab59a14c08f54, type: 3}
+  m_PrefabInstance: {fileID: 918583849}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &935032577
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935032575}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.7183003, y: 6.5734897, z: 3.0376618}
+  m_Center: {x: 0.35298178, y: -0.27987435, z: 1.0188329}
 --- !u!1001 &935343818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34892,6 +34923,8 @@ MonoBehaviour:
   playerInteract: {fileID: 733557262}
   inspeccion: 0
   botonInicial: {fileID: 1189858078}
+  audioSource: {fileID: 0}
+  sonidoInterfaz: {fileID: 0}
 --- !u!114 &1490885011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48693,6 +48726,8 @@ MonoBehaviour:
     analizado: 0
     valoracion: -1
   lista: 0
+  audioSource: {fileID: 0}
+  sonidoInterfaz: {fileID: 0}
 --- !u!114 &1984337066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53734,6 +53769,8 @@ MonoBehaviour:
   - {fileID: 4868051082447500829}
   - {fileID: 2816431785064149557}
   ragdollMaterial: {fileID: 2100000, guid: 40b50817c104a2f42b88fa31b999f188, type: 2}
+  audioSource: {fileID: 0}
+  interactionSound: {fileID: 0}
 --- !u!65 &919132149129372059
 BoxCollider:
   m_ObjectHideFlags: 0
