@@ -8,6 +8,9 @@ public class ARagdoll : MonoBehaviour
 
     private Rigidbody[] rigidbodies;
 
+    public AudioSource audioSource;
+    public AudioClip interactionSound;
+
     void Start()
     {
         rigidbodies = transform.GetComponentsInChildren<Rigidbody>();
@@ -42,6 +45,8 @@ public class ARagdoll : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("InteractLayer"))
         {
             SetEnabled(true);
+            audioSource.PlayOneShot(interactionSound);
         }
+        
     }
 }
