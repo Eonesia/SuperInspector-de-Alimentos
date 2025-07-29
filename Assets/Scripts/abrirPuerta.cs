@@ -1,17 +1,17 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public class abrirPuerta : MonoBehaviour, IInteractable
 {
-    [Header("RotaciÛn de apertura (en grados):")]
+    [Header("Rotaci√≥n de apertura (en grados):")]
     [SerializeField] private Vector3 rotacionApertura = new Vector3(0, 90, 0);
 
-    [Header("Velocidad de rotaciÛn (grados por segundo):")]
+    [Header("Velocidad de rotaci√≥n (grados por segundo):")]
     [SerializeField] private float velocidadRotacion = 180f;
 
     [Header("Objeto externo opcional para rotar igual")]
     [SerializeField] private Transform objetoExtraARotar;
 
-    [Header("Opcional: permitir rotaciÛn distinta para el objeto extra")]
+    [Header("Opcional: permitir rotaci√≥n distinta para el objeto extra")]
     [SerializeField] private bool noMismaRotacion = false;
 
     [SerializeField] private Vector3 rotacionExtraApertura = new Vector3(0, 90, 0);
@@ -26,15 +26,22 @@ public class abrirPuerta : MonoBehaviour, IInteractable
 
     private bool estaAbierto = false;
     private bool rotando = false;
+    private bool abriendo = false;
+
+    public AudioSource audioSource;
+    public AudioClip sonidoAbrir;
+    public AudioClip sonidoCerrar;
+    [Range(0f, 1f)] public float volumen = 1f;
+
+    private bool sonidoPrincipalReproducido = false;
+    private bool sonidoExtraReproducido = false;
 
     private void Start()
     {
-        // RotaciÛn de la puerta
         rotacionInicial = transform.rotation;
         rotacionAbierta = rotacionInicial * Quaternion.Euler(rotacionApertura);
         rotacionObjetivo = rotacionInicial;
 
-        // RotaciÛn del objeto extra
         if (objetoExtraARotar != null)
         {
             rotacionInicialExtra = objetoExtraARotar.rotation;
@@ -48,11 +55,13 @@ public class abrirPuerta : MonoBehaviour, IInteractable
     {
         if (rotando) return;
 
-        rotacionObjetivo = estaAbierto ? rotacionInicial : rotacionAbierta;
+        abriendo = !estaAbierto; // ‚Üê Aqu√≠ detectamos si se va a abrir o cerrar
+
+        rotacionObjetivo = abriendo ? rotacionAbierta : rotacionInicial;
 
         if (objetoExtraARotar != null)
         {
-            rotacionObjetivoExtra = estaAbierto ? rotacionInicialExtra : rotacionAbiertaExtra;
+            rotacionObjetivoExtra = abriendo ? rotacionAbiertaExtra : rotacionInicialExtra;
         }
 
         estaAbierto = !estaAbierto;
@@ -70,6 +79,13 @@ public class abrirPuerta : MonoBehaviour, IInteractable
             velocidadRotacion * Time.deltaTime
         );
 
+        if (!sonidoPrincipalReproducido)
+        {
+            AudioClip clip = abriendo ? sonidoAbrir : sonidoCerrar;
+            audioSource.PlayOneShot(clip, volumen);
+            sonidoPrincipalReproducido = true;
+        }
+
         // Rotar el objeto extra
         if (objetoExtraARotar != null)
         {
@@ -78,6 +94,13 @@ public class abrirPuerta : MonoBehaviour, IInteractable
                 rotacionObjetivoExtra,
                 velocidadRotacion * Time.deltaTime
             );
+
+            if (!sonidoExtraReproducido)
+            {
+                AudioClip clip = abriendo ? sonidoAbrir : sonidoCerrar;
+                audioSource.PlayOneShot(clip, volumen);
+                sonidoExtraReproducido = true;
+            }
         }
 
         bool principalListo = Quaternion.Angle(transform.rotation, rotacionObjetivo) < 0.1f;
@@ -91,6 +114,9 @@ public class abrirPuerta : MonoBehaviour, IInteractable
                 objetoExtraARotar.rotation = rotacionObjetivoExtra;
 
             rotando = false;
+            sonidoPrincipalReproducido = false;
+            sonidoExtraReproducido = false;
         }
     }
 }
+
