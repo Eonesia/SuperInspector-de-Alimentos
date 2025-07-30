@@ -14,6 +14,7 @@ public class MenuPausa : MonoBehaviour
     public MenuInspeccion menuInspeccion;
     public MenuCC menuCC;
     public MenuLista menuLista;
+    public MessageDisplayManager messageDisplayManager;
 
     public void AlternarPausa()
     {
@@ -35,23 +36,41 @@ public class MenuPausa : MonoBehaviour
         hud.SetActive(!pausa && !otrosMenusAbiertos);
 
         // Manejo de tiempo y cursor dependiendo del estado general
-        if (!otrosMenusAbiertos)
+        if (pausa)
         {
-            Time.timeScale = pausa ? 0f : 1f;
-            Cursor.lockState = pausa ? CursorLockMode.None : CursorLockMode.Locked;
-            Cursor.visible = pausa;
-        }
-        else if (!pausa)
-        {
-            // Si salimos de la pausa pero hay otro menú activo, mantener juego pausado y cursor visible
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-        }
 
-        if (pausa && botonInicial != null)
+            if (botonInicial != null && objetoMenuPausa.activeInHierarchy)
+            {
+                CoroutineRunner.RunCoroutine(SeleccionarConRetraso(botonInicial));
+            }
+        }
+        else
         {
-            StartCoroutine(SeleccionarConRetraso(botonInicial));
+            if (messageDisplayManager != null && messageDisplayManager.IsMessageVisible())
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+
+                if (messageDisplayManager.botonInicial != null && messageDisplayManager.messagePanel.activeInHierarchy)
+                {
+                    CoroutineRunner.RunCoroutine(SeleccionarConRetraso(messageDisplayManager.botonInicial));
+                }
+            }
+            else if (!otrosMenusAbiertos)
+            {
+                Time.timeScale = 1f;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else
+            {
+                Time.timeScale = 0f;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
         }
     }
 
@@ -91,7 +110,7 @@ public class MenuPausa : MonoBehaviour
 
         if (botonInicial != null)
         {
-            StartCoroutine(SeleccionarConRetraso(botonInicial));
+            CoroutineRunner.RunCoroutine(SeleccionarConRetraso(botonInicial));
         }
     }
 
