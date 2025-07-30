@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e1856bf2d9e324e8600949b7d144b9, type: 3}
+  m_Name: DiaTutorial
+  m_EditorClassIdentifier: 
+  numeroDia: 0
+  alimentosPermitidos:
+  - {fileID: 11400000, guid: 501ed7baf61e3fb4fb0168f4a6916f83, type: 2}
+  - {fileID: 11400000, guid: 419d8d2fada497343a9e7905797d11b9, type: 2}
+  - {fileID: 11400000, guid: 58e46b3969da92b49a750e6f15beb847, type: 2}
+  - {fileID: 11400000, guid: e06aeb3218c171947a60aca5576e5d16, type: 2}
+  - {fileID: 11400000, guid: 303f2c18d9eecb145b42dacbf1dd8ac0, type: 2}
