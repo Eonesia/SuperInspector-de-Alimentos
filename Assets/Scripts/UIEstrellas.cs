@@ -8,7 +8,7 @@ public class UIEstrellas : MonoBehaviour
         PlayerInteract player = FindObjectOfType<PlayerInteract>();
         if (player == null)
         {
-            Debug.LogWarning("No se encontró al jugador.");
+            Debug.LogWarning("No se encontrÃ³ al jugador.");
             return;
         }
 
@@ -20,17 +20,23 @@ public class UIEstrellas : MonoBehaviour
             return;
         }
 
-        // Buscar el sistema de puntuación
+        // Buscar el sistema de puntuaciÃ³n
         SistemaPuntuacion sistema = FindObjectOfType<SistemaPuntuacion>();
         if (sistema == null)
         {
-            Debug.LogWarning("No se encontró el sistema de puntuación.");
+            Debug.LogWarning("No se encontrÃ³ el sistema de puntuaciÃ³n.");
             return;
         }
 
-        // Evaluar el alimento
-        sistema.EvaluarAlimento((DefaultObject)alimento, nota);
-
-        Debug.Log($"Alimento evaluado: {alimento.name} con nota {nota}");
+        // Evaluar solo si es DefaultObject
+        if (alimento is DefaultObject defaultAlimento)
+        {
+            sistema.EvaluarAlimento(defaultAlimento, nota);
+            Debug.Log($"Alimento evaluado: {alimento.name} con nota {nota}");
+        }
+        else
+        {
+            Debug.LogWarning($"El alimento '{alimento.name}' no es evaluable.");
+        }
     }
 }
