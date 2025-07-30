@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.Audio;
 
 public class MenuInicio : MonoBehaviour
 {
     public GameObject botonPrimeroSeleccionado;  // Asignar desde inspector el botón inicial
+    public AudioSource audioSource;
+    public AudioClip sonidoBoton1;
+    public AudioClip sonidoBoton2;
 
     private void OnEnable()
     {
@@ -30,5 +34,13 @@ public class MenuInicio : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Salir");
+    }
+    public void AudioBoton1()
+    {
+        audioSource.PlayOneShot(sonidoBoton1);
+    }
+    public void AudioBoton2()
+    {
+        audioSource.PlayOneShot(sonidoBoton2);
     }
 }
