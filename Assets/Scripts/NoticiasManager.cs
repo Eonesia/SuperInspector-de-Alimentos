@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
-using System.Collections;
 
 public class MessageDisplayManager : MonoBehaviour
 {
@@ -26,13 +25,9 @@ public class MessageDisplayManager : MonoBehaviour
     public Sprite iconoPrimeraPagina;
     public Sprite iconoSegundaPagina;
 
+    // NUEVO: botón inicial para navegar con mando
     [Header("Navegación mando")]
     public GameObject botonInicial;
-
-    [Header("Referencias a otros menús")]
-    public MenuPausa menuPausa;
-    public MenuInspeccion menuInspeccion;
-    public MenuLista menuLista;
 
     private void Start()
     {
@@ -77,21 +72,22 @@ public class MessageDisplayManager : MonoBehaviour
 
         MostrarPagina(0);
 
+        // NUEVO: seleccionar botón inicial para navegación con mando
         if (botonInicial != null)
         {
             StartCoroutine(SeleccionarConRetraso(botonInicial));
         }
     }
 
-    private IEnumerator EnableCloseAfterDelay()
+    private System.Collections.IEnumerator EnableCloseAfterDelay()
     {
         yield return null;
         canClose = true;
     }
 
-    private IEnumerator SeleccionarConRetraso(GameObject boton)
+    private System.Collections.IEnumerator SeleccionarConRetraso(GameObject boton)
     {
-        yield return null;
+        yield return null; // espera un frame para asegurar el SetActive
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(boton);
     }
@@ -139,7 +135,7 @@ public class MessageDisplayManager : MonoBehaviour
         return isVisible;
     }
 
-    private IEnumerator ReactivateTriggerAfterDelay()
+    private System.Collections.IEnumerator ReactivateTriggerAfterDelay()
     {
         yield return new WaitForSeconds(0.01f);
         if (NoticiasTrigger != null)

@@ -387,11 +387,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 foreach (var colObjeto in collsObjeto)
                 {
-                    if (colJugador != null && colObjeto != null)
-                    {
-                        Physics.IgnoreCollision(colJugador, colObjeto, false);
-                    }
-
+                    Physics.IgnoreCollision(colJugador, colObjeto, false);
                 }
             }
         }
