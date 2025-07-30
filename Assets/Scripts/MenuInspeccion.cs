@@ -21,15 +21,6 @@ public class MenuInspeccion : MonoBehaviour
 
     public void AlternarInspeccion()
     {
-        // Obtener instancia del MessageDisplayManager
-        MessageDisplayManager messageDisplay = FindObjectOfType<MessageDisplayManager>();
-
-        // Si ya está abierto mensaje (y no está en pausa), no abrir menú inspección
-        if (messageDisplay != null && messageDisplay.IsMessageVisible() && (menuPausa == null || !menuPausa.pausa))
-        {
-            return;
-        }
-
         if (!inspeccion && (
             (menuLista != null && menuLista.lista) ||
             (menuPausa != null && menuPausa.pausa)))
