@@ -34,7 +34,6 @@ public class MessageDisplayManager : MonoBehaviour
         messagePanel.SetActive(false);
         if (messageImage != null)
             messageImage.gameObject.SetActive(false);
-<<<<<<< HEAD
 
         if (menuPausa == null)
             menuPausa = FindObjectOfType<MenuPausa>();
@@ -42,8 +41,6 @@ public class MessageDisplayManager : MonoBehaviour
             menuInspeccion = FindObjectOfType<MenuInspeccion>();
         if (menuLista == null)
             menuLista = FindObjectOfType<MenuLista>();
-=======
->>>>>>> parent of 3669dae (arreglados menus)
     }
 
     public void ToggleMessage(string message, Sprite optionalImage = null)
@@ -104,7 +101,6 @@ public class MessageDisplayManager : MonoBehaviour
         if (playerControllerScript != null)
             playerControllerScript.bloquearRotacion = false;
 
-<<<<<<< HEAD
         bool otrosMenusAbiertos =
             (menuPausa != null && menuPausa.pausa) ||
             (menuInspeccion != null && menuInspeccion.inspeccion) ||
@@ -122,10 +118,6 @@ public class MessageDisplayManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-=======
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
->>>>>>> parent of 3669dae (arreglados menus)
 
         StartCoroutine(ReactivateTriggerAfterDelay());
     }

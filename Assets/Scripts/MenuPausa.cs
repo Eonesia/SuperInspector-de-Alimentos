@@ -15,7 +15,6 @@ public class MenuPausa : MonoBehaviour
     public MenuInspeccion menuInspeccion;
     public MenuCC menuCC;
     public MenuLista menuLista;
-<<<<<<< HEAD
 
     private MessageDisplayManager messageDisplayManager;
 
@@ -23,8 +22,6 @@ public class MenuPausa : MonoBehaviour
     {
         messageDisplayManager = FindObjectOfType<MessageDisplayManager>();
     }
-=======
->>>>>>> parent of 3669dae (arreglados menus)
 
     public void AlternarPausa()
     {
@@ -50,27 +47,13 @@ public class MenuPausa : MonoBehaviour
 
         hud.SetActive(!pausa && !otrosMenusAbiertos);
 
-<<<<<<< HEAD
         if (pausa)
         {
             // Pausar el juego al abrir el menú pausa
-=======
-        // Manejo de tiempo y cursor dependiendo del estado general
-        if (!otrosMenusAbiertos)
-        {
-            Time.timeScale = pausa ? 0f : 1f;
-            Cursor.lockState = pausa ? CursorLockMode.None : CursorLockMode.Locked;
-            Cursor.visible = pausa;
-        }
-        else if (!pausa)
-        {
-            // Si salimos de la pausa pero hay otro menú activo, mantener juego pausado y cursor visible
->>>>>>> parent of 3669dae (arreglados menus)
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-<<<<<<< HEAD
         else
         {
             // Al cerrar el menú pausa...
@@ -101,12 +84,6 @@ public class MenuPausa : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
-=======
-
-        if (pausa && botonInicial != null)
-        {
-            StartCoroutine(SeleccionarConRetraso(botonInicial));
->>>>>>> parent of 3669dae (arreglados menus)
         }
 
         if (pausa && botonInicial != null)
