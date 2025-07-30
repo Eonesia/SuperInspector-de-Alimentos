@@ -36923,6 +36923,7 @@ MonoBehaviour:
       m_Action: Click
       m_Flags: 0
     m_Flags: 0
+  delayAntesDeCambiar: 1.5
 --- !u!65 &1568572977
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37099,7 +37100,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 90.266, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -43.579, y: 1.15}
+  m_AnchoredPosition: {x: -43.684, y: 1.15}
   m_SizeDelta: {x: 1.2264, y: 0.2863}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1568572981
@@ -41835,6 +41836,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  delayAntesDeCambiar: 1.5
 --- !u!135 &1686963483
 SphereCollider:
   m_ObjectHideFlags: 0
