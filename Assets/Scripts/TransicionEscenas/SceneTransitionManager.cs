@@ -17,6 +17,7 @@ public class SceneTransitionManagerTMP : MonoBehaviour
 
     public GameObject pantallaResultado;
     public TextMeshProUGUI TextoResultado;
+    public GameObject menuHUD;
 
     private void Start()
     {
@@ -39,6 +40,9 @@ public class SceneTransitionManagerTMP : MonoBehaviour
             Debug.LogError("❌ sistemaPuntuacion no está disponible.");
             return;
         }
+
+        if (menuHUD != null && menuHUD.activeSelf)
+        menuHUD.SetActive(false);
 
         if (diaActual >= totalDias)
         {
