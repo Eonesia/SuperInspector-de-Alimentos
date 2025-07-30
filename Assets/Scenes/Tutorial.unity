@@ -10802,6 +10802,7 @@ MonoBehaviour:
   menuInspeccion: {fileID: 1490885010}
   menuCC: {fileID: 1490885011}
   menuLista: {fileID: 1984337065}
+  messageDisplayManager: {fileID: 0}
 --- !u!114 &452740551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49059,7 +49060,7 @@ MonoBehaviour:
   - nombre: Tomate Frito
     analizado: 0
     valoracion: -1
-  lista: 1
+  lista: 0
   audioSource: {fileID: 138620979}
   sonidoInterfaz: {fileID: 8300000, guid: e8bd6805d2e58094cba26127ea6581bc, type: 3}
 --- !u!114 &1984337066
@@ -52589,6 +52590,9 @@ MonoBehaviour:
   iconoPrimeraPagina: {fileID: 21300000, guid: 1e7b7bc374f1af94b9e3caa1d067561f, type: 3}
   iconoSegundaPagina: {fileID: 21300000, guid: 1a0528940401ccc4987c5c6edcca597b, type: 3}
   botonInicial: {fileID: 1998258135}
+  menuPausa: {fileID: 0}
+  menuInspeccion: {fileID: 0}
+  menuLista: {fileID: 0}
 --- !u!1001 &2103650568
 PrefabInstance:
   m_ObjectHideFlags: 0
