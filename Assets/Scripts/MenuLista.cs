@@ -30,6 +30,15 @@ public class MenuLista : MonoBehaviour
 
     public void AlternarLista()
     {
+        // Obtener instancia del MessageDisplayManager
+        MessageDisplayManager messageDisplay = FindObjectOfType<MessageDisplayManager>();
+
+        // Si está abierto mensaje y no está en pausa, no abrir menú lista
+        if (messageDisplay != null && messageDisplay.IsMessageVisible() && (menuPausa == null || !menuPausa.pausa))
+        {
+            return;
+        }
+
         if (!lista &&
             ((menuInspeccion != null && menuInspeccion.inspeccion) ||
              (menuPausa != null && menuPausa.pausa)))
@@ -108,6 +117,5 @@ public class MenuLista : MonoBehaviour
         ActualizarTexto();
     }
 }
-
 
 
