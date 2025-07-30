@@ -10,15 +10,14 @@ public class MenuPausa : MonoBehaviour
     public GameObject botonInicial;
     public bool pausa = false;
 
-    public MenuAjustes menuAjustes;
+    public MenuAjustes menuAjustes;  // Referencia al script MenuAjustes
+
     public MenuInspeccion menuInspeccion;
     public MenuCC menuCC;
     public MenuLista menuLista;
-    public MessageDisplayManager messageDisplayManager;
 
     public void AlternarPausa()
     {
-        // Si estamos en ajustes, volver al menú de pausa
         if (menuAjustes != null && menuAjustes.menuAjustesUI.activeSelf)
         {
             VolverDesdeAjustes();
@@ -35,42 +34,13 @@ public class MenuPausa : MonoBehaviour
 
         hud.SetActive(!pausa && !otrosMenusAbiertos);
 
-        // Manejo de tiempo y cursor dependiendo del estado general
-        if (pausa)
-        {
-            Time.timeScale = 0f;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+        Time.timeScale = pausa ? 0f : 1f;
+        Cursor.lockState = pausa ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = pausa;
 
-            if (botonInicial != null && objetoMenuPausa.activeInHierarchy)
-            {
-                CoroutineRunner.RunCoroutine(SeleccionarConRetraso(botonInicial));
-            }
-        }
-        else
+        if (pausa && botonInicial != null)
         {
-            if (messageDisplayManager != null && messageDisplayManager.IsMessageVisible())
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-
-                if (messageDisplayManager.botonInicial != null && messageDisplayManager.messagePanel.activeInHierarchy)
-                {
-                    CoroutineRunner.RunCoroutine(SeleccionarConRetraso(messageDisplayManager.botonInicial));
-                }
-            }
-            else if (!otrosMenusAbiertos)
-            {
-                Time.timeScale = 1f;
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-            else
-            {
-                Time.timeScale = 0f;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
+            StartCoroutine(SeleccionarConRetraso(botonInicial));
         }
     }
 
@@ -96,23 +66,25 @@ public class MenuPausa : MonoBehaviour
     }
 
     public void VolverDesdeAjustes()
+{
+    if (menuAjustes != null)
     {
-        if (menuAjustes != null)
-        {
-            menuAjustes.CerrarMenuAjustes();
-        }
-
-        objetoMenuPausa.SetActive(true);
-        pausa = true;
-        Time.timeScale = 0f;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
-        if (botonInicial != null)
-        {
-            CoroutineRunner.RunCoroutine(SeleccionarConRetraso(botonInicial));
-        }
+        menuAjustes.CerrarMenuAjustes();
     }
+
+    objetoMenuPausa.SetActive(true);
+
+    // Restaurar pausa correctamente
+    pausa = true;
+    Time.timeScale = 0f;
+    Cursor.lockState = CursorLockMode.None;
+    Cursor.visible = true;
+
+    if (botonInicial != null)
+    {
+        StartCoroutine(SeleccionarConRetraso(botonInicial));
+    }
+}
 
     private IEnumerator SeleccionarConRetraso(GameObject objeto)
     {
