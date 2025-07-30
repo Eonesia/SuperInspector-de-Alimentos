@@ -40,7 +40,6 @@ public class MessageDisplayManager : MonoBehaviour
         if (messageImage != null)
             messageImage.gameObject.SetActive(false);
 
-        // Si quieres puedes asignar referencias automáticas aquí, ejemplo:
         if (menuPausa == null)
             menuPausa = FindObjectOfType<MenuPausa>();
         if (menuInspeccion == null)
@@ -106,7 +105,6 @@ public class MessageDisplayManager : MonoBehaviour
         if (playerControllerScript != null)
             playerControllerScript.bloquearRotacion = false;
 
-        // Verificar si otros menús están abiertos
         bool otrosMenusAbiertos =
             (menuPausa != null && menuPausa.pausa) ||
             (menuInspeccion != null && menuInspeccion.inspeccion) ||
@@ -179,8 +177,24 @@ public class MessageDisplayManager : MonoBehaviour
         int siguientePagina = (paginaActual + 1) % paginas.Length;
         MostrarPagina(siguientePagina);
     }
-}
 
+    // NUEVO: Método para forzar que el cursor se muestre y desbloquee
+    public void ForzarCursorVisible()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    // NUEVO: Propiedad para acceso externo a isVisible
+    public static bool MensajeAbierto
+    {
+        get
+        {
+            MessageDisplayManager instance = FindObjectOfType<MessageDisplayManager>();
+            return instance != null && instance.isVisible;
+        }
+    }
+}
 
 
 
