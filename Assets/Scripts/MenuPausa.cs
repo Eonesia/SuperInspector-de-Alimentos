@@ -10,14 +10,14 @@ public class MenuPausa : MonoBehaviour
     public GameObject botonInicial;
     public bool pausa = false;
 
-    public MenuAjustes menuAjustes;  // Referencia al script MenuAjustes
-
+    public MenuAjustes menuAjustes;
     public MenuInspeccion menuInspeccion;
     public MenuCC menuCC;
     public MenuLista menuLista;
 
     public void AlternarPausa()
     {
+        // Si estamos en ajustes, volver al menú de pausa
         if (menuAjustes != null && menuAjustes.menuAjustesUI.activeSelf)
         {
             VolverDesdeAjustes();
@@ -34,9 +34,20 @@ public class MenuPausa : MonoBehaviour
 
         hud.SetActive(!pausa && !otrosMenusAbiertos);
 
-        Time.timeScale = pausa ? 0f : 1f;
-        Cursor.lockState = pausa ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = pausa;
+        // Manejo de tiempo y cursor dependiendo del estado general
+        if (!otrosMenusAbiertos)
+        {
+            Time.timeScale = pausa ? 0f : 1f;
+            Cursor.lockState = pausa ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = pausa;
+        }
+        else if (!pausa)
+        {
+            // Si salimos de la pausa pero hay otro menú activo, mantener juego pausado y cursor visible
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
 
         if (pausa && botonInicial != null)
         {
@@ -66,25 +77,23 @@ public class MenuPausa : MonoBehaviour
     }
 
     public void VolverDesdeAjustes()
-{
-    if (menuAjustes != null)
     {
-        menuAjustes.CerrarMenuAjustes();
+        if (menuAjustes != null)
+        {
+            menuAjustes.CerrarMenuAjustes();
+        }
+
+        objetoMenuPausa.SetActive(true);
+        pausa = true;
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        if (botonInicial != null)
+        {
+            StartCoroutine(SeleccionarConRetraso(botonInicial));
+        }
     }
-
-    objetoMenuPausa.SetActive(true);
-
-    // Restaurar pausa correctamente
-    pausa = true;
-    Time.timeScale = 0f;
-    Cursor.lockState = CursorLockMode.None;
-    Cursor.visible = true;
-
-    if (botonInicial != null)
-    {
-        StartCoroutine(SeleccionarConRetraso(botonInicial));
-    }
-}
 
     private IEnumerator SeleccionarConRetraso(GameObject objeto)
     {
