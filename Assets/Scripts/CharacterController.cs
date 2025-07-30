@@ -40,7 +40,6 @@ public class FirstPersonController : MonoBehaviour
     public float intervaloPasosCorrer = 0.3f;
     [Range(0f, 1f)] public float volumenPasos = 1f;
 
-
     private CharacterController controlador;
     private Vector2 inputMovimiento;
     private Vector2 inputLook;
@@ -54,6 +53,9 @@ public class FirstPersonController : MonoBehaviour
     private System.Action<InputAction.CallbackContext> listaCallback;
     private System.Action<InputAction.CallbackContext> inspeccionCallback;
     private System.Action<InputAction.CallbackContext> cuadernoCallback;
+
+    // 🔹 Nuevo: referencia al Animator
+    public Animator animator;
 
     private void OnEnable()
     {
@@ -140,6 +142,13 @@ public class FirstPersonController : MonoBehaviour
         velocidadVertical += gravedad * Time.deltaTime;
         controlador.Move(Vector3.up * velocidadVertical * Time.deltaTime);
 
+        // 🔹 Establecer el bool "Andando" en el Animator
+        if (animator != null)
+        {
+            bool estaAndando = enSuelo && inputMovimiento.magnitude > 0.1f;
+            animator.SetBool("Andando", estaAndando);
+        }
+
         // Reproducir pasos
         if (enSuelo && inputMovimiento.magnitude > 0.1f)
         {
@@ -180,6 +189,4 @@ public class FirstPersonController : MonoBehaviour
         AudioClip clip = clips[Random.Range(0, clips.Length)];
         pasosAudioSource.PlayOneShot(clip, volumenPasos);
     }
-
 }
-
