@@ -12,7 +12,7 @@ public class MenuLista : MonoBehaviour
     {
         public string nombre;
         public bool analizado = false;
-        public int valoracion = -1; // -1 si no ha sido evaluado
+        public int valoracion = -1;
     }
 
     public GameObject objetoMenuLista;
@@ -30,6 +30,9 @@ public class MenuLista : MonoBehaviour
 
     public void AlternarLista()
     {
+        if (MessageDisplayManager.MensajeAbierto)
+            return;
+
         if (!lista &&
             ((menuInspeccion != null && menuInspeccion.inspeccion) ||
              (menuPausa != null && menuPausa.pausa)))
@@ -77,7 +80,6 @@ public class MenuLista : MonoBehaviour
         }
 
         textoLista.text = resultado;
-        Debug.Log(textoLista.text);
     }
 
     private string ObtenerEtiquetaSprite(int valoracion)

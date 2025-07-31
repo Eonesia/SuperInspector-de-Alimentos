@@ -5,15 +5,13 @@ public class MenuInspeccion : MonoBehaviour
 {
     public GameObject objetoMenuInspeccion;
     public GameObject hud;
-    public MenuLista menuLista;       
-    public MenuPausa menuPausa;       
+    public MenuLista menuLista;
+    public MenuPausa menuPausa;
 
     public InspectionHandler inspectionHandler;
     public PlayerInteract playerInteract;
 
     public bool inspeccion = false;
-
-    // Botón inicial que se seleccionará cuando se abra el menú
     public GameObject botonInicial;
 
     public AudioSource audioSource;
@@ -21,6 +19,9 @@ public class MenuInspeccion : MonoBehaviour
 
     public void AlternarInspeccion()
     {
+        if (MessageDisplayManager.MensajeAbierto)
+            return;
+
         if (!inspeccion && (
             (menuLista != null && menuLista.lista) ||
             (menuPausa != null && menuPausa.pausa)))
@@ -48,7 +49,6 @@ public class MenuInspeccion : MonoBehaviour
             }
         }
 
-        // Seleccionamos el botón inicial para navegación con mando cuando el menú se active
         if (inspeccion && botonInicial != null)
         {
             EventSystem.current.SetSelectedGameObject(null);
