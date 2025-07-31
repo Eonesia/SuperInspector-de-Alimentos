@@ -37079,8 +37079,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nombreEscenaDestino: MenuInicio
-  audioSource: {fileID: 0}
-  sonidoReloj: {fileID: 0}
+  audioSource: {fileID: 1611689490}
+  sonidoReloj: {fileID: 8300000, guid: 9d1b66f71e52c224fabe2ebd1259d952, type: 3}
   clickAction:
     m_Name: Click
     m_Type: 0
@@ -42019,7 +42019,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  delayAntesDeCambiar: 1.5
+  delayAntesDeCambiar: 0.39
 --- !u!135 &1686963483
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -49047,13 +49047,13 @@ MonoBehaviour:
   - nombre: Gazpacho
     analizado: 0
     valoracion: -1
-  - nombre: Tortilla de patatas
+  - nombre: Tortilla de patatas sin cebolla
     analizado: 0
     valoracion: -1
-  - nombre: "Lata de Ma\xEDz"
+  - nombre: "Lata de ma\xEDz dulce"
     analizado: 0
     valoracion: -1
-  - nombre: Cereales de avena
+  - nombre: Caja de cereales de avena
     analizado: 0
     valoracion: -1
   - nombre: Tomate Frito
