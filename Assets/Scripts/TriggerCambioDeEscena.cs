@@ -1,18 +1,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class TriggerCambioDeEscena : MonoBehaviour
 {
-    public string nombreEscenaDestino = "MenuInicio";
     public AudioSource audioSource;
     public AudioClip sonidoReloj;
-
     public InputAction clickAction;
-    public float delayAntesDeCambiar = 1.5f; // ← Puedes ajustar este valor
+    public float delayAntesDeTransicion = 1.5f;
 
     private Camera cam;
+    private SceneTransitionManagerTMP sceneTransitionManager;
 
     private void OnEnable()
     {
@@ -27,27 +25,42 @@ public class TriggerCambioDeEscena : MonoBehaviour
         clickAction.Disable();
     }
 
+    private void Start()
+    {
+        // Busca el objeto que tenga el SceneTransitionManagerTMP en la escena
+        sceneTransitionManager = FindObjectOfType<SceneTransitionManagerTMP>();
+
+        if (sceneTransitionManager == null)
+        {
+            Debug.LogError("❌ No se encontró SceneTransitionManagerTMP en la escena.");
+        }
+    }
+
     private void OnClick(InputAction.CallbackContext context)
     {
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if (hit.transform == transform) // Si el clic fue sobre este objeto
+            if (hit.transform == transform)
             {
                 audioSource.PlayOneShot(sonidoReloj);
-                StartCoroutine(CambiarEscenaConDelay());
+                StartCoroutine(IniciarTransicionConDelay());
             }
         }
     }
 
-    private IEnumerator CambiarEscenaConDelay()
+    private IEnumerator IniciarTransicionConDelay()
     {
-        yield return new WaitForSeconds(delayAntesDeCambiar);
+        yield return new WaitForSeconds(delayAntesDeTransicion);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 1f;
 
-        SceneManager.LoadScene(nombreEscenaDestino);
+        if (sceneTransitionManager != null)
+        {
+            sceneTransitionManager.StartSceneTransition();
+        }
     }
 }
+

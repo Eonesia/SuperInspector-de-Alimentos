@@ -101,7 +101,7 @@ public class SceneTransitionManagerTMP : MonoBehaviour
         }
         else
         {
-            Debug.LogError("❌ No hay más escenas en el Build Settings.");
+            SceneManager.LoadScene("MenuInicio");
         }
     }
 
