@@ -1,10 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ARagdoll : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private Renderer[] targetRenderers; // Objetos a los que se les cambiar� el material
+    [SerializeField] private Renderer[] targetRenderers; // Objetos a los que se les cambiará el material
     [SerializeField] private Material ragdollMaterial;   // Material a aplicar cuando se active el ragdoll
+    [SerializeField] private GameObject[] objetosParaDesactivar; // 🔹 Objetos a desactivar al activar el ragdoll
 
     private Rigidbody[] rigidbodies;
 
@@ -27,14 +28,26 @@ public class ARagdoll : MonoBehaviour
 
         animator.enabled = !enabled;
 
-        // Solo cambia los materiales si se activa el ragdoll
-        if (enabled && ragdollMaterial != null)
+        
+        if (enabled)
         {
-            foreach (Renderer renderer in targetRenderers)
+            if (ragdollMaterial != null)
             {
-                if (renderer != null)
+                foreach (Renderer renderer in targetRenderers)
                 {
-                    renderer.material = ragdollMaterial;
+                    if (renderer != null)
+                    {
+                        renderer.material = ragdollMaterial;
+                    }
+                }
+            }
+
+           
+            foreach (GameObject obj in objetosParaDesactivar)
+            {
+                if (obj != null)
+                {
+                    obj.SetActive(false);
                 }
             }
         }
@@ -47,6 +60,6 @@ public class ARagdoll : MonoBehaviour
             SetEnabled(true);
             audioSource.PlayOneShot(interactionSound);
         }
-        
     }
 }
+
