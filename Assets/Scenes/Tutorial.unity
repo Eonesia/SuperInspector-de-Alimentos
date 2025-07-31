@@ -37079,8 +37079,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nombreEscenaDestino: MenuInicio
-  audioSource: {fileID: 0}
-  sonidoReloj: {fileID: 0}
+  audioSource: {fileID: 1611689490}
+  sonidoReloj: {fileID: 8300000, guid: 9d1b66f71e52c224fabe2ebd1259d952, type: 3}
   clickAction:
     m_Name: Click
     m_Type: 0
@@ -42019,7 +42019,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  delayAntesDeCambiar: 1.5
+  delayAntesDeCambiar: 0.39
 --- !u!135 &1686963483
 SphereCollider:
   m_ObjectHideFlags: 0
