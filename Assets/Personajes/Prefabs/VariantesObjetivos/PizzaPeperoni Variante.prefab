@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 150ce36bfbf3e754286f22bbd5860236, type: 2}
     - target: {fileID: 919132149155446097, guid: 7ab32260cc3d5a241ad4f1bb5a78f23e, type: 3}
       propertyPath: m_Name
-      value: PizzaPeperoni 1
+      value: PizzaPeperoni Variante
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7ab32260cc3d5a241ad4f1bb5a78f23e, type: 3}
       propertyPath: m_Layer
@@ -199,5 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48047ee08921ff946a18a94c119a4509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 2420e171da2a83e4a932330607a46e5e, type: 2}
+  item: {fileID: 11400000, guid: 96a6f69fd0c8fb24d86f2a9db737367e, type: 2}
   rotacionEnMano: {x: 20, y: 180, z: -8}
+  posicionEnMano: {x: 0, y: 0, z: 0}
+  posicionInspeccionPersonalizada: {x: 0, y: 0, z: 0}
+  rotacionInspeccionPersonalizada: {x: 0, y: 0, z: 0}
