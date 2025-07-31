@@ -2,13 +2,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using UnityEngine.UI; // <-- Necesario para Button
+using UnityEngine.UI;
+using UnityEngine.EventSystems; // ← Necesario para seleccionar el botón
 
 public class TextosPrincipio : MonoBehaviour
 {
     public TextMeshProUGUI textoNarrativo;
     public float tiempoEntreFrases = 3f;
-    public Button botonSkip; // <-- Asignar en el inspector
+    public Button botonSkip;
 
     private Coroutine secuenciaTexto;
 
@@ -25,8 +26,11 @@ public class TextosPrincipio : MonoBehaviour
         // Iniciar narrativa
         secuenciaTexto = StartCoroutine(MostrarTextoNarrativo());
 
-        // Configurar botón skip
+        // Asignar función al botón
         botonSkip.onClick.AddListener(SaltarNarrativa);
+
+        // Seleccionar el botón para mando
+        StartCoroutine(SeleccionarBotonConRetraso());
     }
 
     private IEnumerator MostrarTextoNarrativo()
@@ -60,11 +64,8 @@ public class TextosPrincipio : MonoBehaviour
     public void SaltarNarrativa()
     {
         if (secuenciaTexto != null)
-        {
             StopCoroutine(secuenciaTexto);
-        }
 
-        // Opcional: ocultar texto y botón
         textoNarrativo.alpha = 0f;
         botonSkip.gameObject.SetActive(false);
 
@@ -73,7 +74,13 @@ public class TextosPrincipio : MonoBehaviour
 
     private void CargarSiguienteEscena()
     {
-        SceneManager.LoadScene("EscenaPrueba"); // Cambia por el nombre de tu escena
+        SceneManager.LoadScene("EscenaPrueba"); // Cambia el nombre si lo necesitas
     }
 
+    private IEnumerator SeleccionarBotonConRetraso()
+    {
+        yield return null; // Esperar un frame para asegurar que todo está cargado
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(botonSkip.gameObject);
+    }
 }
