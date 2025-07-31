@@ -26114,10 +26114,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: "Volviendo al men\xFA\n\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
-  m_sharedMaterial: {fileID: -5019200550845912817, guid: 82ba53186d82d8140b3d099d6b1de4e2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
+  m_sharedMaterial: {fileID: -652220444994033932, guid: af0ce6c053fcb064e82f63945e42b36d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -40004,7 +40004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415e9c4d697c91249b09981b0cd7cbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombreEscenaDestino: MenuInicio
   audioSource: {fileID: 1611689490}
   sonidoReloj: {fileID: 8300000, guid: 9d1b66f71e52c224fabe2ebd1259d952, type: 3}
   clickAction:
@@ -40032,7 +40031,7 @@ MonoBehaviour:
       m_Action: Click
       m_Flags: 0
     m_Flags: 0
-  delayAntesDeCambiar: 1.5
+  delayAntesDeTransicion: 1.5
 --- !u!65 &1568572977
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44969,7 +44968,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415e9c4d697c91249b09981b0cd7cbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombreEscenaDestino: MenuInicio
   audioSource: {fileID: 1611689490}
   sonidoReloj: {fileID: 8300000, guid: 9d1b66f71e52c224fabe2ebd1259d952, type: 3}
   clickAction:
@@ -44981,7 +44979,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  delayAntesDeCambiar: 0.39
+  delayAntesDeTransicion: 1.5
 --- !u!135 &1686963483
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -56081,6 +56079,7 @@ GameObject:
   - component: {fileID: 2101468656}
   - component: {fileID: 2101468655}
   - component: {fileID: 2101468657}
+  - component: {fileID: 2101468658}
   m_Layer: 0
   m_Name: SceneTransitionManager
   m_TagString: Untagged
@@ -56104,7 +56103,7 @@ MonoBehaviour:
   transitionText: {fileID: 1034645591}
   fadeDuration: 1.5
   textFadeDuration: 1
-  message: Mes siguiente...
+  message: "Volviendo al men\xFA"
   diaActual: 0
   totalDias: 4
   pantallaResultado: {fileID: 1702988589}
@@ -56164,6 +56163,20 @@ MonoBehaviour:
   menuPausa: {fileID: 0}
   menuInspeccion: {fileID: 0}
   menuLista: {fileID: 0}
+--- !u!114 &2101468658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101468654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b964543d18ad54ba0ca7375bcd1db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeImage: {fileID: 736180128}
+  fadeDuration: 2
 --- !u!1001 &2103650568
 PrefabInstance:
   m_ObjectHideFlags: 0
