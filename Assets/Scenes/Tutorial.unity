@@ -49047,13 +49047,13 @@ MonoBehaviour:
   - nombre: Gazpacho
     analizado: 0
     valoracion: -1
-  - nombre: Tortilla de patatas
+  - nombre: Tortilla de patatas sin cebolla
     analizado: 0
     valoracion: -1
-  - nombre: "Lata de Ma\xEDz"
+  - nombre: "Lata de ma\xEDz dulce"
     analizado: 0
     valoracion: -1
-  - nombre: Cereales de avena
+  - nombre: Caja de cereales de avena
     analizado: 0
     valoracion: -1
   - nombre: Tomate Frito
